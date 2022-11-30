@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_exam/screens/welcome/splash_screen.dart';
-import 'package:my_exam/screens/welcome/welcome_screen.dart';
+import 'package:my_exam/screens/auth/sign_in.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
+      home: SignIn(),
     );
   }
 }

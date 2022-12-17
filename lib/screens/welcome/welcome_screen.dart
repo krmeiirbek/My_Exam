@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_exam/screens/auth/sign_in.dart';
+import 'package:my_exam/screens/auth/sign_up.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -27,7 +29,9 @@ class WelcomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 29),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> const SignIn()));
+                  },
                   child: Ink(
                     height: 55,
                     width: 317,
@@ -66,7 +70,9 @@ class WelcomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 29),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> const SignUp()));
+                  },
                   child: Ink(
                     height: 55,
                     width: 317,

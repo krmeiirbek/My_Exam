@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_exam/screens/auth/sign_in.dart';
+import 'package:my_exam/screens/home/home.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -78,7 +80,12 @@ class SignUp extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => const Home()));
+                },
                 child: Ink(
                   height: 55,
                   width: double.infinity,
@@ -106,8 +113,8 @@ class SignUp extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               Row(
-                children: const [
-                  Padding(
+                children: [
+                  const Padding(
                     padding: EdgeInsets.only(right: 0, top: 6),
                     child: Text(
                       'Already have an account?',
@@ -117,14 +124,23 @@ class SignUp extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Padding(
-                    padding: EdgeInsets.only(right: 0, top: 6),
-                    child: Text(
-                      'Sign In',
-                      style: TextStyle(
-                        color: Color(0xff3D3D74),
-                        fontSize: 15,
+                    padding: const EdgeInsets.only(right: 0, top: 6),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const SignIn()));
+                      },
+                      child: const Text(
+                        'Sign In',
+                        style: TextStyle(
+                          color: Color(0xff3D3D74),
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   ),

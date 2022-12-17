@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_exam/screens/auth/sign_up.dart';
+
+import '../home/home.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -56,7 +59,12 @@ class SignIn extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => const Home()));
+                },
                 child: Ink(
                   height: 55,
                   width: double.infinity,
@@ -134,23 +142,34 @@ class SignIn extends StatelessWidget {
               ),
               const Spacer(),
               Center(
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: const TextSpan(
-                    text: 'Don’t have an account? ',
-                    style: TextStyle(
-                      color: Color(0xffC3C3C3),
-                      fontSize: 13,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      'Don’t have an account? ',
+                      style: TextStyle(
+                        color: Color(0xffC3C3C3),
+                        fontSize: 13,
+                      ),
                     ),
-                    children: [
-                      TextSpan(
-                        text: 'Create Now',
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const SignUp()),
+                        );
+                      },
+                      child: const Text(
+                        'Create Now',
                         style: TextStyle(
                           color: Color(0xff3C8DEF),
+                          fontSize: 13,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],

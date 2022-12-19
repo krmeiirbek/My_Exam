@@ -12,6 +12,7 @@ class WelcomeScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
+              const SizedBox(height: 30,),
               Image.asset('assets/images/welcome.png'),
               const SizedBox(height: 20),
               const Padding(
@@ -111,6 +112,7 @@ class WelcomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 10,),
             ],
           ),
         ),

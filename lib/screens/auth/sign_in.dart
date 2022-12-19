@@ -11,168 +11,171 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 80,
-                width: double.infinity,
-              ),
-              Center(
-                child: Image.asset(
-                  'assets/images/splash.png',
-                  width: 110,
-                  height: 140,
-                ),
-              ),
-              const SizedBox(height: 40),
-              const Text(
-                'Welcome Back',
-                style: TextStyle(
-                  fontSize: 34,
-                  color: Color(0xff3D3D74),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 3),
-              const Text(
-                'Sign in to continue',
-                style: TextStyle(color: Color(0xff707070), fontSize: 13),
-              ),
-              const SizedBox(height: 36),
-              const TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                ),
-              ),
-              const TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  suffixIcon: Icon(
-                    Icons.visibility_outlined,
-                    color: Color(0xffC3C3C3),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 40),
-              InkWell(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => const Home()));
-                },
-                child: Ink(
-                  height: 55,
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.9,
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 80,
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: const Color(0xff4785EB),
-                    borderRadius: const BorderRadius.all(Radius.circular(30)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0xff599BF0).withOpacity(0.4),
-                        offset: const Offset(0, 15),
-                        blurRadius: 10,
-                      ),
-                    ],
+                ),
+                Center(
+                  child: Image.asset(
+                    'assets/images/splash.png',
+                    width: 110,
+                    height: 140,
                   ),
-                  child: const Center(
-                    child: Text(
-                      'Sign in',
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: Colors.white,
-                      ),
+                ),
+                const SizedBox(height: 40),
+                const Text(
+                  'Welcome Back',
+                  style: TextStyle(
+                    fontSize: 34,
+                    color: Color(0xff3D3D74),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 3),
+                const Text(
+                  'Sign in to continue',
+                  style: TextStyle(color: Color(0xff707070), fontSize: 13),
+                ),
+                const SizedBox(height: 36),
+                const TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                  ),
+                ),
+                const TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    suffixIcon: Icon(
+                      Icons.visibility_outlined,
+                      color: Color(0xffC3C3C3),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              Row(
-                children: const [
-                  Spacer(),
-                  Padding(
-                    padding: EdgeInsets.only(right: 0, top: 6),
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Color(0xff999999),
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 48),
-              Center(
-                child: Column(
-                  children: [
-                    const Text(
-                      '--- Or ---',
-                      style: TextStyle(letterSpacing: 0),
-                    ),
-                    const SizedBox(height: 17),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/google.svg',
-                          height: 40,
-                          width: 40,
-                        ),
-                        const SizedBox(width: 11),
-                        SvgPicture.asset(
-                          'assets/icons/facebook.svg',
-                          height: 40,
-                          width: 40,
-                        ),
-                        const SizedBox(width: 11),
-                        SvgPicture.asset(
-                          'assets/icons/twitter.svg',
-                          height: 40,
-                          width: 40,
+                const SizedBox(height: 40),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => const Home()));
+                  },
+                  child: Ink(
+                    height: 55,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff4785EB),
+                      borderRadius: const BorderRadius.all(Radius.circular(30)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xff599BF0).withOpacity(0.4),
+                          offset: const Offset(0, 15),
+                          blurRadius: 10,
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              const Spacer(),
-              Center(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      'Don’t have an account? ',
-                      style: TextStyle(
-                        color: Color(0xffC3C3C3),
-                        fontSize: 13,
+                    child: const Center(
+                      child: Text(
+                        'Sign in',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const SignUp()),
-                        );
-                      },
-                      child: const Text(
-                        'Create Now',
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: const [
+                    Spacer(),
+                    Padding(
+                      padding: EdgeInsets.only(right: 0, top: 6),
+                      child: Text(
+                        'Forgot Password?',
                         style: TextStyle(
-                          color: Color(0xff3C8DEF),
-                          fontSize: 13,
+                          color: Color(0xff999999),
+                          fontSize: 15,
                         ),
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 48),
+                Center(
+                  child: Column(
+                    children: [
+                      const Text(
+                        '--- Or ---',
+                        style: TextStyle(letterSpacing: 0),
+                      ),
+                      const SizedBox(height: 17),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/google.svg',
+                            height: 40,
+                            width: 40,
+                          ),
+                          const SizedBox(width: 11),
+                          SvgPicture.asset(
+                            'assets/icons/facebook.svg',
+                            height: 40,
+                            width: 40,
+                          ),
+                          const SizedBox(width: 11),
+                          SvgPicture.asset(
+                            'assets/icons/twitter.svg',
+                            height: 40,
+                            width: 40,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const Spacer(),
+                Center(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        'Don’t have an account? ',
+                        style: TextStyle(
+                          color: Color(0xffC3C3C3),
+                          fontSize: 13,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const SignUp()),
+                          );
+                        },
+                        child: const Text(
+                          'Create Now',
+                          style: TextStyle(
+                            color: Color(0xff3C8DEF),
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -28,11 +28,12 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height; // 932
     return Scaffold(
       backgroundColor: const Color(0xffF6F7FC),
       body: _pages[currentIndex],
       bottomNavigationBar: Container(
-        height: 80,
+        height: height * 0.086,
         decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -59,8 +60,8 @@ class _HomeState extends State<Home> {
                 children: [
                   SvgPicture.asset(
                     'assets/icons/home.svg',
-                    height: 25,
-                    width: 25,
+                    height: height * 0.027,
+                    width: height * 0.027,
                     color: currentIndex == 0
                         ? Colors.lightBlue
                         : const Color(0xff666666),
@@ -87,8 +88,8 @@ class _HomeState extends State<Home> {
                 children: [
                   SvgPicture.asset(
                     'assets/icons/surface.svg',
-                    height: 25,
-                    width: 25,
+                    height: height * 0.027,
+                    width: height * 0.027,
                     color: currentIndex == 1
                         ? Colors.lightBlue
                         : const Color(0xff666666),
@@ -115,8 +116,8 @@ class _HomeState extends State<Home> {
                 children: [
                   SvgPicture.asset(
                     'assets/icons/clock.svg',
-                    height: 25,
-                    width: 25,
+                    height: height * 0.027,
+                    width: height * 0.027,
                     color: currentIndex == 2
                         ? Colors.lightBlue
                         : const Color(0xff666666),
@@ -143,8 +144,8 @@ class _HomeState extends State<Home> {
                 children: [
                   SvgPicture.asset(
                     'assets/icons/user.svg',
-                    height: 25,
-                    width: 25,
+                    height: height * 0.027,
+                    width: height * 0.027,
                     color: currentIndex == 3
                         ? Colors.lightBlue
                         : const Color(0xff666666),
@@ -174,6 +175,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height; // 932
     return Column(
       children: [
         Stack(
@@ -181,7 +183,7 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              height: 274,
+              height: height * 0.294,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Color(0xff6FB2FF),
@@ -193,15 +195,15 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Positioned(
-              right: 29,
-              top: 54,
+              right: height * 0.032,
+              top: height * 0.058,
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
                   SvgPicture.asset(
                     'assets/icons/notification.svg',
-                    height: 23,
-                    width: 18,
+                    height: height * 0.024,
+                    width: height * 0.019,
                   ),
                   Positioned(
                     top: -1,
@@ -227,8 +229,8 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 98,
-              left: 29,
+              top: height * 0.105,
+              left: height * 0.032,
               child: RichText(
                 text: const TextSpan(
                   text: 'Hello,',
@@ -259,8 +261,8 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 105,
-              right: 29,
+              top: height * 0.113,
+              right: height * 0.032,
               child: Container(
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -268,15 +270,15 @@ class HomePage extends StatelessWidget {
                 ),
                 child: Image.asset(
                   'assets/images/avatar.png',
-                  height: 67,
-                  width: 67,
+                  height: height * 0.072,
+                  width: height * 0.072,
                 ),
               ),
             ),
             Positioned(
-              bottom: 30,
-              right: 29,
-              left: 29,
+              bottom: height * 0.032,
+              right: height * 0.032,
+              left: height * 0.032,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -295,10 +297,10 @@ class HomePage extends StatelessWidget {
                       children: [
                         const SizedBox(width: 10),
                         Padding(
-                          padding: const EdgeInsets.only(
-                            top: 12.0,
-                            left: 12.0,
-                            bottom: 12.0,
+                          padding: EdgeInsets.only(
+                            top: height * 0.013,
+                            left: height * 0.013,
+                            bottom: height * 0.013,
                           ),
                           child: SvgPicture.asset(
                             'assets/icons/search.svg',
@@ -314,7 +316,10 @@ class HomePage extends StatelessWidget {
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(top: 30, right: 30, left: 30),
+            padding: EdgeInsets.only(
+                top: height * 0.032,
+                right: height * 0.032,
+                left: height * 0.032),
             child: ListView.separated(
               itemBuilder: (_, idx) => Container(
                 height: 100,

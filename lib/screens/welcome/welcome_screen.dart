@@ -7,17 +7,18 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height; // 932
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: Column(
             children: [
-              const SizedBox(height: 30,),
+              SizedBox(height: height * 0.032),
               Image.asset('assets/images/welcome.png'),
-              const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 60),
-                child: Text(
+              SizedBox(height: height * 0.022),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: height * 0.064),
+                child: const Text(
                   'We currently have over 740 exam waiting for you!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -26,16 +27,19 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 46),
+              SizedBox(height: height * 0.05),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 29),
+                padding: EdgeInsets.symmetric(horizontal: height * 0.032),
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> const SignIn()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => const SignIn()));
                   },
                   child: Ink(
-                    height: 55,
-                    width: 317,
+                    height: height * 0.059,
+                    width: height * 0.34,
                     decoration: BoxDecoration(
                       color: const Color(0xff4785EB),
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
@@ -59,7 +63,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 23),
+              SizedBox(height: height * 0.025),
               const Text(
                 'Already have an account?',
                 style: TextStyle(
@@ -67,16 +71,19 @@ class WelcomeScreen extends StatelessWidget {
                   color: Color(0xff999999),
                 ),
               ),
-              const SizedBox(height: 23),
+              SizedBox(height: height * 0.025),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 29),
+                padding: EdgeInsets.symmetric(horizontal: height * 0.032),
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> const SignUp()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => const SignUp()));
                   },
                   child: Ink(
-                    height: 55,
-                    width: 317,
+                    height: height * 0.059,
+                    width: height * 0.34,
                     decoration: const BoxDecoration(
                       color: Color(0xffE3F0FF),
                       borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -112,7 +119,7 @@ class WelcomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 10,),
+              SizedBox(height: height * 0.016),
             ],
           ),
         ),

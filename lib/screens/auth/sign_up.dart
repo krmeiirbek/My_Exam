@@ -7,27 +7,28 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height; // 932
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.9,
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            height: height * 0.9,
+            padding: EdgeInsets.symmetric(horizontal: height * 0.032),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 80,
-                  width: double.infinity,
+                SizedBox(
+                  height: height * 0.086,
+                  width: MediaQuery.of(context).size.width,
                 ),
                 Center(
                   child: Image.asset(
                     'assets/images/splash.png',
-                    width: 110,
-                    height: 140,
+                    width: height * 0.12,
+                    height: height * 0.15,
                   ),
                 ),
-                const SizedBox(height: 40),
+                SizedBox(height: height * 0.043),
                 const Text(
                   'Create Account',
                   style: TextStyle(
@@ -41,7 +42,7 @@ class SignUp extends StatelessWidget {
                   'Create an account to continue',
                   style: TextStyle(color: Color(0xff707070), fontSize: 13),
                 ),
-                const SizedBox(height: 36),
+                SizedBox(height: height * 0.039),
                 const TextField(
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -80,7 +81,7 @@ class SignUp extends StatelessWidget {
                     fontSize: 10,
                   ),
                 ),
-                const SizedBox(height: 40),
+                SizedBox(height: height * 0.043),
                 InkWell(
                   onTap: () {
                     Navigator.pushReplacement(
@@ -89,7 +90,7 @@ class SignUp extends StatelessWidget {
                             builder: (BuildContext context) => const Home()));
                   },
                   child: Ink(
-                    height: 55,
+                    height: height * 0.059,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: const Color(0xff4785EB),
@@ -113,7 +114,7 @@ class SignUp extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: height * 0.016),
                 Row(
                   children: [
                     const Padding(

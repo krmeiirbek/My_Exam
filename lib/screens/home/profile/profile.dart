@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:my_exam/screens/home/profile/settings_page.dart';
 
 import '../../../widgets/chart.dart';
 
@@ -8,6 +9,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height; // 932
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -16,7 +18,7 @@ class ProfilePage extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                height: 274,
+                height: height * 0.294,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(colors: [
                     Color(0xff6FB2FF),
@@ -28,15 +30,15 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Positioned(
-                right: 29,
-                top: 54,
+                right: height * 0.032,
+                top: height * 0.058,
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
                     SvgPicture.asset(
                       'assets/icons/notification.svg',
-                      height: 23,
-                      width: 18,
+                      height: height * 0.025,
+                      width: height * 0.019,
                     ),
                     Positioned(
                       top: -1,
@@ -62,8 +64,8 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 98,
-                left: 29,
+                top: height * 0.105,
+                left: height * 0.032,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,8 +85,8 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         SvgPicture.asset(
                           'assets/icons/facebook.svg',
-                          width: 15,
-                          height: 15,
+                          width: height * 0.016,
+                          height: height * 0.016,
                         ),
                         const SizedBox(width: 5),
                         const Text(
@@ -103,8 +105,8 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         SvgPicture.asset(
                           'assets/icons/twitter.svg',
-                          width: 15,
-                          height: 15,
+                          width: height * 0.016,
+                          height: height * 0.016,
                         ),
                         const SizedBox(width: 5),
                         const Text(
@@ -121,8 +123,8 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 105,
-                right: 29,
+                top: height * 0.113,
+                right: height * 0.032,
                 child: Stack(
                   children: [
                     Container(
@@ -132,8 +134,8 @@ class ProfilePage extends StatelessWidget {
                       ),
                       child: Image.asset(
                         'assets/images/avatar.png',
-                        height: 67,
-                        width: 67,
+                        height: height * 0.072,
+                        width: height * 0.072,
                       ),
                     ),
                     Positioned(
@@ -141,17 +143,17 @@ class ProfilePage extends StatelessWidget {
                       bottom: 0,
                       child: SvgPicture.asset(
                         'assets/icons/update.svg',
-                        width: 20,
-                        height: 20,
+                        width: height * 0.021,
+                        height: height * 0.021,
                       ),
                     ),
                   ],
                 ),
               ),
               Positioned(
-                bottom: 30,
-                right: 29,
-                left: 29,
+                bottom: height * 0.032,
+                right: height * 0.032,
+                left: height * 0.032,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -207,9 +209,9 @@ class ProfilePage extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Text(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: height * 0.011),
+                        child: const Text(
                           'Edit Profile',
                           style: TextStyle(
                             fontSize: 13,
@@ -224,86 +226,119 @@ class ProfilePage extends StatelessWidget {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: LineChartSample(),
-          ),
-          const SizedBox(height: 30),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: EdgeInsets.only(left: height * 0.022),
+            child: const LineChartSample(),
+          ),
+          SizedBox(height: height * 0.032),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: height * 0.032),
             child: SizedBox(
-              height: 38,
+              height: height * 0.041,
               child: Row(
                 children: [
-                  SvgPicture.asset('assets/icons/payment.svg',height: 20,width: 25,),
-                  const SizedBox(width: 18,),
-                  const Text('Payment',style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff3D3D74),
-                  ),),
+                  SvgPicture.asset('assets/icons/payment.svg',
+                      height: 20, width: 25),
+                  SizedBox(width: height * 0.02),
+                  const Text(
+                    'Payment',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff3D3D74),
+                    ),
+                  ),
                   const Spacer(),
-                  const Icon(Icons.arrow_forward_ios_outlined,color: Color(0xffC3C3C3),size: 18,),
+                  const Icon(Icons.arrow_forward_ios_outlined,
+                      color: Color(0xffC3C3C3), size: 18),
                 ],
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 30,left: 70),
+            padding:
+                EdgeInsets.only(right: height * 0.032, left: height * 0.075),
             child: Divider(
               color: const Color(0xff707070).withOpacity(0.3),
               thickness: 2,
             ),
           ),
-          const SizedBox(height: 18),
+          SizedBox(width: height * 0.02),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: EdgeInsets.symmetric(horizontal: height * 0.032),
             child: SizedBox(
-              height: 38,
+              height: height * 0.041,
               child: Row(
                 children: [
-                  SvgPicture.asset('assets/icons/friends.svg',height: 20,width: 25,),
-                  const SizedBox(width: 18,),
-                  const Text('Your friend',style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff3D3D74),
-                  ),),
+                  SvgPicture.asset(
+                    'assets/icons/friends.svg',
+                    height: 20,
+                    width: 25,
+                  ),
+                  SizedBox(width: height * 0.02),
+                  const Text(
+                    'Your friend',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff3D3D74),
+                    ),
+                  ),
                   const Spacer(),
-                  const Icon(Icons.arrow_forward_ios_outlined,color: Color(0xffC3C3C3),size: 18,),
+                  const Icon(Icons.arrow_forward_ios_outlined,
+                      color: Color(0xffC3C3C3), size: 18),
                 ],
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 30,left: 70),
+            padding:
+                EdgeInsets.only(right: height * 0.032, left: height * 0.075),
             child: Divider(
               color: const Color(0xff707070).withOpacity(0.3),
               thickness: 2,
             ),
           ),
-          const SizedBox(height: 18),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: SizedBox(
-              height: 38,
-              child: Row(
-                children: [
-                  SvgPicture.asset('assets/icons/settings.svg',height: 20,width: 25,),
-                  const SizedBox(width: 18,),
-                  const Text('Settings',style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff3D3D74),
-                  ),),
-                  const Spacer(),
-                  const Icon(Icons.arrow_forward_ios_outlined,color: Color(0xffC3C3C3),size: 18,),
-                ],
+          SizedBox(width: height * 0.02),
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const SettingsPage()));
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: height * 0.032),
+              child: SizedBox(
+                height: height * 0.041,
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/icons/settings.svg',
+                      height: 25,
+                      width: 25,
+                    ),
+                    SizedBox(width: height * 0.02),
+                    const Text(
+                      'Settings',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff3D3D74),
+                      ),
+                    ),
+                    const Spacer(),
+                    const Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      color: Color(0xffC3C3C3),
+                      size: 18,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 30,left: 70),
+            padding:
+                EdgeInsets.only(right: height * 0.032, left: height * 0.075),
             child: Divider(
               color: const Color(0xff707070).withOpacity(0.3),
               thickness: 2,

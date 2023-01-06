@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:my_exam/configs/themes/custom_text_styles.dart';
 import 'package:my_exam/screens/welcome/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,10 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _navigateToWelcome() async {
     await Future.delayed(const Duration(milliseconds: 1500), () {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => const WelcomeScreen()));
+      Get.offNamed(WelcomeScreen.routeName);
     });
   }
 
@@ -31,7 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset('assets/images/splash.png'),
+            SvgPicture.asset('assets/icons/splash.svg'),
+            const SizedBox(height: 12),
+            const Text('MyExam', style: splashTS),
             const SizedBox(height: 30),
             Image.asset('assets/images/splash_ellipse.png'),
           ],

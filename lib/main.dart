@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:my_exam/screens/welcome/splash_screen.dart';
+import 'package:get/get.dart';
+
+import 'bindings/initial_bindings.dart';
+import 'controllers/theme_controller.dart';
+import 'routes/app_routes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  InitialBindings().dependencies();
   runApp(const MyApp());
 }
 
@@ -11,12 +16,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: SplashScreen(),
-      ),
+      theme: Get.find<ThemeController>().lightTheme,
+      darkTheme: Get.find<ThemeController>().darkTheme,
+      themeMode: ThemeMode.light,
+      getPages: AppRoutes.routes(),
+      initialRoute: '/',
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:my_exam/configs/themes/ui_parameters.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -10,7 +12,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool _darkMode = false;
+  bool _darkMode = UIParameters.isDarkMode();
   bool _reminder = false;
   bool _newExam = false;
 
@@ -53,10 +55,15 @@ class _SettingsPageState extends State<SettingsPage> {
                       onChanged: (bool value) {
                         setState(() {
                           _darkMode = !_darkMode;
+                          _darkMode
+                              ? Get.changeTheme(ThemeData.dark())
+                              : Get.changeTheme(ThemeData.light());
                         });
                       },
                       activeColor: const Color(0xff599BF0),
-                      thumbColor: _darkMode ? const Color(0xff4785EB) : const Color(0xff999999),
+                      thumbColor: _darkMode
+                          ? const Color(0xff4785EB)
+                          : const Color(0xff999999),
                       trackColor: const Color(0xffC3C3C3),
                     ),
                   ],
@@ -102,7 +109,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         });
                       },
                       activeColor: const Color(0xff599BF0),
-                      thumbColor: _reminder ? const Color(0xff4785EB) : const Color(0xff999999),
+                      thumbColor: _reminder
+                          ? const Color(0xff4785EB)
+                          : const Color(0xff999999),
                       trackColor: const Color(0xffC3C3C3),
                     ),
                   ],
@@ -148,7 +157,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         });
                       },
                       activeColor: const Color(0xff599BF0),
-                      thumbColor: _newExam ? const Color(0xff4785EB) : const Color(0xff999999),
+                      thumbColor: _newExam
+                          ? const Color(0xff4785EB)
+                          : const Color(0xff999999),
                       trackColor: const Color(0xffC3C3C3),
                     ),
                   ],
@@ -286,8 +297,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: InkWell(
-                onTap: () {
-                },
+                onTap: () {},
                 child: Ink(
                   height: 55,
                   width: double.infinity,

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:my_exam/screens/auth/sign_up.dart';
 
 import '../home/home.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({Key? key}) : super(key: key);
+
+  static const String routeName = '/sign_in';
 
   @override
   Widget build(BuildContext context) {
@@ -31,18 +34,21 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: height * 0.043),
-                const Text(
+                Text(
                   'Welcome Back',
                   style: TextStyle(
-                    fontSize: 34,
-                    color: Color(0xff3D3D74),
+                    fontSize: height * 0.0365,
+                    color: const Color(0xff3D3D74),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 3),
-                const Text(
+                SizedBox(height: height * 0.00322),
+                Text(
                   'Sign in to continue',
-                  style: TextStyle(color: Color(0xff707070), fontSize: 13),
+                  style: TextStyle(
+                    color: const Color(0xff707070),
+                    fontSize: height * 0.01395,
+                  ),
                 ),
                 SizedBox(height: height * 0.039),
                 const TextField(
@@ -63,10 +69,7 @@ class SignIn extends StatelessWidget {
                 SizedBox(height: height * 0.043),
                 InkWell(
                   onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => const Home()));
+                    Get.offAllNamed(Home.routeName);
                   },
                   child: Ink(
                     height: height * 0.06,
@@ -81,11 +84,11 @@ class SignIn extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         'Sign in',
                         style: TextStyle(
-                          fontSize: 17,
+                          fontSize: height * 0.0183,
                           color: Colors.white,
                         ),
                       ),
@@ -94,15 +97,15 @@ class SignIn extends StatelessWidget {
                 ),
                 SizedBox(height: height * 0.016),
                 Row(
-                  children: const [
-                    Spacer(),
+                  children: [
+                    const Spacer(),
                     Padding(
-                      padding: EdgeInsets.only(right: 0, top: 6),
+                      padding: const EdgeInsets.only(right: 0, top: 6),
                       child: Text(
                         'Forgot Password?',
                         style: TextStyle(
-                          color: Color(0xff999999),
-                          fontSize: 15,
+                          color: const Color(0xff999999),
+                          fontSize: height * 0.0161,
                         ),
                       ),
                     ),
@@ -116,26 +119,26 @@ class SignIn extends StatelessWidget {
                         '--- Or ---',
                         style: TextStyle(letterSpacing: 0),
                       ),
-                      const SizedBox(height: 17),
+                      SizedBox(height: height * 0.0183),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SvgPicture.asset(
                             'assets/icons/google.svg',
-                            height: 40,
-                            width: 40,
+                            height: height * 0.043,
+                            width: height * 0.043,
                           ),
-                          const SizedBox(width: 11),
+                          SizedBox(width: height * 0.012),
                           SvgPicture.asset(
                             'assets/icons/facebook.svg',
-                            height: 40,
-                            width: 40,
+                            height: height * 0.043,
+                            width: height * 0.043,
                           ),
-                          const SizedBox(width: 11),
+                          SizedBox(width: height * 0.012),
                           SvgPicture.asset(
                             'assets/icons/twitter.svg',
-                            height: 40,
-                            width: 40,
+                            height: height * 0.043,
+                            width: height * 0.043,
                           ),
                         ],
                       ),
@@ -147,27 +150,22 @@ class SignIn extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text(
+                      Text(
                         'Don’t have an account? ',
                         style: TextStyle(
-                          color: Color(0xffC3C3C3),
-                          fontSize: 13,
+                          color: const Color(0xffC3C3C3),
+                          fontSize: height * 0.014,
                         ),
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    const SignUp()),
-                          );
+                          Get.offNamed(SignUp.routeName);
                         },
-                        child: const Text(
+                        child: Text(
                           'Create Now',
                           style: TextStyle(
-                            color: Color(0xff3C8DEF),
-                            fontSize: 13,
+                            color: const Color(0xff3C8DEF),
+                            fontSize: height * 0.014,
                           ),
                         ),
                       ),

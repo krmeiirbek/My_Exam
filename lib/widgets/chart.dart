@@ -175,9 +175,7 @@ class _LineChartSampleState extends State<LineChartSample> {
               colors: [
                 const Color(0xff4785EB),
                 Colors.white,
-              ]
-                  .map((color) => color.withOpacity(0.3))
-                  .toList(),
+              ].map((color) => color.withOpacity(0.3)).toList(),
             ),
           ),
         ),

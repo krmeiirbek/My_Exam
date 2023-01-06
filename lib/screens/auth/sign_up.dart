@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_exam/screens/auth/sign_in.dart';
 import 'package:my_exam/screens/home/home.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
+
+  static const String routeName = '/sign_up';
 
   @override
   Widget build(BuildContext context) {
@@ -84,10 +87,7 @@ class SignUp extends StatelessWidget {
                 SizedBox(height: height * 0.043),
                 InkWell(
                   onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => const Home()));
+                    Get.offAllNamed(Home.routeName);
                   },
                   child: Ink(
                     height: height * 0.059,
@@ -132,11 +132,7 @@ class SignUp extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 0, top: 6),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const SignIn()));
+                          Get.offNamed(SignIn.routeName);
                         },
                         child: const Text(
                           'Sign In',

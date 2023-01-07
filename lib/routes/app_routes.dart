@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:my_exam/screens/auth/sign_in.dart';
-import 'package:my_exam/screens/auth/sign_up.dart';
+import 'package:my_exam/screens/auth/sign_in/sign_in.dart';
+import 'package:my_exam/screens/auth/sign_up/sign_up.dart';
 import 'package:my_exam/screens/home/home.dart';
 import 'package:my_exam/screens/welcome/welcome_screen.dart';
 

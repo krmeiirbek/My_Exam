@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_exam/screens/auth/sign_in.dart';
+import 'package:my_exam/screens/auth/sign_in/sign_in.dart';
 import 'package:my_exam/screens/home/home.dart';
 
 class SignUp extends StatelessWidget {

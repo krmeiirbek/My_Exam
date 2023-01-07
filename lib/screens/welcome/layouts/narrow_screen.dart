@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import '../../../configs/themes/custom_text_styles.dart';
 import '../../../widgets/app_button.dart';
 import '../../../widgets/terms_of_services.dart';
-import '../../auth/sign_in.dart';
-import '../../auth/sign_up.dart';
+import '../../auth/sign_in/sign_in.dart';
+import '../../auth/sign_up/sign_up.dart';
 
 class NarrowScreen extends StatelessWidget {
   const NarrowScreen({Key? key}) : super(key: key);

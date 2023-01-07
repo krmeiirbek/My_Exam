@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:my_exam/translation/tr_constants.dart';
 
 import '../../../configs/themes/custom_text_styles.dart';
 import '../../../widgets/app_button.dart';
@@ -22,17 +23,17 @@ class StandardScreen extends StatelessWidget {
             width: 300,
           ),
           const SizedBox(height: 20),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Text(
-              'ҰБТ-ға бізбен бірге дайындал! Біз саған 1000-нан астам жаңа тест нұсқаларымен тапсырмаларын ұсынамыз.',
+              welcomeWord.tr,
               textAlign: TextAlign.center,
               style: welcomeTS,
             ),
           ),
           const SizedBox(height: 45),
           AppButton(
-            text: 'Кіру',
+            text: signIn.tr,
             style: buttonTS.copyWith(color: Colors.white),
             background: const Color(0xff4785EB),
             boxShadow: [
@@ -47,16 +48,16 @@ class StandardScreen extends StatelessWidget {
             },
           ),
           const SizedBox(height: 20),
-          const Text(
-            'Есептік жазбаңыз бар ма?',
-            style: TextStyle(
+          Text(
+            doYouHaveAnAccount.tr,
+            style: const TextStyle(
               fontSize: 15,
               color: Color(0xff999999),
             ),
           ),
           const SizedBox(height: 20),
           AppButton(
-            text: 'Тіркелу',
+            text: signUp.tr,
             style: buttonTS.copyWith(color: const Color(0xff589AEF)),
             background: Theme.of(context).primaryColorDark,
             onTap: () {

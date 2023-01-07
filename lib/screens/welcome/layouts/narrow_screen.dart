@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:my_exam/translation/tr_constants.dart';
 
 import '../../../configs/themes/custom_text_styles.dart';
 import '../../../widgets/app_button.dart';
@@ -25,14 +26,14 @@ class NarrowScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              'ҰБТ-ға бізбен бірге дайындал! Біз саған 1000-нан астам жаңа тест нұсқаларымен тапсырмаларын ұсынамыз.',
+              welcomeWord.tr,
               textAlign: TextAlign.center,
               style: welcomeTS.copyWith(fontSize: 20),
             ),
           ),
           const SizedBox(height: 25),
           AppButton(
-            text: 'Кіру',
+            text: signIn.tr,
             style: buttonTS.copyWith(color: Colors.white, fontSize: 14),
             background: const Color(0xff4785EB),
             width: 250,
@@ -49,16 +50,16 @@ class NarrowScreen extends StatelessWidget {
             },
           ),
           const SizedBox(height: 15),
-          const Text(
-            'Есептік жазбаңыз бар ма?',
-            style: TextStyle(
+          Text(
+            doYouHaveAnAccount.tr,
+            style: const TextStyle(
               fontSize: 13,
               color: Color(0xff999999),
             ),
           ),
           const SizedBox(height: 15),
           AppButton(
-            text: 'Тіркелу',
+            text: signUp.tr,
             style:
                 buttonTS.copyWith(color: const Color(0xff589AEF), fontSize: 14),
             background: Theme.of(context).primaryColorDark,

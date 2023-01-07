@@ -17,7 +17,11 @@ class WelcomeScreen extends StatelessWidget {
           if (constraint.maxWidth > 1100) {
             return const WideScreen();
           } else if (constraint.maxWidth > 600) {
-            return const TabletScreen();
+            if (constraint.maxHeight > 1000) {
+              return const TabletScreen();
+            } else {
+              return const SingleChildScrollView(child: TabletScreen());
+            }
           } else if (constraint.maxWidth > 400) {
             if (constraint.maxHeight > 700) {
               return const StandardScreen();

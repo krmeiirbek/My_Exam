@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_exam/translation/translation.dart';
 
 import 'bindings/initial_bindings.dart';
 import 'controllers/theme_controller.dart';
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      translations: Translation(),
+      locale: const Locale('kz','KZ'),
+      fallbackLocale: const Locale('ru','RU'),
       debugShowCheckedModeBanner: false,
       theme: Get.find<ThemeController>().lightTheme,
       darkTheme: Get.find<ThemeController>().darkTheme,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:my_exam/screens/home/profile/settings_page.dart';
+import 'package:my_exam/screens/home/profile_page/settings_page.dart';
 
 import '../../../widgets/chart.dart';
 

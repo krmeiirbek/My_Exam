@@ -35,24 +35,20 @@ class StandardScreen extends StatelessWidget {
             welcomeBack.tr,
             style: const TextStyle(
                 fontSize: 34,
-                color: Color(0xff3D3D74),
-                fontWeight: FontWeight.bold,
-                fontFamily: 'SF UI Display'),
+                fontWeight: FontWeight.bold,),
           ),
           const SizedBox(height: 3),
           Text(
             signInToContinue.tr,
             style: const TextStyle(
                 color: Color(0xff707070),
-                fontSize: 13,
-                fontFamily: 'SF UI Display'),
+                fontSize: 13,),
           ),
           const SizedBox(height: 35),
           const TextField(
             decoration: InputDecoration(
               labelText: 'Email',
               labelStyle: TextStyle(
-                fontFamily: 'SF UI Display',
                 color: Color(0xffC3C3C3),
               ),
             ),
@@ -62,7 +58,6 @@ class StandardScreen extends StatelessWidget {
             decoration: InputDecoration(
               labelText: 'Password',
               labelStyle: const TextStyle(
-                fontFamily: 'SF UI Display',
                 color: Color(0xffC3C3C3),
               ),
               suffixIcon: InkWell(

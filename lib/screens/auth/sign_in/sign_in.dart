@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'layouts/standard_screen.dart';
 import 'layouts/narrow_screen.dart';
 import 'layouts/tablet_screen.dart';
-import 'layouts/wide_screen.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -15,9 +14,7 @@ class SignIn extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: LayoutBuilder(builder: (context, constraint) {
-          if (constraint.maxWidth > 1100) {
-            return const WideScreen();
-          } else if (constraint.maxWidth > 600) {
+          if (constraint.maxWidth > 600) {
             if(constraint.maxHeight > 450) {
               return const TabletScreen();
             }else {

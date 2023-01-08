@@ -41,9 +41,8 @@ class TabletScreen extends StatelessWidget {
                       createAccount.tr,
                       style: const TextStyle(
                           fontSize: 40,
-                          color: Color(0xff3D3D74),
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'SF UI Display'),
+                          ),
                     ),
                     const SizedBox(height: 3),
                     Text(
@@ -51,20 +50,17 @@ class TabletScreen extends StatelessWidget {
                       style: const TextStyle(
                           color: Color(0xff707070),
                           fontSize: 15,
-                          fontFamily: 'SF UI Display'),
+                          ),
                     ),
                     const SizedBox(height: 35),
                     const TextField(
                       style: TextStyle(
                         fontSize: 21,
-                        fontFamily: 'SF UI Display',
-                        color: Color(0xff3D3D74),
                       ),
                       decoration: InputDecoration(
                         labelText: 'Email',
                         labelStyle: TextStyle(
                           fontSize: 21,
-                          fontFamily: 'SF UI Display',
                           color: Color(0xffC3C3C3),
                         ),
                       ),
@@ -73,14 +69,11 @@ class TabletScreen extends StatelessWidget {
                           obscureText: obscure.value,
                           style: const TextStyle(
                             fontSize: 21,
-                            fontFamily: 'SF UI Display',
-                            color: Color(0xff3D3D74),
                           ),
                           decoration: InputDecoration(
                             labelText: 'Password',
                             labelStyle: const TextStyle(
                               fontSize: 21,
-                              fontFamily: 'SF UI Display',
                               color: Color(0xffC3C3C3),
                             ),
                             suffixIcon: InkWell(
@@ -104,14 +97,11 @@ class TabletScreen extends StatelessWidget {
                           obscureText: obscure.value,
                           style: const TextStyle(
                             fontSize: 21,
-                            fontFamily: 'SF UI Display',
-                            color: Color(0xff3D3D74),
                           ),
                           decoration: const InputDecoration(
                             labelText: 'Verify Password',
                             labelStyle: TextStyle(
                               fontSize: 21,
-                              fontFamily: 'SF UI Display',
                               color: Color(0xffC3C3C3),
                             ),
                           ),
@@ -137,7 +127,7 @@ class TabletScreen extends StatelessWidget {
                         },
                       ),
                     ),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 20),
                     Row(
                       children: [
                         Padding(
@@ -146,7 +136,7 @@ class TabletScreen extends StatelessWidget {
                             alreadyHaveAnAccount.tr,
                             style: const TextStyle(
                               color: Color(0xff999999),
-                              fontSize: 15,
+                              fontSize: 18,
                             ),
                           ),
                         ),
@@ -160,8 +150,7 @@ class TabletScreen extends StatelessWidget {
                             child: Text(
                               signIn.tr,
                               style: const TextStyle(
-                                color: Color(0xff3D3D74),
-                                fontSize: 15,
+                                fontSize: 18,
                               ),
                             ),
                           ),

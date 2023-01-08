@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'layouts/narrow_screen.dart';
 import 'layouts/standard_screen.dart';
 import 'layouts/tablet_screen.dart';
-import 'layouts/wide_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -14,9 +13,7 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: LayoutBuilder(builder: (context, constraint) {
-          if (constraint.maxWidth > 1100) {
-            return const WideScreen();
-          } else if (constraint.maxWidth > 600) {
+          if (constraint.maxWidth > 600) {
             if (constraint.maxHeight > 1000) {
               return const TabletScreen();
             } else {

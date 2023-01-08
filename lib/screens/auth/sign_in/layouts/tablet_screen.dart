@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:my_exam/translation/tr_constants.dart';
 
 import '../../../../configs/themes/custom_text_styles.dart';
 import '../../../../widgets/app_button.dart';
@@ -37,34 +38,28 @@ class TabletScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Қош келдіңіз',
-                        style: TextStyle(
+                      Text(
+                        welcomeBack.tr,
+                        style: const TextStyle(
                             fontSize: 40,
-                            color: Color(0xff3D3D74),
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'SF UI Display'),
+                            fontWeight: FontWeight.bold,),
                       ),
                       const SizedBox(height: 3),
-                      const Text(
-                        'Жалғастыру үшін жүйеге кіріңіз',
-                        style: TextStyle(
+                      Text(
+                        signInToContinue.tr,
+                        style: const TextStyle(
                             color: Color(0xff707070),
-                            fontSize: 15,
-                            fontFamily: 'SF UI Display'),
+                            fontSize: 15,),
                       ),
                       const SizedBox(height: 35),
                       const TextField(
                         style: TextStyle(
                           fontSize: 21,
-                          fontFamily: 'SF UI Display',
-                          color: Color(0xff3D3D74),
                         ),
                         decoration: InputDecoration(
                           labelText: 'Email',
                           labelStyle: TextStyle(
                             fontSize: 21,
-                            fontFamily: 'SF UI Display',
                             color: Color(0xffC3C3C3),
                           ),
                         ),
@@ -73,14 +68,11 @@ class TabletScreen extends StatelessWidget {
                         obscureText: obscure.value,
                         style: const TextStyle(
                           fontSize: 21,
-                          fontFamily: 'SF UI Display',
-                          color: Color(0xff3D3D74),
                         ),
                         decoration: InputDecoration(
                           labelText: 'Password',
                           labelStyle: const TextStyle(
                             fontSize: 21,
-                            fontFamily: 'SF UI Display',
                             color: Color(0xffC3C3C3),
                           ),
                           suffixIcon: InkWell(
@@ -103,7 +95,7 @@ class TabletScreen extends StatelessWidget {
                       const SizedBox(height: 40),
                       Center(
                         child: AppButton(
-                          text: 'Кіру',
+                          text: signIn.tr,
                           height: 60,
                           width: double.infinity,
                           style:
@@ -123,13 +115,13 @@ class TabletScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 15),
                       Row(
-                        children: const [
-                          Spacer(),
+                        children: [
+                          const Spacer(),
                           Padding(
-                            padding: EdgeInsets.only(right: 0, top: 6),
+                            padding: const EdgeInsets.only(right: 0, top: 6),
                             child: Text(
-                              'Құпия сөзді ұмыттыңыз ба?',
-                              style: TextStyle(
+                              forgotPassword.tr,
+                              style: const TextStyle(
                                 color: Color(0xff999999),
                                 fontSize: 18,
                               ),
@@ -147,9 +139,9 @@ class TabletScreen extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'Есептік жазбаңыз жоқ па? ',
-                  style: TextStyle(
+                Text(
+                  dontHaveAnAccount.tr,
+                  style: const TextStyle(
                     color: Color(0xffC3C3C3),
                     fontSize: 18,
                   ),
@@ -158,9 +150,9 @@ class TabletScreen extends StatelessWidget {
                   onTap: () {
                     Get.offNamed(SignUp.routeName);
                   },
-                  child: const Text(
-                    'Қазір жасау',
-                    style: TextStyle(
+                  child: Text(
+                    createNow.tr,
+                    style: const TextStyle(
                       color: Color(0xff3C8DEF),
                       fontSize: 18,
                     ),

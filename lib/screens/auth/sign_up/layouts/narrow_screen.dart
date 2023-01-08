@@ -36,36 +36,37 @@ class NarrowScreen extends StatelessWidget {
               createAccount.tr,
               style: const TextStyle(
                   fontSize: 30,
-                  color: Color(0xff3D3D74),
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'SF UI Display'),
+                  fontWeight: FontWeight.bold,),
             ),
             const SizedBox(height: 3),
             Text(
               createAnAccountToContinue.tr,
               style: const TextStyle(
                   color: Color(0xff707070),
-                  fontSize: 11,
-                  fontFamily: 'SF UI Display'),
+                  fontSize: 11,),
             ),
             const SizedBox(height: 35),
             const TextField(
+              style: TextStyle(
+                fontSize: 13,
+              ),
               decoration: InputDecoration(
                 labelText: 'Email',
                 labelStyle: TextStyle(
                   fontSize: 13,
-                  fontFamily: 'SF UI Display',
                   color: Color(0xffC3C3C3),
                 ),
               ),
             ),
             Obx(() => TextField(
                   obscureText: obscure.value,
+              style: const TextStyle(
+                fontSize: 13,
+              ),
                   decoration: InputDecoration(
                     labelText: 'Password',
                     labelStyle: const TextStyle(
                       fontSize: 13,
-                      fontFamily: 'SF UI Display',
                       color: Color(0xffC3C3C3),
                     ),
                     suffixIcon: InkWell(
@@ -85,11 +86,13 @@ class NarrowScreen extends StatelessWidget {
                 )),
             Obx(() => TextField(
                   obscureText: obscure.value,
+              style: const TextStyle(
+                fontSize: 13,
+              ),
                   decoration: const InputDecoration(
                     labelText: 'Verify Password',
                     labelStyle: TextStyle(
                       fontSize: 13,
-                      fontFamily: 'SF UI Display',
                       color: Color(0xffC3C3C3),
                     ),
                   ),

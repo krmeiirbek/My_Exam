@@ -36,34 +36,34 @@ class StandardScreen extends StatelessWidget {
               createAccount.tr,
               style: const TextStyle(
                   fontSize: 34,
-                  color: Color(0xff3D3D74),
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'SF UI Display'),
+              ),
             ),
             const SizedBox(height: 3),
             Text(
               createAnAccountToContinue.tr,
               style: const TextStyle(
                   color: Color(0xff707070),
-                  fontSize: 13,
-                  fontFamily: 'SF UI Display'),
+                  fontSize: 13,),
             ),
             const SizedBox(height: 35),
             const TextField(
+              style: TextStyle(
+              ),
               decoration: InputDecoration(
                 labelText: 'Email',
                 labelStyle: TextStyle(
-                  fontFamily: 'SF UI Display',
                   color: Color(0xffC3C3C3),
                 ),
               ),
             ),
             Obx(() => TextField(
                   obscureText: obscure.value,
+              style: const TextStyle(
+              ),
                   decoration: InputDecoration(
                     labelText: 'Password',
                     labelStyle: const TextStyle(
-                      fontFamily: 'SF UI Display',
                       color: Color(0xffC3C3C3),
                     ),
                     suffixIcon: InkWell(
@@ -86,7 +86,6 @@ class StandardScreen extends StatelessWidget {
                   decoration: const InputDecoration(
                     labelText: 'Verify Password',
                     labelStyle: TextStyle(
-                      fontFamily: 'SF UI Display',
                       color: Color(0xffC3C3C3),
                     ),
                   ),

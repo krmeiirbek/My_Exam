@@ -14,7 +14,7 @@ class WelcomeScreen extends StatelessWidget {
       body: SafeArea(
         child: LayoutBuilder(builder: (context, constraint) {
           if (constraint.maxWidth > 600) {
-            if (constraint.maxHeight > 1000) {
+            if (constraint.maxHeight > 900) {
               return const TabletScreen();
             } else {
               return const SingleChildScrollView(child: TabletScreen());

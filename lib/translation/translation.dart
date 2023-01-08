@@ -13,6 +13,14 @@ class Translation extends Translations {
           doYouHaveAnAccount: 'Есептік жазбаңыз бар ма?',
           termsOfServices0: 'Тіркелгіні жасау арқылы сіз бізбен келісесіз ',
           termsOfServices1: 'Қызмет көрсету шарттары',
+          welcomeBack: 'Қош келдіңіз',
+          signInToContinue: 'Жалғастыру үшін жүйеге кіріңіз',
+          forgotPassword: 'Құпия сөзді ұмыттыңыз ба?',
+          dontHaveAnAccount: 'Есептік жазбаңыз жоқ па? ',
+          createNow: 'Қазір жасау',
+          createAccount: 'Аккаунт құру',
+          createAnAccountToContinue:'Жалғастыру үшін есептік жазба жасаңыз',
+          alreadyHaveAnAccount: 'Есептік жазбаңыз бар ма?'
         },
         'ru_RU': {
           welcomeWord:
@@ -23,6 +31,14 @@ class Translation extends Translations {
           termsOfServices0:
               'Создавая учетную запись, вы соглашаетесь с нашими ',
           termsOfServices1: 'Условия использования',
+          welcomeBack: 'Добро пожаловать',
+          signInToContinue: 'Войдите, чтобы продолжить',
+          forgotPassword: 'Забыли пароль?',
+          dontHaveAnAccount: 'У вас нет аккаунта? ',
+          createNow: 'Создать сейчас',
+          createAccount: 'Регистрация',
+          createAnAccountToContinue:'Создайте учетную запись, чтобы продолжить',
+          alreadyHaveAnAccount: 'У вас уже есть аккаунт?'
         },
       };
 }

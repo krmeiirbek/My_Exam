@@ -19,7 +19,7 @@ class WelcomeScreen extends StatelessWidget {
             } else {
               return const SingleChildScrollView(child: TabletScreen());
             }
-          } else if (constraint.maxWidth > 400) {
+          } else if (constraint.maxWidth > 385) {
             if (constraint.maxHeight > 700) {
               return const StandardScreen();
             } else {

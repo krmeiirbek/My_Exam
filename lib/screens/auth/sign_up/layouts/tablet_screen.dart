@@ -123,7 +123,7 @@ class TabletScreen extends StatelessWidget {
                           ),
                         ],
                         onTap: () {
-                          Get.toNamed(Home.routeName);
+                          Get.offAllNamed(Home.routeName);
                         },
                       ),
                     ),

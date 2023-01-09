@@ -21,7 +21,7 @@ class Home extends GetView<BottomNavbarController> {
         builder: (context, constraint){
           if (constraint.maxWidth > 600) {
             return tabletNavbar(controller);
-          } else if (constraint.maxWidth > 400) {
+          } else if (constraint.maxWidth > 385) {
             return standardNavbar(controller);
           } else {
             return narrowNavbar(controller);

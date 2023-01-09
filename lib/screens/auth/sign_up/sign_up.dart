@@ -16,7 +16,7 @@ class SignUp extends StatelessWidget {
         child: LayoutBuilder(builder: (context, constraint) {
           if (constraint.maxWidth > 600) {
             return const TabletScreen();
-          } else if (constraint.maxWidth > 400) {
+          } else if (constraint.maxWidth > 385) {
             return const StandardScreen();
           } else {
             return const NarrowScreen();

@@ -112,7 +112,7 @@ class NarrowScreen extends StatelessWidget {
                 ),
               ],
               onTap: () {
-                Get.toNamed(Home.routeName);
+                Get.offAllNamed(Home.routeName);
               },
             ),
             const SizedBox(height: 10),

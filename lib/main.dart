@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Get.find<ThemeController>().lightTheme,
       darkTheme: Get.find<ThemeController>().darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       getPages: AppRoutes.routes(),
       initialRoute: '/',
     );

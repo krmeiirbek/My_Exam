@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Kazybek",
+      "point": 200,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "Zhanibek",
+      "point": 199,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "Clone",
+      "point": 198,
+      "image": ""
+    },
+    {
+      "id": 4,
+      "name": "Anderson",
+      "point": 195,
+      "image": ""
+    },
+    {
+      "id": 5,
+      "name": "Yerasyl",
+      "point": 193,
+      "image": ""
+    },
+    {
+      "id": 6,
+      "name": "High",
+      "point": 190,
+      "image": ""
+    },
+    {
+      "id": 7,
+      "name": "Long",
+      "point": 180,
+      "image": ""
+    },
+    {
+      "id": 8,
+      "name": "Acacia",
+      "point": 170,
+      "image": ""
+    },
+    {
+      "id": 9,
+      "name": "Jerry",
+      "point": 160,
+      "image": ""
+    },
+    {
+      "id": 10,
+      "name": "Tom",
+      "point": 150,
+      "image": ""
+    }
+  ]
+}

@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
         if (constraint.maxWidth > 600) {
           return const TabletScreen();
         } else if (constraint.maxWidth > 385) {
-          return const StandardScreen();
+          return StandardScreen();
         } else {
           return const NarrowScreen();
         }

@@ -7,7 +7,9 @@ import '../../../../controllers/ubt_controller.dart';
 import '../components/subjects_gridview.dart';
 
 class StandardScreen extends GetView<UBTController> {
-  const StandardScreen({Key? key}) : super(key: key);
+  StandardScreen({Key? key}) : super(key: key);
+
+  final isSubject = true.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class StandardScreen extends GetView<UBTController> {
               decoration: BoxDecoration(
                 gradient: appBarGradient(),
                 borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(55),
+                  bottomLeft: Radius.circular(45),
                 ),
               ),
             ),
@@ -48,12 +50,12 @@ class StandardScreen extends GetView<UBTController> {
                       ),
                       child: const Center(
                           child: Text(
-                            '1',
-                            style: TextStyle(
-                              color: Color(0xffE3F0FF),
-                              fontSize: 10,
-                            ),
-                          )),
+                        '1',
+                        style: TextStyle(
+                          color: Color(0xffE3F0FF),
+                          fontSize: 10,
+                        ),
+                      )),
                     ),
                   ),
                 ],
@@ -62,60 +64,117 @@ class StandardScreen extends GetView<UBTController> {
             Positioned(
               top: 90,
               left: 30,
-              child: RichText(
-                text: const TextSpan(
-                  text: 'Сәлем,',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: '\nKazybek',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 34,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: '\nЖетістікке жету үшін жаттығу жасайық',
+              right: 30,
+              bottom: 10,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: const TextSpan(
+                          text: 'Сәлем,',
                           style: TextStyle(
                             color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 13,
+                            fontSize: 17,
                           ),
+                          children: [
+                            TextSpan(
+                              text: '\nKazybek',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 34,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text:
+                                      '\nЖетістікке жету үшін жаттығу жасайық',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              top: 100,
-              right: 30,
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(
-                  'assets/images/avatar.png',
-                  height: 60,
-                ),
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.asset(
+                          'assets/images/avatar.png',
+                          height: 60,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Obx(() => OutlinedButton(
+                          onPressed: () {
+                            isSubject(true);
+                          },
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: isSubject.value ? Colors.blue.withOpacity(0.5) : Colors.transparent,
+                            side: const BorderSide(color: Colors.white),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                          ),
+                          child: const Text(
+                            'Пәндік',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        )),
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: Obx(() => OutlinedButton(
+                          onPressed: () {
+                            isSubject(false);
+                          },
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: !isSubject.value ? Colors.blue.withOpacity(0.5) : Colors.transparent,
+                            side: const BorderSide(color: Colors.white),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                          ),
+                          child: const Text(
+                            'ҰБТ нұсқасында',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        )),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
         ),
-        Flexible(child: Padding(
-          padding: const EdgeInsets.only(
-            top: 30,
-            right: 20,
-            left: 30,
-          ),
-          child: subjectsGridview(controller),
-        )),
+        Obx(() => Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 30,
+                right: 20,
+                left: 30,
+              ),
+              child: isSubject.value ? subjectsGridview(controller) : const Scaffold(
+                body: Center(child: Text('ҰБТ нұсқасында'),),
+              ),
+            ),
+        ),
+        ),
       ],
     );
   }

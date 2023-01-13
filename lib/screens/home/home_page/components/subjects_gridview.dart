@@ -17,38 +17,45 @@ Widget subjectsGridview(UBTController controller, {bool isTablet = false}) {
         thickness: 5,
         child: GridView.builder(
           controller: scrollController,
-          itemBuilder: (_, idx) => Column(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius:
-                          BorderRadius.only(topRight: Radius.circular(10))),
-                  width: double.infinity,
-                  child: SvgPicture.asset(
-                    'assets/icons/subject_background.svg',
-                    fit: BoxFit.cover,
-                    clipBehavior: Clip.hardEdge,
-                  ),
-                ),
-              ),
-              Flexible(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(bottom: Radius.circular(10))),
-                  child: Center(
-                    child: Text(
-                      '${controller.subjects[idx].subjectName}',
-                      textAlign: TextAlign.center,
+          itemBuilder: (_, idx) => InkWell(
+            onTap: (){
+              Get.toNamed('/home_page/exam_page',
+                arguments: controller.subjects[idx],
+              );
+            },
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius:
+                            BorderRadius.only(topRight: Radius.circular(10))),
+                    width: double.infinity,
+                    child: SvgPicture.asset(
+                      'assets/icons/subject_background.svg',
+                      fit: BoxFit.cover,
+                      clipBehavior: Clip.hardEdge,
                     ),
                   ),
                 ),
-              ),
-            ],
+                Flexible(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius.vertical(bottom: Radius.circular(10))),
+                    child: Center(
+                      child: Text(
+                        '${controller.subjects[idx].subjectName}',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           padding: const EdgeInsets.only(
             top: 0,

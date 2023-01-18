@@ -12,7 +12,7 @@ class BottomNavbarController extends GetxController {
   final List<Widget> _pages = [
     const HomePage(),
     const LeaderboardPage(),
-    const HistoryPage(),
+    HistoryPage(),
     const ProfilePage(),
   ];
 

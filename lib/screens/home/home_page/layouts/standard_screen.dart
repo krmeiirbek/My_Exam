@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:my_exam/screens/home/home_page/components/enum/ubt_enum.dart';
+import 'package:my_exam/screens/home/home_page/components/toggle_switch_button.dart';
 
 import '../../../../configs/themes/app_colors.dart';
 import '../../../../controllers/ubt_controller.dart';
@@ -9,7 +11,7 @@ import '../components/subjects_gridview.dart';
 class StandardScreen extends GetView<UBTController> {
   StandardScreen({Key? key}) : super(key: key);
 
-  final isSubject = true.obs;
+  final isSelected = UBT.subject.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -116,45 +118,35 @@ class StandardScreen extends GetView<UBTController> {
                   const Spacer(),
                   Row(
                     children: [
-                      Expanded(
-                        child: Obx(() => OutlinedButton(
-                          onPressed: () {
-                            isSubject(true);
-                          },
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: isSubject.value ? Colors.blue.withOpacity(0.5) : Colors.transparent,
-                            side: const BorderSide(color: Colors.white),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                          child: const Text(
-                            'Пәндік',
-                            style: TextStyle(
+                      Obx(() => Expanded(
+                            flex: isSelected.value == UBT.subject ? 2 : 1,
+                            child: ToggleSwitchButton(
+                              text: 'Пәндер',
                               color: Colors.white,
+                              isSelected: isSelected.value == UBT.subject,
+                              onTap: () => isSelected(UBT.subject),
                             ),
-                          ),
-                        )),
-                      ),
+                          )),
                       const SizedBox(width: 5),
-                      Expanded(
-                        child: Obx(() => OutlinedButton(
-                          onPressed: () {
-                            isSubject(false);
-                          },
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: !isSubject.value ? Colors.blue.withOpacity(0.5) : Colors.transparent,
-                            side: const BorderSide(color: Colors.white),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                          child: const Text(
-                            'ҰБТ нұсқасында',
-                            style: TextStyle(
+                      Obx(() => Expanded(
+                            flex: isSelected.value == UBT.ubt ? 2 : 1,
+                            child: ToggleSwitchButton(
+                              text: 'ҰБТ',
                               color: Colors.white,
+                              isSelected: isSelected.value == UBT.ubt,
+                              onTap: () => isSelected(UBT.ubt),
                             ),
-                          ),
-                        )),
-                      ),
+                          )),
+                      const SizedBox(width: 5),
+                      Obx(() => Expanded(
+                            flex: isSelected.value == UBT.course ? 2 : 1,
+                            child: ToggleSwitchButton(
+                              text: 'Курстар',
+                              color: Colors.white,
+                              isSelected: isSelected.value == UBT.course,
+                              onTap: () => isSelected(UBT.course),
+                            ),
+                          )),
                     ],
                   ),
                 ],
@@ -162,18 +154,51 @@ class StandardScreen extends GetView<UBTController> {
             ),
           ],
         ),
-        Obx(() => Flexible(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 30,
-                right: 20,
-                left: 30,
-              ),
-              child: isSubject.value ? subjectsGridview(controller) : const Scaffold(
-                body: Center(child: Text('ҰБТ нұсқасында'),),
-              ),
-            ),
-        ),
+        Obx(
+          () {
+            if (isSelected.value == UBT.subject) {
+              return Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 30,
+                    right: 20,
+                    left: 30,
+                  ),
+                  child: subjectsGridview(controller),
+                ),
+              );
+            } else if (isSelected.value == UBT.ubt) {
+              return const Flexible(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: 30,
+                    right: 20,
+                    left: 30,
+                  ),
+                  child: Scaffold(
+                    body: Center(
+                      child: Text('ҰБТ'),
+                    ),
+                  ),
+                ),
+              );
+            } else {
+              return const Flexible(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: 30,
+                    right: 20,
+                    left: 30,
+                  ),
+                  child: Scaffold(
+                    body: Center(
+                      child: Text('Курстар'),
+                    ),
+                  ),
+                ),
+              );
+            }
+          },
         ),
       ],
     );

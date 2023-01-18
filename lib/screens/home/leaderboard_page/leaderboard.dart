@@ -14,8 +14,9 @@ class LeaderboardPage extends GetView<LeaderboardController> {
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
+              SizedBox(height: 20),
               appBar(),
-              SizedBox(height: 50),
+              SizedBox(height: 30),
               Expanded(
                 child: Obx(() {
                   if (controller.isLoading.value) {
@@ -133,11 +134,11 @@ Widget leaderboardUser({
               SvgPicture.asset('assets/icons/bronze.svg'),
             if((id??4) > 3)
               Stack(
+                alignment: Alignment.center,
                 children: [
                   SvgPicture.asset('assets/icons/medal.svg'),
                   Positioned(
-                      left: 10,
-                      top: 5,
+                    top: 5,
                       child: Text(id.toString())),
                 ],
               ),

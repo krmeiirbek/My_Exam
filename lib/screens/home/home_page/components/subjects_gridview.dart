@@ -1,25 +1,27 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:my_exam/controllers/ubt_controller.dart';
 
 Widget subjectsGridview(UBTController controller, {bool isTablet = false}) {
-  final scrollController = ScrollController();
+  final ScrollController scrollController = ScrollController();
   return Obx(() {
     if (controller.isLoading.value) {
       return const Center(
         child: CircularProgressIndicator(),
       );
     } else {
-      return Scrollbar(
+      return CupertinoScrollbar(
         controller: scrollController,
+        thumbVisibility: true,
         radius: const Radius.circular(10),
         thickness: 5,
         child: GridView.builder(
           controller: scrollController,
           itemBuilder: (_, idx) => InkWell(
             onTap: (){
-              Get.toNamed('/home_page/exam_page',
+              Get.toNamed('/home_page/subject_page',
                 arguments: controller.subjects[idx],
               );
             },

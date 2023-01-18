@@ -1,0 +1,4 @@
+enum SubjectTest {
+  newVariants,
+  topicVariants,
+}

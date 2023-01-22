@@ -119,7 +119,7 @@ class StandardScreen extends GetView<UBTController> {
                   Row(
                     children: [
                       Obx(() => Expanded(
-                            flex: isSelected.value == UBT.subject ? 2 : 1,
+                            flex: isSelected.value == UBT.subject ? 3 : 2,
                             child: ToggleSwitchButton(
                               text: 'Пәндер',
                               color: Colors.white,
@@ -129,7 +129,7 @@ class StandardScreen extends GetView<UBTController> {
                           )),
                       const SizedBox(width: 5),
                       Obx(() => Expanded(
-                            flex: isSelected.value == UBT.ubt ? 2 : 1,
+                            flex: isSelected.value == UBT.ubt ? 3 : 2,
                             child: ToggleSwitchButton(
                               text: 'ҰБТ',
                               color: Colors.white,
@@ -139,7 +139,7 @@ class StandardScreen extends GetView<UBTController> {
                           )),
                       const SizedBox(width: 5),
                       Obx(() => Expanded(
-                            flex: isSelected.value == UBT.course ? 2 : 1,
+                            flex: isSelected.value == UBT.course ? 3 : 2,
                             child: ToggleSwitchButton(
                               text: 'Курстар',
                               color: Colors.white,

@@ -1,4 +1,0 @@
-enum SubjectTest {
-  newVariants,
-  topicVariants,
-}

@@ -21,7 +21,8 @@ class UBTController extends GetxController {
       final String body = await rootBundle.loadString('assets/db/db.json');
       final decode = json.decode(body);
       subjects.assignAll(
-          List<Subject>.from(decode['subjects'].map((e) => Subject.fromJson(e))));
+          List<Subject>.from(decode['subjects'].map((e) => Subject.fromJson(e))),
+      );
     } finally {
       isLoading(false);
     }

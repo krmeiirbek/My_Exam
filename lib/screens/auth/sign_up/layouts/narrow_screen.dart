@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:my_exam/translation/tr_constants.dart';
 
+import '../../../../configs/themes/app_colors.dart';
 import '../../../../configs/themes/custom_text_styles.dart';
+import '../../../../configs/themes/ui_parameters.dart';
+import '../../../../controllers/auth_controller.dart';
+import '../../../../translation/tr_constants.dart';
 import '../../../../widgets/app_button.dart';
-import '../../../home/home.dart';
+import '../../components/email_validator.dart';
+import '../../components/eyeSuffixIcon.dart';
 import '../../sign_in/sign_in.dart';
 
-class NarrowScreen extends StatelessWidget {
-  const NarrowScreen({Key? key}) : super(key: key);
+class NarrowScreen extends GetView<AuthController> {
+  const NarrowScreen({
+    Key? key,
+    required this.emailController,
+    required this.passwordController,
+    required this.verifyPasswordController,
+  }) : super(key: key);
+
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final TextEditingController verifyPasswordController;
 
   @override
   Widget build(BuildContext context) {
@@ -17,137 +31,145 @@ class NarrowScreen extends StatelessWidget {
     final obscure = true.obs;
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 40,
-              width: size.width,
-            ),
-            Center(
-              child: SvgPicture.asset(
-                'assets/icons/splash.svg',
-                width: 90,
-              ),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              createAccount.tr,
-              style: const TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,),
-            ),
-            const SizedBox(height: 3),
-            Text(
-              createAnAccountToContinue.tr,
-              style: const TextStyle(
-                  color: Color(0xff707070),
-                  fontSize: 11,),
-            ),
-            const SizedBox(height: 35),
-            const TextField(
-              style: TextStyle(
-                fontSize: 13,
-              ),
-              decoration: InputDecoration(
-                labelText: 'Email',
-                labelStyle: TextStyle(
-                  fontSize: 13,
-                  color: Color(0xffC3C3C3),
-                ),
-              ),
-            ),
-            Obx(() => TextField(
-                  obscureText: obscure.value,
-              style: const TextStyle(
-                fontSize: 13,
-              ),
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    labelStyle: const TextStyle(
-                      fontSize: 13,
-                      color: Color(0xffC3C3C3),
+        padding: EdgeInsets.symmetric(
+            horizontal: UIParameters.mobileScreenPadding / 2),
+        child: Form(
+          key: controller.signUpFormKey,
+          child: Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 30,
+                    width: size.width,
+                  ),
+                  Center(
+                    child: SvgPicture.asset(
+                      'assets/icons/splash.svg',
+                      width: 90,
                     ),
-                    suffixIcon: InkWell(
-                      onTap: () {
-                        obscure(!obscure.value);
-                      },
-                      splashColor: Colors.transparent,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(
-                          'assets/icons/eye.svg',
-                          color: obscure.value ? null : const Color(0xff4785EB),
-                        ),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    createAccount.tr,
+                    style: title1.copyWith(fontSize: 27),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    createAnAccountToContinue.tr,
+                    style: bodyText2.copyWith(color: secondaryTextColor()),
+                  ),
+                  const SizedBox(height: 10),
+                  TextFormField(
+                    controller: emailController,
+                    style: subtitle2,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (email) =>
+                        email != null && !EmailValidator.validate(email)
+                            ? 'Қате email'
+                            : null,
+                    decoration: const InputDecoration(
+                      labelText: 'Email',
+                      labelStyle: TextStyle(
+                        color: Color(0xffC3C3C3),
                       ),
                     ),
                   ),
-                )),
-            Obx(() => TextField(
-                  obscureText: obscure.value,
-              style: const TextStyle(
-                fontSize: 13,
+                  Obx(() => TextFormField(
+                        controller: passwordController,
+                        obscureText: obscure.value,
+                        style: subtitle2,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (password) =>
+                            password != null && password.length < 6
+                                ? 'Кемінде 6 символ болуы керек'
+                                : null,
+                        decoration: InputDecoration(
+                          labelText: 'Құпия сөз',
+                          labelStyle: const TextStyle(
+                            color: Color(0xffC3C3C3),
+                          ),
+                          suffixIcon: eyeSuffixIcon(
+                            onTap: () {
+                              obscure(!obscure.value);
+                            },
+                            color: obscure.value
+                                ? secondaryTextColor()
+                                : tertiaryColor(),
+                          ),
+                        ),
+                      )),
+                  Obx(() => TextFormField(
+                        controller: verifyPasswordController,
+                        obscureText: obscure.value,
+                        style: subtitle2,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (verifyPassword) =>
+                            verifyPassword != null &&
+                                    verifyPassword != passwordController.text
+                                ? 'Қате сәйкестендіру'
+                                : null,
+                        decoration: const InputDecoration(
+                          labelText: 'Құпия сөзді қайталау',
+                          labelStyle: TextStyle(
+                            color: Color(0xffC3C3C3),
+                          ),
+                        ),
+                      )),
+                  const SizedBox(height: 30),
+                ],
               ),
-                  decoration: const InputDecoration(
-                    labelText: 'Verify Password',
-                    labelStyle: TextStyle(
-                      fontSize: 13,
-                      color: Color(0xffC3C3C3),
-                    ),
-                  ),
-                )),
-            const SizedBox(height: 40),
-            AppButton(
-              text: signUp.tr,
-              height: 40,
-              style: buttonTS.copyWith(color: Colors.white),
-              width: double.infinity,
-              background: const Color(0xff4785EB),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xff599BF0).withOpacity(0.4),
-                  offset: const Offset(0, 5),
-                  blurRadius: 15,
-                ),
-              ],
-              onTap: () {
-                Get.offAllNamed(Home.routeName);
-              },
-            ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 0, top: 6),
-                  child: Text(
+              Obx(() {
+                if (controller.authStatus.value == AuthStatus.loading) {
+                  return SpinKitCircle(
+                    color: secondaryColor(),
+                    size: 40,
+                  );
+                } else {
+                  return AppButton(
+                    text: signUp.tr,
+                    style: title3.copyWith(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                    size: const Size(250, 40),
+                    background: prColor(),
+                    boxShadow: [
+                      BoxShadow(
+                        color: secondaryColor().withOpacity(0.4),
+                        offset: const Offset(0, 5),
+                        blurRadius: 15,
+                      ),
+                    ],
+                    onTap: () {
+                      controller.signUp(
+                        emailController.text,
+                        passwordController.text,
+                      );
+                    },
+                  );
+                }
+              }),
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
                     alreadyHaveAnAccount.tr,
-                    style: const TextStyle(
-                      color: Color(0xff999999),
-                      fontSize: 12,
-                    ),
+                    style: bodyText1.copyWith(color: secondaryTextColor()),
                   ),
-                ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(right: 0, top: 6),
-                  child: InkWell(
+                  InkWell(
                     onTap: () {
                       Get.offNamed(SignIn.routeName);
                     },
                     child: Text(
                       signIn.tr,
-                      style: const TextStyle(
-                        color: Color(0xff3D3D74),
-                        fontSize: 12,
-                      ),
+                      style: subtitle2.copyWith(color: secondaryColor()),
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

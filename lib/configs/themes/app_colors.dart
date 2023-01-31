@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:my_exam/configs/themes/app_dark_theme.dart';
-import 'package:my_exam/configs/themes/app_light_theme.dart';
-import 'package:my_exam/configs/themes/ui_parameters.dart';
 
-const Gradient appBarDarkGradient = LinearGradient(colors: [
-  Color(0xff282347),
-  Color(0xff282347),
-]);
-const Gradient appBarLightGradient = LinearGradient(colors: [
-  Color(0xff6FB2FF),
-  Color(0xff4785EB),
-]);
+import 'app_dark_theme.dart';
+import 'app_light_theme.dart';
+import 'ui_parameters.dart';
 
-Color mainBackground() =>
-    UIParameters.isDarkMode() ? primaryDarkColor : primaryLightColor;
+Color prColor() => UIParameters.isDarkMode() ? primaryDark : primaryLight;
+
+Color secondaryColor() =>
+    UIParameters.isDarkMode() ? secondaryDark : secondaryLight;
+
+Color tertiaryColor() =>
+    UIParameters.isDarkMode() ? tertiaryDark : tertiaryLight;
+
+Color alternateColor() =>
+    UIParameters.isDarkMode() ? alternateDark : alternateLight;
+
+Color prBackground() =>
+    UIParameters.isDarkMode() ? primaryBGDark : primaryBGLight;
+
+Color secondaryBackground() =>
+    UIParameters.isDarkMode() ? secondaryBGDark : secondaryBGLight;
+
+Color prTextColor() =>
+    UIParameters.isDarkMode() ? primaryTextDark : primaryTextLight;
+
+Color secondaryTextColor() =>
+    UIParameters.isDarkMode() ? secondaryTextDark : secondaryTextLight;
 
 Gradient appBarGradient() =>
     UIParameters.isDarkMode() ? appBarDarkGradient : appBarLightGradient;
-
-Color bottomNavBarBackgroundColor() =>
-    UIParameters.isDarkMode() ? primaryDarkColor : Colors.white;
-

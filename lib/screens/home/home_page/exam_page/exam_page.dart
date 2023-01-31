@@ -85,13 +85,13 @@ class ExamPage extends StatelessWidget {
               ),
               AppButton(
                 text: 'Continue',
+                size: Size(250, 40),
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
                 ),
                 background: const Color(0xff4785EB),
-                width: double.infinity,
                 onTap: () {
                   if(index.value + 1< (questions?.length ?? 0)) {
                     index(index.value + 1);

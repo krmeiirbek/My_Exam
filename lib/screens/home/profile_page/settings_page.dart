@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:my_exam/configs/themes/ui_parameters.dart';
+import 'package:my_exam/controllers/auth_controller.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -297,7 +298,9 @@ class _SettingsPageState extends State<SettingsPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.find<AuthController>().signOut();
+                },
                 child: Ink(
                   height: 55,
                   width: double.infinity,

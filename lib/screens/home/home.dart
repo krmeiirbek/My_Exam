@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../configs/themes/app_colors.dart';
 import '../../controllers/bottom_navbar_controller.dart';
 import 'components/bottom_navbar_layouts/narrow_navbar.dart';
 import 'components/bottom_navbar_layouts/standard_navbar.dart';
@@ -15,7 +14,6 @@ class Home extends GetView<BottomNavbarController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mainBackground(),
       body: Obx(() => controller.pages[controller.currentIndex]),
       bottomNavigationBar: LayoutBuilder(
         builder: (context, constraint){

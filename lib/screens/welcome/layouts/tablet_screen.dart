@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:my_exam/translation/tr_constants.dart';
 
+import '../../../configs/themes/app_colors.dart';
 import '../../../configs/themes/custom_text_styles.dart';
+import '../../../translation/tr_constants.dart';
 import '../../../widgets/app_button.dart';
-import '../../../widgets/terms_of_services.dart';
+import '../components/terms_of_services.dart';
 import '../../auth/sign_in/sign_in.dart';
 import '../../auth/sign_up/sign_up.dart';
 
@@ -14,12 +15,11 @@ class TabletScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height - 50,
-        child: Column(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
           children: [
-            const SizedBox(height: 30),
             SvgPicture.asset(
               'assets/icons/welcome.svg',
               width: 500,
@@ -30,19 +30,18 @@ class TabletScreen extends StatelessWidget {
               child: Text(
                 welcomeWord.tr,
                 textAlign: TextAlign.center,
-                style: welcomeTS,
+                style: title1,
               ),
             ),
             const SizedBox(height: 45),
             AppButton(
               text: signIn.tr,
-              style: buttonTS.copyWith(color: Colors.white, fontSize: 22),
-              background: const Color(0xff4785EB),
-              height: 70,
-              width: 500,
+              style: title2.copyWith(color: Colors.white,fontWeight: FontWeight.bold),
+              background: prColor(),
+              size: const Size(400, 60),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xff599BF0).withOpacity(0.4),
+                  color: secondaryColor().withOpacity(0.4),
                   offset: const Offset(0, 5),
                   blurRadius: 15,
                 ),
@@ -51,34 +50,31 @@ class TabletScreen extends StatelessWidget {
                 Get.toNamed(SignIn.routeName);
               },
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             Text(
               doYouHaveAnAccount.tr,
-              style: const TextStyle(
-                fontSize: 18,
-                color: Color(0xff999999),
-              ),
+              style: title3.copyWith(color: secondaryTextColor()),
             ),
             const SizedBox(height: 30),
             AppButton(
               text: signUp.tr,
               style:
-                  buttonTS.copyWith(color: const Color(0xff589AEF), fontSize: 22),
-              background: Theme.of(context).primaryColorDark,
-              height: 70,
-              width: 500,
+              title2.copyWith(color: secondaryColor(), fontWeight: FontWeight.bold),
+              background: alternateColor(),
+              size: const Size(400, 60),
               onTap: () {
                 Get.toNamed(SignUp.routeName);
               },
             ),
-            MediaQuery.of(context).size.height > 900
-                ? const Spacer()
-                : const SizedBox(height: 30),
-            termsOfServices(fSize: 18.0),
-            const SizedBox(height: 15),
           ],
         ),
-      ),
+        Column(
+          children: [
+            termsOfServices(style: title3.copyWith(color: secondaryTextColor())),
+            const SizedBox(height: 25),
+          ],
+        ),
+      ],
     );
   }
 }

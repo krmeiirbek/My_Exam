@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_exam/controllers/bottom_navbar_controller.dart';
 
-import '../../../../configs/themes/app_colors.dart';
 import '../nav_bar_item.dart';
 
 Widget standardNavbar(BottomNavbarController controller) {
   return Container(
     height: 80,
     decoration: BoxDecoration(
-        color: bottomNavBarBackgroundColor(),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),

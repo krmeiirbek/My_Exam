@@ -1,13 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-const double _mobileScreenPadding = 25.0;
-
-double get mobileScreenPadding => _mobileScreenPadding;
+const _mobileScreenPadding = 25.0;
 
 class UIParameters {
-  static EdgeInsets get mobileScreenPadding =>
-      const EdgeInsets.all(_mobileScreenPadding);
-
+  static double get mobileScreenPadding => _mobileScreenPadding;
   static bool isDarkMode() => Get.isDarkMode;
 }

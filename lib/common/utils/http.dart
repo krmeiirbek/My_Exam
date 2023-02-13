@@ -4,13 +4,10 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart' hide FormData;
 
-import '../store/user.dart';
-import '../values/cache.dart';
-import '../values/server.dart';
-import 'loading.dart';
+import '../store/store.dart';
+import '../values/values.dart';
 
 
 class HttpUtil {
@@ -24,7 +21,6 @@ class HttpUtil {
   HttpUtil._internal() {
     BaseOptions options = BaseOptions(
       baseUrl: serverAPIUrl,
-      // baseUrl: storage.read(key: STORAGE_KEY_APIURL) ?? SERVICE_API_BASEURL,
       connectTimeout: 10000,
       receiveTimeout: 5000,
       headers: {},
@@ -52,7 +48,6 @@ class HttpUtil {
         return handler.next(response);
       },
       onError: (DioError e, handler) {
-        Loading.dismiss();
         ErrorEntity eInfo = createErrorEntity(e);
         onError(eInfo);
         return handler.next(e);
@@ -61,14 +56,23 @@ class HttpUtil {
   }
 
   void onError(ErrorEntity eInfo) {
-    print('error.code -> ${eInfo.code}, error.message -> ${eInfo.message}');
     switch (eInfo.code) {
       case 401:
         UserStore.to.onLogout();
-        EasyLoading.showError(eInfo.message);
+        Get.snackbar(
+          eInfo.code.toString(),
+          eInfo.message,
+          snackPosition: SnackPosition.BOTTOM,
+          duration: const Duration(seconds: 3),
+        );
         break;
       default:
-        EasyLoading.showError('unknown mistake');
+        Get.snackbar(
+          eInfo.code.toString(),
+          eInfo.message,
+          snackPosition: SnackPosition.BOTTOM,
+          duration: const Duration(seconds: 3),
+        );
         break;
     }
   }
@@ -88,8 +92,6 @@ class HttpUtil {
           try {
             int errCode =
                 error.response != null ? error.response!.statusCode! : -1;
-            // String errMsg = error.response.statusMessage;
-            // return ErrorEntity(code: errCode, message: errMsg);
             switch (errCode) {
               case 400:
                 return ErrorEntity(code: errCode, message: "request syntax error");

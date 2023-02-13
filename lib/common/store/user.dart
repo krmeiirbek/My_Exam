@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../entities/entities.dart';
@@ -9,35 +10,26 @@ import '../values/values.dart';
 class UserStore extends GetxController {
   static UserStore get to => Get.find();
 
+  /// for laravel backend
   final _isLogin = false.obs;
   String token = '';
   final _profile = UserItem().obs;
 
   bool get isLogin => _isLogin.value;
-
   UserItem get profile => _profile.value;
-
   bool get hasToken => token.isNotEmpty;
 
-  /*
-
+  /// for firebase backend
   late FirebaseAuth _auth;
-
-  final _user = Rxn<User>();
-
-  void initAuth() async {
-    _auth = FirebaseAuth.instance;
-  }
-
-  User? get user {
-    _user.value = _auth.currentUser;
-    return _user.value;
-  }
-  */
+  FirebaseAuth get auth => _auth;
 
   @override
   void onInit() {
     super.onInit();
+    /// firebase auth
+    _auth = FirebaseAuth.instance;
+
+    /// offline user
     token = StorageService.to.getString(storageUserTokenKey);
     var profileOffline = StorageService.to.getString(storageUserProfileKey);
     if (profileOffline.isNotEmpty) {
@@ -64,10 +56,11 @@ class UserStore extends GetxController {
   }
 
   Future<void> onLogout() async {
-    //  await StorageService.to.remove(storageUserTokenKey);
-    //  await StorageService.to.remove(storageUserProfileKey);
-    //  _isLogin.value = false;
-    //  token = '';
+     await StorageService.to.remove(storageUserTokenKey);
+     await StorageService.to.remove(storageUserProfileKey);
+     _isLogin.value = false;
+     token = '';
+     _auth.signOut();
     Get.offAllNamed(AppRoutes.signIn);
   }
 }

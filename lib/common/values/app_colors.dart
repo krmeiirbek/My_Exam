@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../style/app_dark_theme.dart';
-import '../style/app_light_theme.dart';
-import '../style/ui_parameters.dart';
+import '../style/style.dart';
 
 Color prColor() => UIParameters.isDarkMode() ? primaryDark : primaryLight;
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../style/app_light_theme.dart';
+import '../style/style.dart';
 
 const title1 = TextStyle(
   fontWeight: FontWeight.bold,

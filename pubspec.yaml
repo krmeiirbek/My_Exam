@@ -30,9 +30,6 @@ dependencies:
   dio_cookie_manager: ^2.0.0
   cookie_jar: ^3.0.1
 
-  # easyloading
-  flutter_easyloading: ^3.0.3
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -44,4 +41,3 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/db/

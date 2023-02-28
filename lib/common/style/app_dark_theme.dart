@@ -38,6 +38,9 @@ class DarkTheme with SubThemeData {
       buttonTheme: const ButtonThemeData(
         buttonColor: primaryDark,
       ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: primaryBGDark,
+      ),
       colorScheme: const ColorScheme(
         brightness: Brightness.dark,
         primary: primaryDark,

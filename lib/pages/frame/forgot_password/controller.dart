@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +12,7 @@ class ForgotPasswordController extends GetxController {
 
   final emailController = TextEditingController();
 
-  final _auth = UserStore.to.auth;
+  // final _auth = UserStore.to.auth;
 
   @override
   void dispose() {
@@ -25,21 +24,21 @@ class ForgotPasswordController extends GetxController {
     String email = emailController.text.trim();
     state.isLoading(true);
     try {
-      await _auth.sendPasswordResetEmail(email: email);
+      // await _auth.sendPasswordResetEmail(email: email);
       Get.snackbar(
         'Сізге хат жіберілді',
         'Құпия сөзді қалпына келтіру үшін электрондық хаттығы сілтемеге өтіңіз',
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),
       );
-    } on FirebaseAuthException catch (e) {
+    }  catch (e) {
       Get.snackbar(
         'Пайдаланушы жойылған болуы мүмкін.',
         'Бұл идентификаторға сәйкес пайдаланушы жазбасы жоқ',
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),
       );
-      AppLogger.e(e);
+      // AppLogger.e(e);
     }
     state.isLoading(false);
   }

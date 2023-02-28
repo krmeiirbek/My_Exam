@@ -7,7 +7,7 @@ import '../../pages/frame/forgot_password/index.dart';
 import '../../pages/frame/email_verify/index.dart';
 import '../../pages/home/index.dart';
 import '../../pages/home/main/index.dart';
-import '../../pages/home/unt/index.dart';
+import '../../pages/home/leaderboard/index.dart';
 import '../../pages/home/my_courses/index.dart';
 import '../../pages/home/notice/index.dart';
 import '../../pages/home/profile/index.dart';
@@ -50,30 +50,30 @@ class AppPages {
         RouteAuthMiddleware(priority: 1),
       ],
     ),
-    GetPage(
-      name: AppRoutes.main,
-      page: () => const MainPage(),
-      binding: MainBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.unt,
-      page: () => const UNTPage(),
-      binding: UNTBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.myCourses,
-      page: () => const MyCoursesPage(),
-      binding: MyCoursesBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.notice,
-      page: () => const NoticePage(),
-      binding: NoticeBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.profile,
-      page: () => const ProfilePage(),
-      binding: ProfileBinding(),
-    ),
+    // GetPage(
+    //   name: AppRoutes.main,
+    //   page: () => const MainPage(),
+    //   binding: MainBinding(),
+    // ),
+    // GetPage(
+    //   name: AppRoutes.unt,
+    //   page: () => const UNTPage(),
+    //   binding: UNTBinding(),
+    // ),
+    // GetPage(
+    //   name: AppRoutes.myCourses,
+    //   page: () => const MyCoursesPage(),
+    //   binding: MyCoursesBinding(),
+    // ),
+    // GetPage(
+    //   name: AppRoutes.notice,
+    //   page: () => const NoticePage(),
+    //   binding: NoticeBinding(),
+    // ),
+    // GetPage(
+    //   name: AppRoutes.profile,
+    //   page: () => const ProfilePage(),
+    //   binding: ProfileBinding(),
+    // ),
   ];
 }

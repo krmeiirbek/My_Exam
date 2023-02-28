@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_exam/common/values/custom_text_styles.dart';
 
 import 'sub_theme_data_mixin.dart';
 
@@ -37,6 +38,10 @@ class LightTheme with SubThemeData {
       ),
       buttonTheme: const ButtonThemeData(
         buttonColor: primaryLight,
+      ),
+      appBarTheme: AppBarTheme(
+        backgroundColor: primaryBGLight,
+        titleTextStyle: title2.copyWith(color: primaryTextLight),
       ),
       colorScheme: const ColorScheme(
         brightness: Brightness.light,

@@ -1,4 +1,4 @@
-library unt;
+library leaderboard;
 
 export './view.dart';
 export './state.dart';

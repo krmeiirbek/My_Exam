@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'common/langs/langs.dart';
+import 'common/store/store.dart';
 import 'common/routes/routes.dart';
 import 'global.dart';
-import 'common/store/theme.dart';
 
 Future<void> main() async {
   await Global.init();
@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Get.find<ThemeStore>().lightTheme,
       darkTheme: Get.find<ThemeStore>().darkTheme,
-      initialRoute: AppRoutes.initial,
+      themeMode: ThemeMode.light,
+      initialRoute: AppRoutes.home,
       getPages: AppPages.routes(),
     );
   }

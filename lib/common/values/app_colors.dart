@@ -22,6 +22,9 @@ Color secondaryBackground() =>
 Color prTextColor() =>
     UIParameters.isDarkMode() ? primaryTextDark : primaryTextLight;
 
+Color unselectedIconColor() =>
+    UIParameters.isDarkMode() ? primaryTextDark : secondaryTextLight;
+
 Color secondaryTextColor() =>
     UIParameters.isDarkMode() ? secondaryTextDark : secondaryTextLight;
 

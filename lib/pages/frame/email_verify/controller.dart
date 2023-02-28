@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../common/routes/routes.dart';
@@ -12,8 +11,6 @@ class EmailVerifyController extends GetxController {
   EmailVerifyController();
 
   final state = EmailVerifyState();
-
-  final _auth = UserStore.to.auth;
 
   Timer? timer;
 
@@ -31,7 +28,7 @@ class EmailVerifyController extends GetxController {
 
   Future<void> sendVerificationEmail() async {
     try {
-      await _auth.currentUser!.sendEmailVerification();
+      // await _auth.currentUser!.sendEmailVerification();
       state.canResendEmail.value = false;
       await Future.delayed(const Duration(seconds: 5));
       state.canResendEmail.value = true;
@@ -46,8 +43,8 @@ class EmailVerifyController extends GetxController {
   }
 
   Future checkEmailVerified() async {
-    await _auth.currentUser?.reload();
-    state.isEmailVerified.value = _auth.currentUser?.emailVerified ?? false;
+    // await _auth.currentUser?.reload();
+    // state.isEmailVerified.value = _auth.currentUser?.emailVerified ?? false;
     update();
     if (state.isEmailVerified.value) {
       timer?.cancel();
@@ -59,8 +56,8 @@ class EmailVerifyController extends GetxController {
     state.isLoading.value = true;
     try {
       UserStore.to.onLogout();
-    } on FirebaseAuthException catch (e) {
-      AppLogger.e(e);
+    }  catch (e) {
+      // AppLogger.e(e);
     }
     state.isLoading.value = false;
   }

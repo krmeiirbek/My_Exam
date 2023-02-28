@@ -56,20 +56,20 @@ class HttpUtil {
   }
 
   void onError(ErrorEntity eInfo) {
-    switch (eInfo.code) {
+    switch (eInfo.errorCode) {
       case 401:
         UserStore.to.onLogout();
         Get.snackbar(
-          eInfo.code.toString(),
-          eInfo.message,
+          eInfo.errorCode.toString(),
+          eInfo.errors,
           snackPosition: SnackPosition.BOTTOM,
           duration: const Duration(seconds: 3),
         );
         break;
       default:
         Get.snackbar(
-          eInfo.code.toString(),
-          eInfo.message,
+          eInfo.errorCode.toString(),
+          eInfo.errors,
           snackPosition: SnackPosition.BOTTOM,
           duration: const Duration(seconds: 3),
         );
@@ -80,13 +80,13 @@ class HttpUtil {
   ErrorEntity createErrorEntity(DioError error) {
     switch (error.type) {
       case DioErrorType.cancel:
-        return ErrorEntity(code: -1, message: "request to cancel");
+        return ErrorEntity(errorCode: -1, errors: "request to cancel");
       case DioErrorType.connectTimeout:
-        return ErrorEntity(code: -1, message: "Connection timed out");
+        return ErrorEntity(errorCode: -1, errors: "Connection timed out");
       case DioErrorType.sendTimeout:
-        return ErrorEntity(code: -1, message: "Request timed out");
+        return ErrorEntity(errorCode: -1, errors: "Request timed out");
       case DioErrorType.receiveTimeout:
-        return ErrorEntity(code: -1, message: "response timeout");
+        return ErrorEntity(errorCode: -1, errors: "response timeout");
       case DioErrorType.response:
         {
           try {
@@ -94,40 +94,40 @@ class HttpUtil {
                 error.response != null ? error.response!.statusCode! : -1;
             switch (errCode) {
               case 400:
-                return ErrorEntity(code: errCode, message: "request syntax error");
+                return ErrorEntity(errorCode: errCode, errors: "request syntax error");
               case 401:
-                return ErrorEntity(code: errCode, message: "permission denied");
+                return ErrorEntity(errorCode: errCode, errors: "permission denied");
               case 403:
-                return ErrorEntity(code: errCode, message: "The server refuses to execute");
+                return ErrorEntity(errorCode: errCode, errors: "The server refuses to execute");
               case 404:
-                return ErrorEntity(code: errCode, message: "can not connect to the server");
+                return ErrorEntity(errorCode: errCode, errors: "can not connect to the server");
               case 405:
-                return ErrorEntity(code: errCode, message: "request method is forbidden");
+                return ErrorEntity(errorCode: errCode, errors: "request method is forbidden");
               case 500:
-                return ErrorEntity(code: errCode, message: "internal server error");
+                return ErrorEntity(errorCode: errCode, errors: "internal server error");
               case 502:
-                return ErrorEntity(code: errCode, message: "invalid request");
+                return ErrorEntity(errorCode: errCode, errors: "invalid request");
               case 503:
-                return ErrorEntity(code: errCode, message: "server down");
+                return ErrorEntity(errorCode: errCode, errors: "server down");
               case 505:
-                return ErrorEntity(code: errCode, message: "Does not support HTTP protocol requests");
+                return ErrorEntity(errorCode: errCode, errors: "Does not support HTTP protocol requests");
               default:
                 {
                   return ErrorEntity(
-                    code: errCode,
-                    message: error.response != null
+                    errorCode: errCode,
+                    errors: error.response != null
                         ? error.response!.statusMessage!
                         : "",
                   );
                 }
             }
           } on Exception catch (_) {
-            return ErrorEntity(code: -1, message: "unknown mistake");
+            return ErrorEntity(errorCode: -1, errors: "unknown mistake");
           }
         }
       default:
         {
-          return ErrorEntity(code: -1, message: error.message);
+          return ErrorEntity(errorCode: -1, errors: error.message);
         }
     }
   }
@@ -139,9 +139,11 @@ class HttpUtil {
   /// read local configuration
   Map<String, dynamic>? getAuthorizationHeader() {
     var headers = <String, dynamic>{};
-    if (Get.isRegistered<UserStore>() && UserStore.to.hasToken == true) {
+    if (Get.isRegistered<UserStore>() && UserStore.to.hasToken) {
+      print("header if ");
       headers['Authorization'] = 'Bearer ${UserStore.to.token}';
     }
+    print("Authorization: ${headers['Authorization']}");
     return headers;
   }
 
@@ -168,14 +170,16 @@ class HttpUtil {
     Map<String, dynamic>? authorization = getAuthorizationHeader();
     if (authorization != null) {
       requestOptions.headers!.addAll(authorization);
+      print("added authorization header");
     }
 
     var response = await dio.get(
       path,
       queryParameters: queryParameters,
-      options: options,
+      options: requestOptions,
       cancelToken: cancelToken,
     );
+    print("responce status code ${response.statusCode}");
     return response.data;
   }
 
@@ -295,7 +299,6 @@ class HttpUtil {
     );
     return response.data;
   }
-
   /// restful post Stream streaming data
   Future postStream(
     String path, {
@@ -326,13 +329,13 @@ class HttpUtil {
 
 // exception handling
 class ErrorEntity implements Exception {
-  int code = -1;
-  String message = "";
-  ErrorEntity({required this.code, required this.message});
+  int errorCode = -1;
+  String errors = "";
+  ErrorEntity({required this.errorCode, required this.errors});
 
   @override
   String toString() {
-    if (message == "") return "Exception";
-    return "Exception: code $code, $message";
+    if (errors == "") return "Exception";
+    return "Exception: code $errorCode, $errors";
   }
 }

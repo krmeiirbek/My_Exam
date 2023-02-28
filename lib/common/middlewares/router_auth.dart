@@ -17,7 +17,7 @@ class RouteAuthMiddleware extends GetMiddleware {
     } else {
       Future.delayed(const Duration(seconds: 2),
           () => Get.snackbar("Tips", "Login expired, please login again!"));
-      return const RouteSettings(name: AppRoutes.signIn);
+      return const RouteSettings(name: AppRoutes.initial);
     }
   }
 }

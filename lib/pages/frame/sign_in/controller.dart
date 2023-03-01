@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,7 +5,6 @@ import '../../../common/apis/apis.dart';
 import '../../../common/entities/entities.dart';
 import '../../../common/routes/routes.dart';
 import '../../../common/store/store.dart';
-import '../../../common/utils/utils.dart';
 import 'state.dart';
 
 class SignInController extends GetxController {
@@ -59,7 +55,6 @@ class SignInController extends GetxController {
           duration: const Duration(seconds: 3),
         );
       }
-
     }  catch (e) {
       Get.snackbar(
         'Кіру кезіндегі қателік',

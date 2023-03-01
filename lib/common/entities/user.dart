@@ -1,14 +1,20 @@
 class LoginOrRegisterRequestEntity {
   String? email;
+  String? first_name;
+  String? last_name;
   String? password;
 
   LoginOrRegisterRequestEntity({
     this.email,
+    this.first_name,
+    this.last_name,
     this.password,
   });
 
   Map<String, dynamic> toJson() => {
         "email": email,
+        "first_name": first_name,
+        "last_name": last_name,
         "password": password,
       };
 }
@@ -27,6 +33,61 @@ class UserLoginOrRegisterResponseEntity {
       UserLoginOrRegisterResponseEntity(
         token: json["token"],
         user: UserItem.fromJson(json["user"]),
+      );
+}
+
+class RegisterSendCodeRequestEntity {
+  String? email;
+
+  RegisterSendCodeRequestEntity({
+    this.email,
+  });
+
+  Map<String, dynamic> toJson() => {
+    "email": email,
+  };
+}
+
+class RegisterSendCodeResponseEntity {
+  String? message;
+
+  RegisterSendCodeResponseEntity({
+    this.message,
+  });
+
+  factory RegisterSendCodeResponseEntity.fromJson(
+      Map<String, dynamic> json) =>
+      RegisterSendCodeResponseEntity(
+        message: json["message"],
+      );
+}
+
+class RegisterCheckCodeRequestEntity {
+  String? email;
+  String? code;
+
+  RegisterCheckCodeRequestEntity({
+    this.email,
+    this.code,
+  });
+
+  Map<String, dynamic> toJson() => {
+    "email": email,
+    "code": code,
+  };
+}
+
+class RegisterCheckCodeResponseEntity {
+  bool? success;
+
+  RegisterCheckCodeResponseEntity({
+    this.success,
+  });
+
+  factory RegisterCheckCodeResponseEntity.fromJson(
+      Map<String, dynamic> json) =>
+      RegisterCheckCodeResponseEntity(
+        success: json["success"],
       );
 }
 
@@ -64,12 +125,16 @@ class CheckEmailResponseEntity {
 
 class UserItem {
   String? email;
+  String? first_name;
+  String? last_name;
   int? role_id;
   int? id;
   int? verified;
 
   UserItem({
     this.email,
+    this.first_name,
+    this.last_name,
     this.role_id,
     this.id,
     this.verified,
@@ -77,6 +142,8 @@ class UserItem {
 
   factory UserItem.fromJson(Map<String, dynamic> json) => UserItem(
         email: json["email"],
+        first_name: json["first_name"],
+        last_name: json["last_name"],
         role_id: json["role_id"],
         id: json["id"],
         verified: json["verified"],
@@ -84,6 +151,8 @@ class UserItem {
 
   Map<String, dynamic> toJson() => {
         "email": email,
+        "first_name": first_name,
+        "last_name": last_name,
         "role_id": role_id,
         "id": id,
         "verified": verified,

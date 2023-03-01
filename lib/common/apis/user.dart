@@ -29,8 +29,25 @@ class UserAPI {
     return CheckEmailResponseEntity.fromJson(response);
   }
 
+  static Future<RegisterSendCodeResponseEntity> sendCode(
+      {RegisterSendCodeRequestEntity? params}) async {
+    var response = await HttpUtil().post(
+      '/api/v1/auth/register/send-code',
+      queryParameters: params?.toJson(),
+    );
+    return RegisterSendCodeResponseEntity.fromJson(response);
+  }
+
+  static Future<RegisterCheckCodeResponseEntity> checkCode(
+      {RegisterCheckCodeRequestEntity? params}) async {
+    var response = await HttpUtil().get(
+      '/api/v1/auth/register/check-code',
+      queryParameters: params?.toJson(),
+    );
+    return RegisterCheckCodeResponseEntity.fromJson(response);
+  }
+
   static Future<GetMeResponseEntity> getMe() async {
-    print("get me request");
     var response = await HttpUtil().get(
       '/api/v1/auth/me',
     );

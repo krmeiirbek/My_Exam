@@ -10,7 +10,7 @@ class SignUpPage extends GetView<SignUpController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: Responsive(
           smallMobile: NarrowScreen(),

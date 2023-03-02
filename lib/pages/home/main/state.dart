@@ -1,7 +1,11 @@
 import 'package:get/get.dart';
 
+import '../../../common/entities/entities.dart';
+
 class MainState {
   final name = "".obs;
+  final isLoading = false.obs;
+  final courses = <CourseItem>[].obs;
 
   final item = RxnString();
   final item2 = RxnString();

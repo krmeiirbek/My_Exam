@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../common/apis/apis.dart';
 import '../../../common/store/store.dart';
 import 'state.dart';
 
@@ -9,9 +10,19 @@ class MainController extends GetxController {
   final state = MainState();
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     final user = UserStore.to.profile;
-    state.name.value = user.email ?? "";
+    state.name.value = user.first_name ?? "";
+    await getCourses();
     super.onInit();
+  }
+
+  getCourses() async {
+    state.isLoading.value = true;
+    var res = await CourseAPI.getCourses();
+    if(res.courses != null){
+      state.courses.addAll(res.courses!);
+    }
+    state.isLoading.value = false;
   }
 }

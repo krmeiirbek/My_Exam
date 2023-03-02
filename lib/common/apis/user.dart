@@ -2,6 +2,7 @@ import '../entities/entities.dart';
 import '../utils/utils.dart';
 
 class UserAPI {
+  /// login
   static Future<UserLoginOrRegisterResponseEntity> login(
       {LoginOrRegisterRequestEntity? params}) async {
     var response = await HttpUtil().post(
@@ -11,6 +12,7 @@ class UserAPI {
     return UserLoginOrRegisterResponseEntity.fromJson(response);
   }
 
+  /// register
   static Future<UserLoginOrRegisterResponseEntity> register(
       {LoginOrRegisterRequestEntity? params}) async {
     var response = await HttpUtil().post(
@@ -20,6 +22,7 @@ class UserAPI {
     return UserLoginOrRegisterResponseEntity.fromJson(response);
   }
 
+  /// check email
   static Future<CheckEmailResponseEntity> checkEmail(
       {CheckEmailRequestEntity? params}) async {
     var response = await HttpUtil().get(
@@ -29,6 +32,7 @@ class UserAPI {
     return CheckEmailResponseEntity.fromJson(response);
   }
 
+  /// register send code
   static Future<RegisterSendCodeResponseEntity> sendCode(
       {RegisterSendCodeRequestEntity? params}) async {
     var response = await HttpUtil().post(
@@ -38,6 +42,7 @@ class UserAPI {
     return RegisterSendCodeResponseEntity.fromJson(response);
   }
 
+  /// register check code
   static Future<RegisterCheckCodeResponseEntity> checkCode(
       {RegisterCheckCodeRequestEntity? params}) async {
     var response = await HttpUtil().get(
@@ -47,27 +52,11 @@ class UserAPI {
     return RegisterCheckCodeResponseEntity.fromJson(response);
   }
 
+  /// get me
   static Future<GetMeResponseEntity> getMe() async {
     var response = await HttpUtil().get(
       '/api/v1/auth/me',
     );
     return GetMeResponseEntity.fromJson(response);
   }
-
-// static Future<UserLoginResponseEntity> getProfile() async {
-//   var response = await HttpUtil().post(
-//     'api/get_profile',
-//   );
-//   return UserLoginResponseEntity.fromJson(response);
-// }
-//
-// static Future<BaseResponseEntity> updateProfile({
-//   LoginRequestEntity? params,
-// }) async {
-//   var response = await HttpUtil().post(
-//     'api/update_profile',
-//     queryParameters: params?.toJson(),
-//   );
-//   return BaseResponseEntity.fromJson(response);
-// }
 }

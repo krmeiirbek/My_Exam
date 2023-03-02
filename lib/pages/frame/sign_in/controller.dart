@@ -15,8 +15,6 @@ class SignInController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // final _auth = UserStore.to.auth;
-
   @override
   void dispose() {
     emailController.dispose();

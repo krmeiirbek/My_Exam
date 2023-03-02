@@ -37,6 +37,7 @@ dependencies:
   flutter_tex: ^4.0.3+4
   youtube_player_flutter: ^8.1.2
   flutter_countdown_timer: ^4.1.0
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:

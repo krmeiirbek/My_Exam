@@ -21,6 +21,7 @@ class MainController extends GetxController {
     state.isLoading.value = true;
     var res = await CourseAPI.getCourses();
     if(res.courses != null){
+      state.courses.clear();
       state.courses.addAll(res.courses!);
     }
     state.isLoading.value = false;

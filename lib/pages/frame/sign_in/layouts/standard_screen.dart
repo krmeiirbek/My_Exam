@@ -53,6 +53,7 @@ class StandardScreen extends GetView<SignInController> {
                   const SizedBox(height: 35),
                   TextFormField(
                     controller: controller.emailController,
+                    keyboardType: TextInputType.emailAddress,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (email) => email != null && !duIsEmail(email)
                         ? 'Қате email'

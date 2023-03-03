@@ -85,6 +85,7 @@ class StandardScreen extends GetView<SignUpController> {
                   ),
                   TextFormField(
                     controller: controller.emailController,
+                    keyboardType: TextInputType.emailAddress,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (email) =>
                         email != null && !duIsEmail(email)

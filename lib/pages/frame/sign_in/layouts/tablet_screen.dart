@@ -58,6 +58,7 @@ class TabletScreen extends GetView<SignInController> {
                         TextFormField(
                           controller: controller.emailController,
                           style: title2,
+                          keyboardType: TextInputType.emailAddress,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (email) =>
                               email != null && !duIsEmail(email)

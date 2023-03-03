@@ -53,7 +53,38 @@ class NarrowScreen extends GetView<SignUpController> {
                   ),
                   const SizedBox(height: 10),
                   TextFormField(
+                    controller: controller.nameController,
+                    style: subtitle2,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (name) =>
+                    name == ""
+                        ? 'Қате name'
+                        : null,
+                    decoration: const InputDecoration(
+                      labelText: 'Name',
+                      labelStyle: TextStyle(
+                        color: Color(0xffC3C3C3),
+                      ),
+                    ),
+                  ),
+                  TextFormField(
+                    controller: controller.surnameController,
+                    style: subtitle2,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (surname) =>
+                    surname == ""
+                        ? 'Қате surname'
+                        : null,
+                    decoration: const InputDecoration(
+                      labelText: 'Surname',
+                      labelStyle: TextStyle(
+                        color: Color(0xffC3C3C3),
+                      ),
+                    ),
+                  ),
+                  TextFormField(
                     controller: controller.emailController,
+                    keyboardType: TextInputType.emailAddress,
                     style: subtitle2,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (email) => email != null && !duIsEmail(email)

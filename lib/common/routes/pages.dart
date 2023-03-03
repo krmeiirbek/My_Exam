@@ -46,6 +46,13 @@ class AppPages {
       name: AppRoutes.home,
       page: () => const HomePage(),
       binding: HomeBinding(),
+      bindings: [
+        MainBinding(),
+        LeaderboardBinding(),
+        MyCoursesBinding(),
+        NoticeBinding(),
+        ProfileBinding(),
+      ],
       middlewares: [
         RouteAuthMiddleware(priority: 1),
       ],

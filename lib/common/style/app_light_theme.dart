@@ -32,6 +32,13 @@ class LightTheme with SubThemeData {
       brightness: Brightness.light,
       scaffoldBackgroundColor: primaryBGLight,
       visualDensity: VisualDensity.adaptivePlatformDensity,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: secondaryBGLight,
+        unselectedItemColor: secondaryTextLight,
+      ),
+      navigationBarTheme: const NavigationBarThemeData(
+        backgroundColor: secondaryBGLight,
+      ),
       textTheme: getTextThemes().apply(
         bodyColor: primaryTextLight,
         displayColor: primaryTextLight,
@@ -42,6 +49,7 @@ class LightTheme with SubThemeData {
       appBarTheme: AppBarTheme(
         backgroundColor: primaryBGLight,
         titleTextStyle: title2.copyWith(color: primaryTextLight),
+        actionsIconTheme: const IconThemeData(color: primaryTextLight),
       ),
       colorScheme: const ColorScheme(
         brightness: Brightness.light,

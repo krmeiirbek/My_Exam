@@ -3,62 +3,152 @@ import 'package:get/get.dart';
 import '../../../common/entities/entities.dart';
 
 class MainState {
-  final name = "".obs;
+  final userName = "".obs;
   final isLoading = false.obs;
-  final courses = <CourseItem>[].obs;
-
-  final item = RxnString();
-  final item2 = RxnString();
-  final items = <String, List<String>>{
-    "Математика": [
-      "География",
-      "Физика",
-      "Информатика",
-    ],
-    "Физика": [
-      "Химия",
-      "Математика",
-    ],
-    "География": [
-      "Дүниежүзі тарихы",
-      "Ағылшын тілі",
-      "Математика",
-      "Биология",
-    ],
-    "Биология": [
-      "География",
-      "Химия",
-    ],
-    "Химия": [
-      "Физика",
-      "Биология",
-    ],
-    "Информатика": [
-      "Математика",
-    ],
-    "Дүниежүзі тарихы": [
-      "Құқық негіздері",
-      "Ағылшын тілі",
-      "География",
-    ],
-    "Құқық негіздері": [
-      "Дүниежүзі тарихы",
-    ],
-    "Қазақ тілі": [
-      "Қазақ әдебиеті",
-    ],
-    "Қазақ әдебиеті": [
-      "Қазақ тілі",
-    ],
-    "Орыс тілі": [
-      "Орыс әдебиеті",
-    ],
-    "Орыс әдебиеті": [
-      "Орыс тілі",
-    ],
-    "Ағылшын тілі": [
-      "Дүниежүзі тарихы",
-      "География",
-    ],
-  };
+  final courses = <CourseItem>[
+    CourseItem(
+      id: 1,
+      name: "Қазақстан тарихы",
+      description: "Қазақстан тарихы",
+      image_url: "https://kazaksha.info/wp-content/uploads/2020/02/respublika_alash_100-900x_-520x245.png",
+      created_at: "",
+      updated_at: "",
+      owner: "Молдадосова Алтынай",
+    ),
+    CourseItem(
+      id: 2,
+      name: "Оқу сауаттылық",
+      description: "Оқу сауаттылық",
+      image_url: "http://sun9-79.userapi.com/s/v1/if1/3Iz6rXPLv2ybTYdzQb9f2YhXvbTotgQPHw7TbuTEsyoI0mCgwOrANP6NFwcD46C4xp0Vll2m.jpg?size=200x200&quality=96&crop=85,38,1003,1003&ava=1",
+      created_at: "",
+      updated_at: "",
+      owner: "Оқу сауаттылық",
+    ),
+    CourseItem(
+      id: 3,
+      name: "Математикалық сауаттылық",
+      description: "Математикалық сауаттылық",
+      image_url: "https://online.zerdeli.kz/Resources/Image?fileId=4e9b92985af84a228bf912747e4e7dcd",
+      created_at: "",
+      updated_at: "",
+      owner: "Математикалық сауаттылық",
+    ),
+    CourseItem(
+      id: 4,
+      name: "Математика",
+      description: "Математика",
+      image_url: "https://w7.pngwing.com/pngs/155/396/png-transparent-math-book-mathematics-textbook-maths-examination-s-text-orange-algebra-thumbnail.png",
+      created_at: "",
+      updated_at: "",
+      owner: "Математика",
+    ),
+    CourseItem(
+      id: 5,
+      name: "Физика",
+      description: "Физика",
+      image_url: "https://img1.freepng.ru/20180614/ezu/kisspng-groupe-hein-atom-chemistry-x-ray-raman-spectroscop-physics-5b2302ac56edc0.4067749015290211003561.jpg",
+      created_at: "",
+      updated_at: "",
+      owner: "Физика",
+    ),
+    CourseItem(
+      id: 6,
+      name: "География",
+      description: "География",
+      image_url: "https://e7.pngegg.com/pngimages/733/179/png-clipart-globe-geography-education-teacher-learning-globe-miscellaneous-supplies.png",
+      created_at: "",
+      updated_at: "",
+      owner: "География",
+    ),
+    CourseItem(
+      id: 7,
+      name: "Биология",
+      description: "Биология",
+      image_url: "https://w7.pngwing.com/pngs/914/300/png-transparent-biology-ecology-school-lesson-class-school-leaf-class-biology.png",
+      created_at: "",
+      updated_at: "",
+      owner: "Биология",
+    ),
+    CourseItem(
+      id: 8,
+      name: "Химия",
+      description: "Химия",
+      image_url: "https://e7.pngegg.com/pngimages/668/183/png-clipart-laboratory-flasks-chemistry-chemistry-lab-angle-laboratory-thumbnail.png",
+      created_at: "",
+      updated_at: "",
+      owner: "Химия",
+    ),
+    CourseItem(
+      id: 9,
+      name: "Информатика",
+      description: "Информатика",
+      image_url: "https://w7.pngwing.com/pngs/726/650/png-transparent-computer-science-information-business-internet-technology-material-blue-computer-network-electronics-thumbnail.png",
+      created_at: "",
+      updated_at: "",
+      owner: "Информатика",
+    ),
+    CourseItem(
+      id: 10,
+      name: "Дүниежүзі тарихы",
+      description: "Дүниежүзі тарихы",
+      image_url: "https://w7.pngwing.com/pngs/638/220/png-transparent-world-map-%D0%94%D2%AF%D0%BD%D0%B8%D0%B5-%D0%B6%D2%AF%D0%B7%D1%96%D0%BD%D1%96%D2%A3-%D1%81%D0%B0%D1%8F%D1%81%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B0%D1%81%D1%8B-atlas-world-map-miscellaneous-computer-wallpaper-world-thumbnail.png",
+      created_at: "",
+      updated_at: "",
+      owner: "Молдадосова Алтынай",
+    ),
+    CourseItem(
+      id: 11,
+      name: "Құқық негіздері",
+      description: "Құқық негіздері",
+      image_url: "https://img2.freepng.ru/20180420/acw/kisspng-civil-society-consejos-de-la-sociedad-civil-organi-socially-5ad9da338885a1.8776896415242266115592.jpg",
+      created_at: "",
+      updated_at: "",
+      owner: "Молдадосова Алтынай",
+    ),
+    CourseItem(
+      id: 12,
+      name: "Қазақ тілі",
+      description: "Қазақ тілі",
+      image_url: "https://online.zerdeli.kz/Resources/Image?fileId=a27d6fca0e3d4a5b99fc374bffe1dd1c",
+      created_at: "",
+      updated_at: "",
+      owner: "Қазақ тілі",
+    ),
+    CourseItem(
+      id: 13,
+      name: "Қазақ әдебиеті",
+      description: "Қазақ әдебиеті",
+      image_url: "https://bolashaq.edu.kz/wp-content/uploads/2021/02/%D0%AD%D0%BC%D0%B1%D0%BB%D0%B5%D0%BC%D0%B0-%D0%BC%D0%BE%D0%BB%D0%BE%D0%B4%D0%B5%D0%B6%D1%8C-%D0%B8-%D0%B3%D0%BB%D0%BE%D0%B1%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-1536x1490-1.png",
+      created_at: "",
+      updated_at: "",
+      owner: "Қазақ әдебиеті",
+    ),
+    CourseItem(
+      id: 14,
+      name: "Орыс тілі",
+      description: "Орыс тілі",
+      image_url: "https://e7.pngegg.com/pngimages/823/582/png-clipart-khokhloma-floral-design-ornament-symmetry-pattern-others-flower-arranging-symmetry.png",
+      created_at: "",
+      updated_at: "",
+      owner: "Орыс тілі",
+    ),
+    CourseItem(
+      id: 15,
+      name: "Орыс әдебиеті",
+      description: "Орыс әдебиеті",
+      image_url: "https://e7.pngegg.com/pngimages/743/23/png-clipart-ornament-khokhloma-graphy-%D0%A5%D1%83%D0%B4%D0%BE%D0%B6%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F-%D1%80%D0%BE%D1%81%D0%BF%D0%B8%D1%81%D1%8C-painting-painting-flower-russian-thumbnail.png",
+      created_at: "",
+      updated_at: "",
+      owner: "Орыс әдебиеті",
+    ),
+    CourseItem(
+      id: 16,
+      name: "Ағылшын тілі",
+      description: "Ағылшын тілі",
+      image_url: "https://play-lh.googleusercontent.com/yAqYvfBeoq8tcwDqpxGQ1HZCZwTn3YlxUI3yQWty6teGt6badc7azCiPdkVoT7qHjdw",
+      created_at: "",
+      updated_at: "",
+      owner: "Ағылшын тілі",
+    ),
+  ].obs;
 }

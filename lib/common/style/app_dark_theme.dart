@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../values/values.dart';
 import 'sub_theme_data_mixin.dart';
 
 const Color primaryDark = Color(0xff4785EB);
@@ -31,6 +32,13 @@ class DarkTheme with SubThemeData {
       brightness: Brightness.dark,
       scaffoldBackgroundColor: primaryBGDark,
       visualDensity: VisualDensity.adaptivePlatformDensity,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: secondaryBGDark,
+        unselectedItemColor: primaryTextDark,
+      ),
+      navigationBarTheme: const NavigationBarThemeData(
+        backgroundColor: secondaryBGDark,
+      ),
       textTheme: getTextThemes().apply(
         bodyColor: primaryTextDark,
         displayColor: primaryTextDark,
@@ -38,8 +46,10 @@ class DarkTheme with SubThemeData {
       buttonTheme: const ButtonThemeData(
         buttonColor: primaryDark,
       ),
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: primaryBGDark,
+        titleTextStyle: title2.copyWith(color: primaryTextDark),
+        actionsIconTheme: const IconThemeData(color: primaryTextDark),
       ),
       colorScheme: const ColorScheme(
         brightness: Brightness.dark,

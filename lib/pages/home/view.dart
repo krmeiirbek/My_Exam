@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-import '../../common/values/values.dart';
+import '../../common/utils/utils.dart';
+import 'layouts/layouts.dart';
 import 'controller.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -10,15 +10,10 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      screens: controller.state.pages,
-      items: controller.state.navBarItems,
-      backgroundColor: secondaryBackground(),
-      decoration: const NavBarDecoration(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      navBarStyle: NavBarStyle.style6,
+    return const Responsive(
+      smallMobile: NarrowScreen(),
+      mobile: StandardScreen(),
+      tablet: TabletScreen(),
     );
   }
 }

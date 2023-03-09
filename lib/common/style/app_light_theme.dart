@@ -4,7 +4,7 @@ import 'package:my_exam/common/values/custom_text_styles.dart';
 import 'sub_theme_data_mixin.dart';
 
 const Color primaryLight = Color(0xff4785EB);
-const Color onPrimaryLight = Color(0xffFFFFFF);
+const Color onPrimaryLight = Color(0xff3D3D74);
 const Color secondaryLight = Color(0xff3C8DEF);
 const Color tertiaryLight = Color(0xff599BF0);
 const Color alternateLight = Color(0xffE3F0FF);

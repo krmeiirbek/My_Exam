@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../common/apis/apis.dart';
+import '../../../common/routes/routes.dart';
 import '../../../common/store/store.dart';
 import '../../../common/values/values.dart';
 import 'state.dart';
@@ -26,8 +26,12 @@ class MainController extends GetxController {
     //   state.courses.clear();
     //   state.courses.addAll(res.courses!);
     // }
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 200));
     state.isLoading.value = false;
+  }
+
+  goToCourseDetails() {
+    Get.toNamed(AppRoutes.courseDetails);
   }
 
   Gradient getGradient(int index) {
@@ -74,4 +78,5 @@ class MainController extends GetxController {
         }
     }
   }
+
 }

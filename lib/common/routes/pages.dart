@@ -6,6 +6,7 @@ import '../../pages/frame/sign_up/index.dart';
 import '../../pages/frame/forgot_password/index.dart';
 import '../../pages/frame/email_verify/index.dart';
 import '../../pages/home/index.dart';
+import '../../pages/home/main/course_details/index.dart';
 import '../../pages/home/main/index.dart';
 import '../../pages/home/leaderboard/index.dart';
 import '../../pages/home/my_courses/index.dart';
@@ -62,6 +63,11 @@ class AppPages {
     //   page: () => const MainPage(),
     //   binding: MainBinding(),
     // ),
+    GetPage(
+      name: AppRoutes.courseDetails,
+      page: () => const CourseDetailsPage(),
+      binding: CourseDetailsBinding(),
+    ),
     // GetPage(
     //   name: AppRoutes.unt,
     //   page: () => const UNTPage(),

@@ -32,42 +32,139 @@ Gradient appBarGradient() =>
     UIParameters.isDarkMode() ? appBarDarkGradient : appBarLightGradient;
 
 Gradient gradient1() => const LinearGradient(colors: [
-      Color.fromARGB(255, 220, 85, 74),
-      Color.fromARGB(255, 232, 159, 58),
+      Color(0xff00539C),
+      Color(0xffEEA47F),
     ]);
+
 Gradient gradient2() => const LinearGradient(colors: [
-  Color.fromARGB(255, 133, 94, 238),
-  Color.fromARGB(255, 77, 126, 242),
-]);
+      Color(0xff2F3C7E),
+      Color(0xffFBEAEB),
+    ]);
+
 Gradient gradient3() => const LinearGradient(colors: [
-  Color.fromARGB(255, 67, 57, 195),
-  Color.fromARGB(255, 98, 101, 201),
-]);
+      Color(0xff101820),
+      Color(0xffFEE715),
+    ]);
+
 Gradient gradient4() => const LinearGradient(colors: [
-  Color.fromARGB(255, 85, 181, 165),
-  Color.fromARGB(255, 106, 209, 158),
-]);
+      Color(0xffF96167),
+      Color(0xffFCE77D),
+    ]);
+
 Gradient gradient5() => const LinearGradient(colors: [
-  Color.fromARGB(255, 54, 99, 234),
-  Color.fromARGB(255, 109, 163, 237),
-]);
+      Color(0xffCCF381),
+      Color(0xff4831D4),
+    ]);
+
 Gradient gradient6() => const LinearGradient(colors: [
-  Color.fromARGB(255, 116, 163, 52),
-  Color.fromARGB(255, 106, 208, 155),
-]);
+      Color(0xffE2D1F9),
+      Color(0xff317773),
+    ]);
+
 Gradient gradient7() => const LinearGradient(colors: [
-  Color.fromARGB(255, 204, 122, 47),
-  Color.fromARGB(255, 231, 122, 111),
-]);
+      Color(0xff990011),
+      Color(0xffFCF6F5),
+    ]);
+
 Gradient gradient8() => const LinearGradient(colors: [
-  Color.fromARGB(255, 214, 100, 44),
-  Color.fromARGB(255, 237, 151, 78),
-]);
+      Color(0xff8AAAE5),
+      Color(0xffFFFFFF),
+    ]);
+
 Gradient gradient9() => const LinearGradient(colors: [
-  Color.fromARGB(255, 164, 45, 39),
-  Color.fromARGB(255, 82, 69, 216),
-]);
+      Color(0xffFF69B4),
+      Color(0xff00FFFF),
+    ]);
+
 Gradient gradient10() => const LinearGradient(colors: [
-  Color.fromARGB(255, 5, 0, 0),
-  Color.fromARGB(255, 195, 56, 49),
-]);
+      Color(0xffFCEDDA),
+      Color(0xffEE4E34),
+    ]);
+
+Gradient gradient11() => const LinearGradient(colors: [
+      Color(0xffADD8E6),
+      Color(0xff00008b),
+    ]);
+
+Gradient gradient12() => const LinearGradient(colors: [
+      Color(0xff89ABE3),
+      Color(0xffEA738D),
+    ]);
+
+Gradient gradient13() => const LinearGradient(colors: [
+      Color(0xffE3B448),
+      Color(0xffCBD18F),
+      Color(0xff3A6B35),
+    ]);
+
+Gradient gradient14() => const LinearGradient(colors: [
+      Color(0xffEC449B),
+      Color(0xff99F443),
+    ]);
+
+Gradient gradient15() => const LinearGradient(colors: [
+      Color(0xffFFA351),
+      Color(0xffFFBE7B),
+      Color(0xffEED971),
+    ]);
+
+Gradient gradient16() => const LinearGradient(colors: [
+      Color(0xff8A307F),
+      Color(0xff79A7D3),
+      Color(0xff6883BC),
+    ]);
+
+Gradient gradient17() => const LinearGradient(colors: [
+      Color(0xffCC313D),
+      Color(0xffF7C5CC),
+    ]);
+
+Gradient gradient18() => const LinearGradient(colors: [
+      Color(0xffFC766A),
+      Color(0xff783937),
+      Color(0xffF1AC88),
+    ]);
+
+Gradient gradient19() => const LinearGradient(colors: [
+      Color(0xffAA96DA),
+      Color(0xffC5FAD5),
+      Color(0xffFFFFD2),
+    ]);
+
+Gradient gradient20() => const LinearGradient(colors: [
+      Color(0xff2C5F2D),
+      Color(0xff97BC62),
+    ]);
+
+Gradient gradient21() => const LinearGradient(colors: [
+      Color(0xff2BAE66),
+      Color(0xffFCF6F5),
+    ]);
+
+Gradient gradient22() => const LinearGradient(colors: [
+      Color(0xffFFE77A),
+      Color(0xff2C5F2D),
+    ]);
+
+Gradient gradient23() => const LinearGradient(colors: [
+      Color(0xffDDC3A5),
+      Color(0xff201E20),
+      Color(0xffE0A96D),
+    ]);
+
+Gradient gradient24() => const LinearGradient(colors: [
+      Color(0xff234E70),
+      Color(0xffFBF8BE),
+    ]);
+
+Gradient gradient25() => const LinearGradient(colors: [
+      Color(0xff408EC6),
+      Color(0xff7A2048),
+      Color(0xff1E2761),
+    ]);
+
+Gradient gradient26() => const LinearGradient(colors: [
+      Color(0xffB85042),
+      Color(0xffE7E8D1),
+      Color(0xffA7BEAE),
+    ]);

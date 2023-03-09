@@ -159,6 +159,9 @@ Widget _buildCourses({required MainController controller}) {
           price: '${(index + 15.99).toPrecision(2)}',
           picture: '${controller.state.courses[index].image_url}',
           gradient: controller.getGradient(index + 1),
+          onTap: (){
+            controller.goToCourseDetails();
+          },
         );
       },
       childCount: controller.state.courses.length,
@@ -295,55 +298,60 @@ Widget _buildSubjectItem({
   required String price,
   required String picture,
   required Gradient gradient,
+  required VoidCallback onTap,
 }) {
   return Padding(
     padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
-    child: Container(
-      padding: const EdgeInsets.only(top: 15, left: 15),
-      height: 100,
-      decoration: BoxDecoration(
-        gradient: gradient,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.only(bottom: 15, right: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(name, style: subtitle1.copyWith(color: Colors.white)),
-                  Text(
-                    "Авторы: $author",
-                    style: bodyText1.copyWith(
-                        fontWeight: FontWeight.w300, color: Colors.white),
-                  ),
-                  Text(
-                    "$price ₸",
-                    style: subtitle1.copyWith(
-                        fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            width: 80,
-            padding: EdgeInsets.zero,
-            decoration: BoxDecoration(
-              borderRadius:
-                  const BorderRadius.only(topLeft: Radius.circular(10)),
-              image: DecorationImage(
-                image: NetworkImage(
-                  picture,
+    child: InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.only(top: 15, left: 15),
+        height: 120,
+        decoration: BoxDecoration(
+          gradient: gradient,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(bottom: 15, right: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(name, style: subtitle1.copyWith(color: Colors.white,fontFamily: 'Arial',fontWeight: FontWeight.bold,fontSize: 20)),
+                    Text(
+                      "Авторы: $author",
+                      style: bodyText1.copyWith(
+                          fontWeight: FontWeight.w300, color: Colors.white),
+                    ),
+                    Text(
+                      "$price ₸",
+                      style: subtitle1.copyWith(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                  ],
                 ),
-                fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+            Container(
+              width: 80,
+              padding: EdgeInsets.zero,
+              decoration: const BoxDecoration(
+                borderRadius:
+                    BorderRadius.only(topLeft: Radius.circular(10)),
+                // image: DecorationImage(
+                //   image: NetworkImage(
+                //     picture,
+                //   ),
+                //   fit: BoxFit.cover,
+                // ),
+              ),
+              child: const Placeholder(),
+            ),
+          ],
+        ),
       ),
     ),
   );

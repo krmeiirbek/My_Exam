@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import 'main/index.dart';
-import 'my_courses/index.dart';
-import 'notice/index.dart';
+import 'quiz/index.dart';
+import 'news/index.dart';
 import 'profile/index.dart';
 import 'leaderboard/index.dart';
 
@@ -14,9 +14,9 @@ class HomeState {
 
   final List<Widget> pages = [
     const MainPage(),
+    const QuizPage(),
+    const NewsPage(),
     const LeaderboardPage(),
-    const MyCoursesPage(),
-    const NoticePage(),
     const ProfilePage(),
   ];
 
@@ -27,15 +27,6 @@ class HomeState {
       ),
       inactiveIcon: SvgPicture.asset(
         "assets/icons/home.svg",
-        color: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
-      ),
-    ),
-    PersistentBottomNavBarItem(
-      icon: SvgPicture.asset(
-        "assets/icons/active_surface.svg",
-      ),
-      inactiveIcon: SvgPicture.asset(
-        "assets/icons/surface.svg",
         color: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
       ),
     ),
@@ -54,6 +45,15 @@ class HomeState {
       ),
       inactiveIcon: SvgPicture.asset(
         "assets/icons/clock.svg",
+        color: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
+      ),
+    ),
+    PersistentBottomNavBarItem(
+      icon: SvgPicture.asset(
+        "assets/icons/active_surface.svg",
+      ),
+      inactiveIcon: SvgPicture.asset(
+        "assets/icons/surface.svg",
         color: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
       ),
     ),

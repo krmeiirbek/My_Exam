@@ -9,8 +9,9 @@ import '../../pages/home/index.dart';
 import '../../pages/home/main/course_details/index.dart';
 import '../../pages/home/main/index.dart';
 import '../../pages/home/leaderboard/index.dart';
-import '../../pages/home/my_courses/index.dart';
-import '../../pages/home/notice/index.dart';
+import '../../pages/home/main/subject_page/index.dart';
+import '../../pages/home/quiz/index.dart';
+import '../../pages/home/news/index.dart';
 import '../../pages/home/profile/index.dart';
 import '../middlewares/middlewares.dart';
 import 'names.dart';
@@ -50,43 +51,23 @@ class AppPages {
       bindings: [
         MainBinding(),
         LeaderboardBinding(),
-        MyCoursesBinding(),
-        NoticeBinding(),
+        QuizBinding(),
+        NewsBinding(),
         ProfileBinding(),
       ],
       middlewares: [
         RouteAuthMiddleware(priority: 1),
       ],
     ),
-    // GetPage(
-    //   name: AppRoutes.main,
-    //   page: () => const MainPage(),
-    //   binding: MainBinding(),
-    // ),
     GetPage(
       name: AppRoutes.courseDetails,
       page: () => const CourseDetailsPage(),
       binding: CourseDetailsBinding(),
     ),
-    // GetPage(
-    //   name: AppRoutes.unt,
-    //   page: () => const UNTPage(),
-    //   binding: UNTBinding(),
-    // ),
-    // GetPage(
-    //   name: AppRoutes.myCourses,
-    //   page: () => const MyCoursesPage(),
-    //   binding: MyCoursesBinding(),
-    // ),
-    // GetPage(
-    //   name: AppRoutes.notice,
-    //   page: () => const NoticePage(),
-    //   binding: NoticeBinding(),
-    // ),
-    // GetPage(
-    //   name: AppRoutes.profile,
-    //   page: () => const ProfilePage(),
-    //   binding: ProfileBinding(),
-    // ),
+    GetPage(
+      name: AppRoutes.subjectPage,
+      page: () => const SubjectPage(),
+      binding: SubjectPageBinding(),
+    ),
   ];
 }

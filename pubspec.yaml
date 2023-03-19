@@ -49,4 +49,5 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/quiz/
     - assets/icons/

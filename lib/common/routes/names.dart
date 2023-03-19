@@ -5,10 +5,6 @@ class AppRoutes {
   static const forgotPassword = '/forgot_password';
   static const emailVerify = '/email_verify';
   static const home = '/home';
-  static const main = '/home/main';
+  static const subjectPage = '/home/main/subject_page';
   static const courseDetails = '/home/main/course_details';
-  static const leaderboard = '/home/leaderboard';
-  static const myCourses = '/home/my_courses';
-  static const notice = '/home/notice';
-  static const profile = '/home/profile';
 }

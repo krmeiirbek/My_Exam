@@ -9,7 +9,6 @@ class GetAllCoursesResponseEntity {
       );
 }
 
-
 class CourseItem {
   int? id;
   String? name;
@@ -47,5 +46,53 @@ class CourseItem {
         "created_at": created_at,
         "updated_at": updated_at,
         "owner": owner,
+      };
+}
+
+class ChapterItem {
+  int? id;
+  String? name;
+  List<LessonItem>? lessons;
+
+  ChapterItem({
+    this.id,
+    this.name,
+    this.lessons,
+  });
+
+  factory ChapterItem.fromJson(Map<String, dynamic> json) => ChapterItem(
+        id: json["id"],
+        name: json["name"],
+        lessons: json["lessons"]
+            .map((lesson) => LessonItem.fromJson(lesson))
+            .toList(),
+      );
+}
+
+class LessonItem {
+  int? id;
+  String? name;
+  String? description;
+  String? video_url;
+
+  LessonItem({
+    this.id,
+    this.name,
+    this.description,
+    this.video_url,
+  });
+
+  factory LessonItem.fromJson(Map<String, dynamic> json) => LessonItem(
+        id: json["id"],
+        name: json["name"],
+        description: json["description"],
+        video_url: json["video_url"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "description": description,
+        "video_url": video_url,
       };
 }

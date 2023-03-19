@@ -12,173 +12,175 @@ class StandardScreen extends GetView<CourseDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            elevation: 0,
-            floating: true,
-            actions: [
-              InkWell(
-                  onTap: (){
-                    Get.back(result: false);
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              elevation: 0,
+              floating: true,
+              actions: [
+                InkWell(
+                    onTap: (){
+                      Get.back(result: false);
+                    },
+                    child: Icon(Icons.share)),
+                SizedBox(width: 20),
+                Icon(Icons.shopping_cart_outlined),
+                SizedBox(width: 10),
+              ],
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: YoutubePlayerBuilder(
+                  player: YoutubePlayer(
+                    controller: controller.youtubePlayerController,
+                    showVideoProgressIndicator: true,
+                    progressIndicatorColor: Colors.amber,
+                    bottomActions: [
+                      CurrentPosition(),
+                      ProgressBar(
+                        isExpanded: true,
+                        colors: const ProgressBarColors(
+                          playedColor: Colors.amber,
+                          handleColor: Colors.amberAccent,
+                        ),
+                      ),
+                      const PlaybackSpeedButton(),
+                      FullScreenButton(),
+                    ],
+                  ),
+                  builder: (context, player) {
+                    return player;
                   },
-                  child: Icon(Icons.share)),
-              SizedBox(width: 20),
-              Icon(Icons.shopping_cart_outlined),
-              SizedBox(width: 10),
-            ],
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: YoutubePlayerBuilder(
-                player: YoutubePlayer(
-                  controller: controller.youtubePlayerController,
-                  showVideoProgressIndicator: true,
-                  progressIndicatorColor: Colors.amber,
-                  bottomActions: [
-                    CurrentPosition(),
-                    ProgressBar(
-                      isExpanded: true,
-                      colors: const ProgressBarColors(
-                        playedColor: Colors.amber,
-                        handleColor: Colors.amberAccent,
-                      ),
-                    ),
-                    const PlaybackSpeedButton(),
-                    FullScreenButton(),
-                  ],
                 ),
-                builder: (context, player) {
-                  return player;
-                },
               ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Қазақстан тарихы",
-                    style: title2,
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Сен қызыққа толы ежелгі тарих әлемінің қойнауында жүргендей әсер алып, алғашқы адамдардың дамуы жөнінде мағлұмат аласың.",
-                    style: subtitle2.copyWith(fontWeight: FontWeight.w300),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Авторы: Молдадосова Алтынай',
-                    style: subtitle2.copyWith(
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "9999,99 KZT",
-                    style: title1,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      width: double.infinity,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color.fromARGB(255, 32, 45, 171),
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Сатып алу',
-                        style: title3.copyWith(color: Colors.white),
-                      )),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Text(
-                'Бұл курстан нені үйренесің!',
-                style: title3.copyWith(color: Colors.black),
-              ),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => Padding(
-                padding: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  bottom: 10,
-                ),
-                child: Row(
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(
-                      Icons.verified,
-                      color: Colors.green,
-                    ),
-                    SizedBox(width: 10),
                     Text(
-                      'Писать простые программы на Python 3',
-                      style: subtitle2.copyWith(color: Colors.black54),
+                      "Қазақстан тарихы",
+                      style: title2,
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      "Сен қызыққа толы ежелгі тарих әлемінің қойнауында жүргендей әсер алып, алғашқы адамдардың дамуы жөнінде мағлұмат аласың.",
+                      style: subtitle2.copyWith(fontWeight: FontWeight.w300),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Авторы: Молдадосова Алтынай',
+                      style: subtitle2.copyWith(
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ],
                 ),
               ),
-              childCount: 4,
             ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Оқу үрдісі',
-                    style: title3.copyWith(color: Colors.black),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    '19 тарау * 129 сабақ * 42 cағ 35 мин сабақтың ұзақтылығы',
-                    style: bodyText2.copyWith(fontSize: 14),
-                  ),
-                ],
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "9999,99 KZT",
+                      style: title1,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        width: double.infinity,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color.fromARGB(255, 32, 45, 171),
+                        ),
+                        child: Center(
+                            child: Text(
+                          'Сатып алу',
+                          style: title3.copyWith(color: Colors.white),
+                        )),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => ExampleItem(example: data[index]),
-              childCount: data.length,
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  'Бұл курстан нені үйренесің!',
+                  style: title3.copyWith(color: Colors.black),
+                ),
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 20,
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => Padding(
+                  padding: EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                    bottom: 10,
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.verified,
+                        color: Colors.green,
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        'Писать простые программы на Python 3',
+                        style: subtitle2.copyWith(color: Colors.black54),
+                      ),
+                    ],
+                  ),
+                ),
+                childCount: 4,
+              ),
             ),
-          ),
-        ],
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Оқу үрдісі',
+                      style: title3.copyWith(color: Colors.black),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      '19 тарау * 129 сабақ * 42 cағ 35 мин сабақтың ұзақтылығы',
+                      style: bodyText2.copyWith(fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => ExampleItem(example: data[index]),
+                childCount: data.length,
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 20,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

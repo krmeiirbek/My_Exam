@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_exam/pages/home/main/index.dart';
 
 import '../../../../common/routes/routes.dart';
 import '../../../../common/values/values.dart';
-import '../controller.dart';
+import '../index.dart';
 
 class StandardScreen extends GetView<MainController> {
   const StandardScreen({Key? key}) : super(key: key);
@@ -308,12 +307,12 @@ class StandardScreen extends GetView<MainController> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                         color: Colors.grey,
                         spreadRadius: 1,
                         blurRadius: 2,
-                        offset: const Offset(0, 1))
+                        offset: Offset(0, 1))
                   ],
                 ),
                 child: Column(
@@ -322,7 +321,7 @@ class StandardScreen extends GetView<MainController> {
                     Expanded(
                       flex: 3,
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           borderRadius:
                               BorderRadius.vertical(top: Radius.circular(10)),
                           image: DecorationImage(
@@ -336,52 +335,50 @@ class StandardScreen extends GetView<MainController> {
                     Expanded(
                       flex: 2,
                       child: Container(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               "Информатика және математика",
                               style: title3.copyWith(fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(height: 10),
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "- Математика",
-                                    style: bodyText2.copyWith(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  Text(
-                                    "- Информатика",
-                                    style: bodyText2.copyWith(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  Text(
-                                    "- Математикалық сауаттылық",
-                                    style: bodyText2.copyWith(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  Text(
-                                    "- Оқу сауаттылық",
-                                    style: bodyText2.copyWith(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  Text(
-                                    "- Қазақстан тарихы",
-                                    style: bodyText2.copyWith(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ],
-                              ),
+                            const SizedBox(height: 10),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "- Математика",
+                                  style: bodyText2.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  "- Информатика",
+                                  style: bodyText2.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  "- Математикалық сауаттылық",
+                                  style: bodyText2.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  "- Оқу сауаттылық",
+                                  style: bodyText2.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  "- Қазақстан тарихы",
+                                  style: bodyText2.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -398,7 +395,7 @@ class StandardScreen extends GetView<MainController> {
   }
 
   Widget _buildMyLessonsPage({required MainController controller}) {
-    return Center(child: Text("Сіз ешқандай сабаққа тіркелмегенсіз!"),);
+    return const Center(child: Text("Сіз ешқандай сабаққа тіркелмегенсіз!"),);
   }
 
   Widget _buildSubjectItem({

@@ -1,6 +1,6 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../controller.dart';
 
@@ -24,15 +24,12 @@ class TabletScreen extends GetView<CourseDetailsController> {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(30.0),
-              child: YoutubePlayer(
-                controller: controller.youtubePlayerController,
-                showVideoProgressIndicator: true,
-                progressIndicatorColor: Colors.amber,
-                progressColors: ProgressBarColors(
-                  playedColor: Colors.amber,
-                  handleColor: Colors.amberAccent,
-                ),
+              child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Chewie(
+                controller: controller.chewieController,
               ),
+            ),
             ),
           ),
         ],

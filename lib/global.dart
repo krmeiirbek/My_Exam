@@ -17,4 +17,10 @@ class Global {
     /// user controller for authorization
     Get.put<UserStore>(UserStore());
   }
+
+  static isSmallMobile() => Get.size.width < 385;
+
+  static isMobile() => Get.size.width >= 385 && Get.size.width < 576;
+
+  static isTablet() => Get.size.width > 576;
 }

@@ -96,10 +96,10 @@ class StandardScreen extends GetView<QuizController> {
     return Expanded(
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 180,
+          maxCrossAxisExtent: 160,
           crossAxisSpacing: 10,
           mainAxisSpacing: 20,
-          mainAxisExtent: 180,
+          mainAxisExtent: 160,
         ),
         padding: const EdgeInsets.all(10),
         itemBuilder: (_, index) => Container(
@@ -113,7 +113,8 @@ class StandardScreen extends GetView<QuizController> {
             image: DecorationImage(
                 image: AssetImage(controller.state.subjects[index].imageUrl),
                 fit: BoxFit.cover,
-                alignment: Alignment.center),
+                alignment: Alignment.center,
+            ),
           ),
         ),
         itemCount: controller.state.subjects.length,
@@ -134,7 +135,7 @@ class StandardScreen extends GetView<QuizController> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 180,
+                      height: 160,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.deepPurpleAccent,
@@ -155,7 +156,7 @@ class StandardScreen extends GetView<QuizController> {
                   const SizedBox(width: 10),
                   Expanded(
                     child: Container(
-                      height: 180,
+                      height: 160,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.deepPurpleAccent,
@@ -176,7 +177,7 @@ class StandardScreen extends GetView<QuizController> {
                   const SizedBox(width: 10),
                   Expanded(
                     child: Container(
-                      height: 180,
+                      height: 160,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.deepPurpleAccent,
@@ -202,9 +203,10 @@ class StandardScreen extends GetView<QuizController> {
             Expanded(
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 180,
+                  maxCrossAxisExtent: 160,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 20,
+                  mainAxisExtent: 160
                 ),
                 padding: const EdgeInsets.all(10),
                 itemBuilder: (_, index) => Container(

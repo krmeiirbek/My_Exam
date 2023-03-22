@@ -1,8 +1,9 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_exam/common/values/custom_text_styles.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../../../../common/routes/routes.dart';
 import '../../../../../common/values/values.dart';
 import '../controller.dart';
 
@@ -20,7 +21,7 @@ class StandardScreen extends GetView<CourseDetailsController> {
               floating: true,
               actions: [
                 InkWell(
-                    onTap: (){
+                    onTap: () {
                       Get.back(result: false);
                     },
                     child: Icon(Icons.share)),
@@ -32,27 +33,11 @@ class StandardScreen extends GetView<CourseDetailsController> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: YoutubePlayerBuilder(
-                  player: YoutubePlayer(
-                    controller: controller.youtubePlayerController,
-                    showVideoProgressIndicator: true,
-                    progressIndicatorColor: Colors.amber,
-                    bottomActions: [
-                      CurrentPosition(),
-                      ProgressBar(
-                        isExpanded: true,
-                        colors: const ProgressBarColors(
-                          playedColor: Colors.amber,
-                          handleColor: Colors.amberAccent,
-                        ),
-                      ),
-                      const PlaybackSpeedButton(),
-                      FullScreenButton(),
-                    ],
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Chewie(
+                    controller: controller.chewieController,
                   ),
-                  builder: (context, player) {
-                    return player;
-                  },
                 ),
               ),
             ),
@@ -243,7 +228,20 @@ class ExampleItem extends StatelessWidget {
 
   Widget _buildTiles(Example example) {
     if (example.examples.isEmpty) {
-      return ListTile(title: Text(example.title));
+      return ListTile(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(example.title),
+            InkWell(
+              onTap: (){
+                Get.toNamed(AppRoutes.lessonPage);
+              },
+              child: Icon(Icons.play_circle_outline_outlined),
+            ),
+          ],
+        ),
+      );
     }
     return ExpansionTile(
       key: PageStorageKey<Example>(example),

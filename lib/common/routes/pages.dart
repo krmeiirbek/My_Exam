@@ -10,6 +10,7 @@ import '../../pages/home/main/course_details/index.dart';
 import '../../pages/home/main/index.dart';
 import '../../pages/home/leaderboard/index.dart';
 import '../../pages/home/main/subject_page/index.dart';
+import '../../pages/home/main/lesson_page/index.dart';
 import '../../pages/home/quiz/index.dart';
 import '../../pages/home/news/index.dart';
 import '../../pages/home/profile/index.dart';
@@ -68,6 +69,11 @@ class AppPages {
       name: AppRoutes.subjectPage,
       page: () => const SubjectPage(),
       binding: SubjectPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.lessonPage,
+      page: () => const LessonPage(),
+      binding: LessonPageBinding(),
     ),
   ];
 }

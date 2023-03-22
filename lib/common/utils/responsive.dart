@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../global.dart';
+
 class Responsive extends StatelessWidget {
   final Widget smallMobile;
   final Widget mobile;
@@ -12,22 +14,11 @@ class Responsive extends StatelessWidget {
     required this.tablet,
   }) : super(key: key);
 
-  static bool isSmallMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width < 385;
-
-  static bool isMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width >= 385 &&
-      MediaQuery.of(context).size.width < 576;
-
-  static bool isTablet(BuildContext context) =>
-      MediaQuery.of(context).size.width > 576;
-
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    if (size.width > 576) {
+    if (Global.isTablet()) {
       return tablet;
-    } else if (size.width > 385) {
+    } else if (Global.isMobile()) {
       return mobile;
     } else {
       return smallMobile;

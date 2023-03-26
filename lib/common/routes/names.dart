@@ -8,4 +8,6 @@ class AppRoutes {
   static const subjectPage = '/home/main/subject_page';
   static const courseDetails = '/home/main/course_details';
   static const lessonPage = '/home/main/lesson_page';
+  static const testPage = '/home/quiz/test_page';
+  static const rulesPage = '/home/quiz/rules_page';
 }

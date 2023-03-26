@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_exam/common/values/custom_text_styles.dart';
 
-import '../../../../../common/routes/routes.dart';
 import '../../../../../common/values/values.dart';
 import '../controller.dart';
 
@@ -24,10 +23,10 @@ class StandardScreen extends GetView<CourseDetailsController> {
                     onTap: () {
                       Get.back(result: false);
                     },
-                    child: Icon(Icons.share)),
-                SizedBox(width: 20),
-                Icon(Icons.shopping_cart_outlined),
-                SizedBox(width: 10),
+                    child: const Icon(Icons.share)),
+                const SizedBox(width: 20),
+                const Icon(Icons.shopping_cart_outlined),
+                const SizedBox(width: 10),
               ],
             ),
             SliverToBoxAdapter(
@@ -43,20 +42,20 @@ class StandardScreen extends GetView<CourseDetailsController> {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Қазақстан тарихы",
                       style: title2,
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       "Сен қызыққа толы ежелгі тарих әлемінің қойнауында жүргендей әсер алып, алғашқы адамдардың дамуы жөнінде мағлұмат аласың.",
                       style: subtitle2.copyWith(fontWeight: FontWeight.w300),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       'Авторы: Молдадосова Алтынай',
                       style: subtitle2.copyWith(
@@ -73,11 +72,11 @@ class StandardScreen extends GetView<CourseDetailsController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "9999,99 KZT",
                       style: title1,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     InkWell(
@@ -112,18 +111,18 @@ class StandardScreen extends GetView<CourseDetailsController> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) => Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     left: 20,
                     right: 20,
                     bottom: 10,
                   ),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.verified,
                         color: Colors.green,
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Text(
                         'Писать простые программы на Python 3',
                         style: subtitle2.copyWith(color: Colors.black54),
@@ -144,7 +143,7 @@ class StandardScreen extends GetView<CourseDetailsController> {
                       'Оқу үрдісі',
                       style: title3.copyWith(color: Colors.black),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       '19 тарау * 129 сабақ * 42 cағ 35 мин сабақтың ұзақтылығы',
                       style: bodyText2.copyWith(fontSize: 14),
@@ -159,7 +158,7 @@ class StandardScreen extends GetView<CourseDetailsController> {
                 childCount: data.length,
               ),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: SizedBox(
                 height: 20,
               ),
@@ -217,8 +216,11 @@ final List<Example> data = [
   ),
 ];
 
-class ExampleItem extends StatelessWidget {
-  const ExampleItem({Key? key, required this.example}) : super(key: key);
+class ExampleItem extends GetView<CourseDetailsController> {
+  const ExampleItem({
+    Key? key,
+    required this.example,
+  }) : super(key: key);
   final Example example;
 
   @override
@@ -234,10 +236,8 @@ class ExampleItem extends StatelessWidget {
           children: [
             Text(example.title),
             InkWell(
-              onTap: (){
-                Get.toNamed(AppRoutes.lessonPage);
-              },
-              child: Icon(Icons.play_circle_outline_outlined),
+              onTap: controller.goToLessonPage,
+              child: const Icon(Icons.play_circle_outline_outlined),
             ),
           ],
         ),

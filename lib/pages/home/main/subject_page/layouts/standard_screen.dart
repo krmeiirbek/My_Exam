@@ -14,7 +14,7 @@ class StandardScreen extends GetView<SubjectPageController> {
       appBar: AppBar(
         title: const Text(
           "Қазақстан тарихы",
-          style: TextStyle(color: Colors.white, fontSize: 18),
+          style: TextStyle(color: Colors.black87, fontSize: 18),
         ),
         leading: InkWell(
           onTap: () {
@@ -22,21 +22,11 @@ class StandardScreen extends GetView<SubjectPageController> {
           },
           child: const Icon(
             Icons.arrow_back,
-            color: Colors.white,
-          ),
-        ),
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 243, 173, 61),
-                Color.fromARGB(255, 246, 195, 92),
-              ],
-            ),
+            color: Colors.black87,
           ),
         ),
         actions: [
-          Image.asset('assets/images/ТАРИХ.png'),
+          Image.asset('assets/images/15.png'),
         ],
       ),
       body: CustomScrollView(

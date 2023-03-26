@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../../../common/routes/routes.dart';
 import 'state.dart';
 
 class CourseDetailsController extends GetxController {
@@ -32,6 +33,11 @@ class CourseDetailsController extends GetxController {
         ]
     );
     super.onInit();
+  }
+
+  void goToLessonPage() {
+    _videoPlayerController.pause();
+    Get.toNamed(AppRoutes.lessonPage);
   }
 
   @override

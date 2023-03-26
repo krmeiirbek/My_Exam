@@ -14,6 +14,8 @@ import '../../pages/home/main/lesson_page/index.dart';
 import '../../pages/home/quiz/index.dart';
 import '../../pages/home/news/index.dart';
 import '../../pages/home/profile/index.dart';
+import '../../pages/home/quiz/rules_page/index.dart';
+import '../../pages/home/quiz/test_page/index.dart';
 import '../middlewares/middlewares.dart';
 import 'names.dart';
 
@@ -74,6 +76,16 @@ class AppPages {
       name: AppRoutes.lessonPage,
       page: () => const LessonPage(),
       binding: LessonPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.testPage,
+      page: () => const TestPage(),
+      binding: TestPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.rulesPage,
+      page: () => const RulesPage(),
+      binding: RulesPageBinding(),
     ),
   ];
 }

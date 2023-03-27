@@ -8,67 +8,67 @@ class QuizState {
   final subjects = [
     Subject(
       name: "Қазақстан тарихы",
-      imageUrl: "assets/images/15.png",
+      imageUrl: "assets/images/Қазақстан тарихы.png",
     ),
     Subject(
       name: "Оқу сауаттылық",
-      imageUrl: "assets/images/11.png",
+      imageUrl: "assets/images/Оқу сауаттылық.png",
     ),
     Subject(
       name: "Математикалық сауаттылық",
-      imageUrl: "assets/images/7.png",
+      imageUrl: "assets/images/Математикалық сауаттылық.png",
     ),
     Subject(
       name: "Математика",
-      imageUrl: "assets/images/13.png",
+      imageUrl: "assets/images/Математика.png",
     ),
     Subject(
       name: "Физика",
-      imageUrl: "assets/images/9.png",
+      imageUrl: "assets/images/Физика.png",
     ),
     Subject(
       name: "Информатика",
-      imageUrl: "assets/images/4.png",
+      imageUrl: "assets/images/Информатика.png",
     ),
     Subject(
       name: "География",
-      imageUrl: "assets/images/2.png",
+      imageUrl: "assets/images/География.png",
     ),
     Subject(
       name: "Биология",
-      imageUrl: "assets/images/14.png",
+      imageUrl: "assets/images/Биология.png",
     ),
     Subject(
       name: "Химия",
-      imageUrl: "assets/images/8.png",
+      imageUrl: "assets/images/Химия.png",
     ),
     Subject(
       name: "Дүниежүзі тарихы",
-      imageUrl: "assets/images/3.png",
+      imageUrl: "assets/images/Дүниежүзі тарихы.png",
     ),
     Subject(
       name: "Адам. Қоғам. Құқық",
-      imageUrl: "assets/images/1.png",
+      imageUrl: "assets/images/Адам. Қоғам. Құқық.png",
     ),
     Subject(
       name: "Ағылшын тілі",
-      imageUrl: "assets/images/16.png",
+      imageUrl: "assets/images/Ағылшын тілі.png",
     ),
     Subject(
       name: "Қазақ әдебиеті",
-      imageUrl: "assets/images/6.png",
+      imageUrl: "assets/images/Қазақ әдебиеті.png",
     ),
     Subject(
       name: "Қазақ тілі",
-      imageUrl: "assets/images/5.png",
+      imageUrl: "assets/images/Қазақ тілі.png",
     ),
     Subject(
       name: "Орыс әдебиеті",
-      imageUrl: "assets/images/10.png",
+      imageUrl: "assets/images/Орыс әдебиеті.png",
     ),
     Subject(
       name: "Орыс тілі",
-      imageUrl: "assets/images/12.png",
+      imageUrl: "assets/images/Орыс тілі.png",
     ),
   ];
 
@@ -77,163 +77,163 @@ class QuizState {
   final subjectsComplete = <Subject, List<Subject>>{
     Subject(
       name: "Математика",
-      imageUrl: "assets/images/13.png",
+      imageUrl: "assets/images/Математика.png",
     ): [
       Subject(
         name: "География",
-        imageUrl: "assets/images/2.png",
+        imageUrl: "assets/images/География.png",
       ),
       Subject(
         name: "Физика",
-        imageUrl: "assets/images/9.png",
+        imageUrl: "assets/images/Физика.png",
       ),
       Subject(
         name: "Информатика",
-        imageUrl: "assets/images/4.png",
+        imageUrl: "assets/images/Информатика.png",
       ),
     ],
     Subject(
       name: "Физика",
-      imageUrl: "assets/images/9.png",
+      imageUrl: "assets/images/Физика.png",
     ): [
       Subject(
         name: "Химия",
-        imageUrl: "assets/images/8.png",
+        imageUrl: "assets/images/Химия.png",
       ),
       Subject(
         name: "Математика",
-        imageUrl: "assets/images/13.png",
+        imageUrl: "assets/images/Математика.png",
       ),
     ],
     Subject(
       name: "География",
-      imageUrl: "assets/images/2.png",
+      imageUrl: "assets/images/География.png",
     ): [
       Subject(
         name: "Дүниежүзі тарихы",
-        imageUrl: "assets/images/3.png",
+        imageUrl: "assets/images/Дүниежүзі тарихы.png",
       ),
       Subject(
         name: "Ағылшын тілі",
-        imageUrl: "assets/images/16.png",
+        imageUrl: "assets/images/Ағылшын тілі.png",
       ),
       Subject(
         name: "Математика",
-        imageUrl: "assets/images/13.png",
+        imageUrl: "assets/images/Математика.png",
       ),
       Subject(
         name: "Биология",
-        imageUrl: "assets/images/14.png",
+        imageUrl: "assets/images/Биология.png",
       ),
     ],
     Subject(
       name: "Биология",
-      imageUrl: "assets/images/14.png",
+      imageUrl: "assets/images/Биология.png",
     ): [
       Subject(
         name: "География",
-        imageUrl: "assets/images/2.png",
+        imageUrl: "assets/images/География.png",
       ),
       Subject(
         name: "Химия",
-        imageUrl: "assets/images/8.png",
+        imageUrl: "assets/images/Химия.png",
       ),
     ],
     Subject(
       name: "Химия",
-      imageUrl: "assets/images/8.png",
+      imageUrl: "assets/images/Химия.png",
     ): [
       Subject(
         name: "Физика",
-        imageUrl: "assets/images/9.png",
+        imageUrl: "assets/images/Физика.png",
       ),
       Subject(
         name: "Биология",
-        imageUrl: "assets/images/14.png",
+        imageUrl: "assets/images/Биология.png",
       ),
     ],
     Subject(
       name: "Информатика",
-      imageUrl: "assets/images/4.png",
+      imageUrl: "assets/images/Информатика.png",
     ): [
       Subject(
         name: "Математика",
-        imageUrl: "assets/images/13.png",
+        imageUrl: "assets/images/Математика.png",
       ),
     ],
     Subject(
       name: "Дүниежүзі тарихы",
-      imageUrl: "assets/images/3.png",
+      imageUrl: "assets/images/Дүниежүзі тарихы.png",
     ): [
       Subject(
         name: "Адам. Қоғам. Құқық",
-        imageUrl: "assets/images/1.png",
+        imageUrl: "assets/images/Адам. Қоғам. Құқық.png",
       ),
       Subject(
         name: "Ағылшын тілі",
-        imageUrl: "assets/images/16.png",
+        imageUrl: "assets/images/Ағылшын тілі.png",
       ),
       Subject(
         name: "География",
-        imageUrl: "assets/images/2.png",
+        imageUrl: "assets/images/География.png",
       ),
     ],
     Subject(
       name: "Адам. Қоғам. Құқық",
-      imageUrl: "assets/images/1.png",
+      imageUrl: "assets/images/Адам. Қоғам. Құқық.png",
     ): [
       Subject(
         name: "Дүниежүзі тарихы",
-        imageUrl: "assets/images/3.png",
+        imageUrl: "assets/images/Дүниежүзі тарихы.png",
       ),
     ],
     Subject(
       name: "Қазақ тілі",
-      imageUrl: "assets/images/5.png",
+      imageUrl: "assets/images/Қазақ тілі.png",
     ): [
       Subject(
         name: "Қазақ әдебиеті",
-        imageUrl: "assets/images/6.png",
+        imageUrl: "assets/images/Қазақ әдебиеті.png",
       ),
     ],
     Subject(
       name: "Қазақ әдебиеті",
-      imageUrl: "assets/images/6.png",
+      imageUrl: "assets/images/Қазақ әдебиеті.png",
     ): [
       Subject(
         name: "Қазақ тілі",
-        imageUrl: "assets/images/5.png",
+        imageUrl: "assets/images/Қазақ тілі.png",
       ),
     ],
     Subject(
       name: "Орыс тілі",
-      imageUrl: "assets/images/12.png",
+      imageUrl: "assets/images/Орыс тілі.png",
     ): [
       Subject(
         name: "Орыс әдебиеті",
-        imageUrl: "assets/images/10.png",
+        imageUrl: "assets/images/Орыс әдебиеті.png",
       ),
     ],
     Subject(
       name: "Орыс әдебиеті",
-      imageUrl: "assets/images/10.png",
+      imageUrl: "assets/images/Орыс әдебиеті.png",
     ): [
       Subject(
         name: "Орыс тілі",
-        imageUrl: "assets/images/12.png",
+        imageUrl: "assets/images/Орыс тілі.png",
       ),
     ],
     Subject(
       name: "Ағылшын тілі",
-      imageUrl: "assets/images/16.png",
+      imageUrl: "assets/images/Ағылшын тілі.png",
     ): [
       Subject(
         name: "Дүниежүзі тарихы",
-        imageUrl: "assets/images/3.png",
+        imageUrl: "assets/images/Дүниежүзі тарихы.png",
       ),
       Subject(
         name: "География",
-        imageUrl: "assets/images/2.png",
+        imageUrl: "assets/images/География.png",
       ),
     ],
   };

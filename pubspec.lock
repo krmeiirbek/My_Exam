@@ -182,6 +182,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_math_fork:
+    dependency: transitive
+    description:
+      name: flutter_math_fork
+      sha256: fa511bdcb91fc35eac155ec5790883886dd9de6572fea549f1ad4660ef6804e9
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.3+1"
   flutter_native_splash:
     dependency: "direct main"
     description:
@@ -589,6 +597,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.16"
+  tex:
+    dependency: "direct main"
+    description:
+      name: tex
+      sha256: be4232e054cb7be086c0509c3682e673536a6eb89cb0cd48cb4d9b4000725f52
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.3"
+  tex_text:
+    dependency: "direct main"
+    description:
+      name: tex_text
+      sha256: "33bd11ec8eb58ca9d32919a71629ab80d704405da1a6e03d48ec3f6a266f1267"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.4"
+  tuple:
+    dependency: transitive
+    description:
+      name: tuple
+      sha256: "0ea99cd2f9352b2586583ab2ce6489d1f95a5f6de6fb9492faaf97ae2060f0aa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   typed_data:
     dependency: transitive
     description:
@@ -766,5 +798,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.18.1 <3.0.0"
+  dart: ">=2.18.6 <3.0.0"
   flutter: ">=3.3.0"

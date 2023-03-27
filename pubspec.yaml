@@ -38,6 +38,8 @@ dependencies:
   flutter_tex: ^4.0.3+4
   video_player: ^2.6.0
   chewie: ^1.4.0
+  tex: ^0.4.3
+  tex_text: ^0.1.4
 
 
 dev_dependencies:

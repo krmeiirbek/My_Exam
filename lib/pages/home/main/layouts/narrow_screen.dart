@@ -278,7 +278,7 @@ class NarrowScreen extends GetView<MainController> {
             ],
           ),
           subjectName: "Дүние жүзі тарихы",
-          subjectImageUrl: "assets/images/ДЖТ.png",
+          subjectImageUrl: "assets/images/Дүниежүзі тарихы.png",
         ),
         _buildSubjectItem(
           gradient: const LinearGradient(
@@ -288,7 +288,7 @@ class NarrowScreen extends GetView<MainController> {
             ],
           ),
           subjectName: "Адам. Қоғам. Құқық",
-          subjectImageUrl: "assets/images/АҚҚ.png",
+          subjectImageUrl: "assets/images/Адам. Қоғам. Құқық.png",
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 30)),
       ],

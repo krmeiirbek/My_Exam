@@ -12,11 +12,11 @@ class TestPageController extends GetxController {
   void onInit() {
     state.isLoading.value = true;
     state.subjects.addAll([
-      Subject(name: "Қазақстан тарихы", questions: state.questions2),
-      Subject(name: "Оқу сауаттылық", questions: state.questions2),
-      Subject(name: "Математикалық сауаттылық", questions: state.questions2),
-      Subject(name: "Химия", questions: state.questions),
-      Subject(name: "Биология", questions: state.questions),
+      SubjectQuiz(name: "Қазақстан тарихы", questions: state.questions2),
+      SubjectQuiz(name: "Оқу сауаттылық", questions: state.questions2),
+      SubjectQuiz(name: "Математикалық сауаттылық", questions: state.questions2),
+      SubjectQuiz(name: "Химия", questions: state.questions),
+      SubjectQuiz(name: "Биология", questions: state.questions),
     ]);
     state.isLoading.value = false;
     super.onInit();
@@ -24,7 +24,7 @@ class TestPageController extends GetxController {
 
   void nextQuestion() {
     if (state.subjects.length != state.subjectId.value + 1) {
-      if (state.subjects[state.subjectId.value].questions?.length !=
+      if (state.subjects[state.subjectId.value].questions.length !=
           state.questionId.value + 1) {
         state.questionId.value++;
       } else {
@@ -32,11 +32,11 @@ class TestPageController extends GetxController {
         state.questionId.value = 0;
       }
     } else {
-      if (state.subjects[state.subjectId.value].questions?.length !=
+      if (state.subjects[state.subjectId.value].questions.length !=
           state.questionId.value + 1) {
         state.questionId.value++;
       } else {
-        print("in the begin");
+        print("end");
       }
     }
   }
@@ -48,13 +48,13 @@ class TestPageController extends GetxController {
       } else {
         state.subjectId.value--;
         state.questionId.value =
-            state.subjects[state.subjectId.value].questions!.length - 1;
+            state.subjects[state.subjectId.value].questions.length - 1;
       }
     } else {
       if (0 != state.questionId.value) {
         state.questionId.value--;
       } else {
-        print("the end");
+        print("begin");
       }
     }
   }
@@ -62,11 +62,23 @@ class TestPageController extends GetxController {
   void changeSubject(int index) {
     state.subjectId.value = index;
     state.questionId.value = 0;
-    update();
   }
 
   void changeQuestion(int index) {
     state.questionId.value = index;
-    update();
+  }
+
+  void selectOption(Option option) {
+    if(state.subjects[state.subjectId.value].questions[state.questionId.value].selectedOptions.contains(option)){
+      state.subjects[state.subjectId.value].questions[state.questionId.value].selectedOptions.remove(option);
+    }else{
+      if(state.subjects[state.subjectId.value].questions[state.questionId.value].oneAnswer){
+        state.subjects[state.subjectId.value].questions[state.questionId.value].selectedOptions.clear();
+        state.subjects[state.subjectId.value].questions[state.questionId.value].selectedOptions.add(option);
+      }
+      else{
+        state.subjects[state.subjectId.value].questions[state.questionId.value].selectedOptions.add(option);
+      }
+    }
   }
 }

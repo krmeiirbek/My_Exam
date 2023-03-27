@@ -4,9 +4,14 @@ import 'package:my_exam/common/entities/entities.dart';
 class TestPageState {
   final isLoading = false.obs;
   final isComplete = true.obs;
+  final List<SubjectQuiz> subjects = [];
+  final time = RxnInt(4);
+  final questionId = 0.obs;
+  final subjectId = 0.obs;
+
   final questions = [
     QuestionItem(
-      text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
+      text: r"""Күшті электролиттердің диссоцнациялану дәрежесі $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$""",
       options: [
         Option(code: 'A', text: '∞≥3%', isCorrect: false),
         Option(code: 'B', text: '∞≤30%', isCorrect: false),
@@ -390,11 +395,6 @@ class TestPageState {
       ],
     ),
   ];
-  final List<Subject> subjects = [];
-  final time = RxnInt(4);
-  final questionId = 0.obs;
-  final subjectId = 0.obs;
-
   final questions2 = [
     QuestionItem(
       text: 'Күшті электролиттердің диссоцнациялану дәрежесі',

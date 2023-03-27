@@ -1,17 +1,18 @@
+import 'package:get/get.dart';
+
 class QuestionItem {
   final String text;
   final String? text2;
   final List<Option> options;
   bool oneAnswer;
-  List<Option>? selectedOptions;
+  RxList<Option> selectedOptions;
 
   QuestionItem({
     required this.text,
     this.text2,
     required this.options,
     this.oneAnswer = true,
-    this.selectedOptions,
-  });
+  }) : selectedOptions = <Option>[].obs;
 }
 
 class Option {

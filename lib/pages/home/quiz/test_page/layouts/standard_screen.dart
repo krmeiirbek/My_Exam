@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tex_text/tex_text.dart';
 
 import '../controller.dart';
 
@@ -77,9 +78,7 @@ class StandardScreen extends GetView<TestPageController> {
                     scrollDirection: Axis.horizontal,
                   ),
                 ),
-                const Divider(
-                  thickness: 1.5,
-                ),
+                const Divider(thickness: 1.5),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 10),
@@ -95,7 +94,7 @@ class StandardScreen extends GetView<TestPageController> {
                       ),
                       Spacer(),
                       Text(
-                        "Меню",
+                        "Құралдар",
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.w700,
@@ -121,10 +120,26 @@ class StandardScreen extends GetView<TestPageController> {
                               borderRadius: BorderRadius.circular(5),
                               color: controller.state.questionId.value == index
                                   ? Colors.blue
-                                  : Colors.transparent,
+                                  : controller
+                                          .state
+                                          .subjects[
+                                              controller.state.subjectId.value]
+                                          .questions[index]
+                                          .selectedOptions
+                                          .isNotEmpty
+                                      ? Colors.green
+                                      : Colors.transparent,
                               border: controller.state.questionId.value == index
                                   ? null
-                                  : Border.all(color: Colors.grey),
+                                  : controller
+                                          .state
+                                          .subjects[
+                                              controller.state.subjectId.value]
+                                          .questions[index]
+                                          .selectedOptions
+                                          .isNotEmpty
+                                      ? null
+                                      : Border.all(color: Colors.grey),
                             ),
                             child: Center(
                               child: Text(
@@ -135,10 +150,21 @@ class StandardScreen extends GetView<TestPageController> {
                                             fontWeight: FontWeight.w600,
                                             color: Colors.white,
                                           )
-                                        : const TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.grey,
-                                          ),
+                                        : controller
+                                                .state
+                                                .subjects[controller
+                                                    .state.subjectId.value]
+                                                .questions[index]
+                                                .selectedOptions
+                                                .isNotEmpty
+                                            ? const TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                              )
+                                            : const TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey,
+                                              ),
                               ),
                             ),
                           ),
@@ -148,12 +174,86 @@ class StandardScreen extends GetView<TestPageController> {
                     itemCount: controller
                         .state
                         .subjects[controller.state.subjectId.value]
-                        .questions!
+                        .questions
                         .length,
                     scrollDirection: Axis.horizontal,
                   ),
                 ),
-                Expanded(child: SizedBox()),
+                const SizedBox(height: 10),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (controller
+                                  .state
+                                  .subjects[controller.state.subjectId.value]
+                                  .questions[controller.state.questionId.value]
+                                  .text2 !=
+                              null)
+                            TexText(
+                              '${controller.state.subjects[controller.state.subjectId.value].questions[controller.state.questionId.value].text2}',
+                              style: const TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          const SizedBox(height: 10),
+                          TexText(
+                            '${controller.state.questionId.value + 1}. ${controller.state.subjects[controller.state.subjectId.value].questions[controller.state.questionId.value].text}',
+                            style: const TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          ...controller
+                              .state
+                              .subjects[controller.state.subjectId.value]
+                              .questions[controller.state.questionId.value]
+                              .options
+                              .map(
+                            (option) => Obx(() => InkWell(
+                                  onTap: () {
+                                    controller.selectOption(option);
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8,
+                                      horizontal: 10,
+                                    ),
+                                    margin: const EdgeInsets.only(top: 10),
+                                    decoration: BoxDecoration(
+                                      color: controller
+                                              .state
+                                              .subjects[controller
+                                                  .state.subjectId.value]
+                                              .questions[controller
+                                                  .state.questionId.value]
+                                              .selectedOptions
+                                              .contains(option)
+                                          ? Colors.blue
+                                          : null,
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(color: Colors.blue),
+                                    ),
+                                    child: TexText(
+                                      '${option.code}. ${option.text}',
+                                      style: const TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -203,7 +303,8 @@ class StandardScreen extends GetView<TestPageController> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
-                              Text("Келесі",
+                              Text(
+                                "Келесі",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 14,
@@ -229,76 +330,3 @@ class StandardScreen extends GetView<TestPageController> {
         ));
   }
 }
-
-/* Column(
-            children: [
-              TeXView(
-                child: TeXViewColumn(
-                  children: [
-                    TeXViewDocument(
-                      controller
-                          .state.questions[controller.questionId.value].text,
-                      style: const TeXViewStyle(
-                          textAlign: TeXViewTextAlign.center),
-                    ),
-                    controller.state.questions[controller.questionId.value]
-                            .oneAnswer
-                        ? TeXViewGroup(
-                            children: controller.state
-                                .questions[controller.questionId.value].options
-                                .map(
-                                  (Option option) => TeXViewGroupItem(
-                                    rippleEffect: false,
-                                    id: option.code,
-                                    child: TeXViewDocument(
-                                      '${option.code}) ${option.text}',
-                                      style: const TeXViewStyle(
-                                        padding: TeXViewPadding.all(10),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            selectedItemStyle: TeXViewStyle(
-                                borderRadius: const TeXViewBorderRadius.all(10),
-                                border: TeXViewBorder.all(
-                                    TeXViewBorderDecoration(
-                                        borderWidth: 3,
-                                        borderColor: Colors.green[900])),
-                                margin: const TeXViewMargin.all(10)),
-                            normalItemStyle: const TeXViewStyle(
-                                margin: TeXViewMargin.all(10)),
-                            onTap: (String id) {},
-                          )
-                        : TeXViewGroup.multipleSelection(
-                            children: controller.state
-                                .questions[controller.questionId.value].options
-                                .map(
-                                  (Option option) => TeXViewGroupItem(
-                                    rippleEffect: false,
-                                    id: option.code,
-                                    child: TeXViewDocument(
-                                      '${option.code}) ${option.text}',
-                                      style: const TeXViewStyle(
-                                        padding: TeXViewPadding.all(10),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            selectedItemStyle: TeXViewStyle(
-                                borderRadius: const TeXViewBorderRadius.all(10),
-                                border: TeXViewBorder.all(
-                                    TeXViewBorderDecoration(
-                                        borderWidth: 3,
-                                        borderColor: Colors.green[900])),
-                                margin: const TeXViewMargin.all(10)),
-                            normalItemStyle: const TeXViewStyle(
-                                margin: TeXViewMargin.all(10)),
-                            onItemsSelection: (List<String> ids) {},
-                          ),
-                  ],
-                ),
-              ),
-            ],
-          )*/

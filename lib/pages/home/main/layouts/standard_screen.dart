@@ -77,7 +77,7 @@ class StandardScreen extends GetView<MainController> {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    "Арнайы ұсыныстар",
+                                    "Ұсыныстар",
                                     textAlign: TextAlign.center,
                                     style: title3.copyWith(
                                       color: controller.state.isMainPage.value ==

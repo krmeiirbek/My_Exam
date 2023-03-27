@@ -162,7 +162,7 @@ class StandardScreen extends GetView<QuizController> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
-                          image: AssetImage("assets/images/15.png"),
+                          image: AssetImage("assets/images/Қазақстан тарихы.png"),
                           fit: BoxFit.cover,
                           alignment: Alignment.center,
                         ),
@@ -201,7 +201,7 @@ class StandardScreen extends GetView<QuizController> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
-                          image: AssetImage("assets/images/11.png"),
+                          image: AssetImage("assets/images/Оқу сауаттылық.png"),
                           fit: BoxFit.cover,
                           alignment: Alignment.center,
                         ),
@@ -241,7 +241,7 @@ class StandardScreen extends GetView<QuizController> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
-                          image: AssetImage("assets/images/7.png"),
+                          image: AssetImage("assets/images/Математикалық сауаттылық.png"),
                           fit: BoxFit.cover,
                           alignment: Alignment.center,
                         ),

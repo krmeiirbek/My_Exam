@@ -12,11 +12,11 @@ class TestPageController extends GetxController {
   void onInit() {
     state.isLoading.value = true;
     state.subjects.addAll([
-      SubjectQuiz(name: "Қазақстан тарихы", questions: state.questions2),
-      SubjectQuiz(name: "Оқу сауаттылық", questions: state.questions2),
+      SubjectQuiz(name: "Қазақстан тарихы", questions: state.questions4),
+      SubjectQuiz(name: "Оқу сауаттылық", questions: state.questions3),
       SubjectQuiz(name: "Математикалық сауаттылық", questions: state.questions2),
       SubjectQuiz(name: "Химия", questions: state.questions),
-      SubjectQuiz(name: "Биология", questions: state.questions),
+      SubjectQuiz(name: "Биология", questions: state.questions1),
     ]);
     state.isLoading.value = false;
     super.onInit();
@@ -80,5 +80,11 @@ class TestPageController extends GetxController {
         state.subjects[state.subjectId.value].questions[state.questionId.value].selectedOptions.add(option);
       }
     }
+  }
+
+  void goQuestionFromMenu(SubjectQuiz subject, QuestionItem question){
+    state.menuDialog.value = false;
+    changeSubject(state.subjects.indexOf(subject));
+    changeQuestion(state.subjects[state.subjectId.value].questions.indexOf(question));
   }
 }

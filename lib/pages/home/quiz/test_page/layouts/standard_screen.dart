@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_simple_calculator/flutter_simple_calculator.dart';
 import 'package:get/get.dart';
 import 'package:my_exam/common/values/custom_text_styles.dart';
 import 'package:tex_text/tex_text.dart';
 
 import '../controller.dart';
+import '../state.dart';
 
 class StandardScreen extends GetView<TestPageController> {
   const StandardScreen({Key? key}) : super(key: key);
@@ -16,6 +18,7 @@ class StandardScreen extends GetView<TestPageController> {
               SafeArea(
                 child: Column(
                   children: [
+                    const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Row(
@@ -346,6 +349,7 @@ class StandardScreen extends GetView<TestPageController> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),
@@ -376,169 +380,399 @@ class StandardScreen extends GetView<TestPageController> {
                           child: Column(
                             children: [
                               const SizedBox(height: 20),
-                              const Text('Menu',style: title3,),
-                              const SizedBox(height: 10),
-                              const Divider(thickness: 2,),
-                              SizedBox(
-                                height: 210,
-                                child: ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  padding: const EdgeInsets.only(left: 20),
-                                  children: controller.state.subjects.map((subjects) => Row(
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.none)
+                                const Text(
+                                  'Құралдар',
+                                  style: title3,
+                                ),
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.calculator)
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
+                                  child: Row(
                                     children: [
-                                      SizedBox(
-                                        width: 170,
-                                        height: 209,
-                                        child: Column(
-                                          children: [
-                                            SizedBox(
-                                              height: 40,
-                                                child: Center(child: Text(subjects.name,textAlign: TextAlign.center,)),
-                                            ),
-                                            Wrap(
-                                              spacing: 5,
-                                              runSpacing: 5,
-                                              children: subjects.questions.map((question) => InkWell(
-                                                onTap: (){
-                                                  controller.goQuestionFromMenu(subjects,question);
-                                                },
-                                                child: Container(
-                                                  height: 24,
-                                                  width: 24,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(5),
-                                                    color:
-                                                        question
-                                                        .selectedOptions
-                                                        .isNotEmpty
-                                                        ? Colors.green
-                                                        : Colors.transparent,
-                                                    border:question
-                                                        .selectedOptions
-                                                        .isNotEmpty
-                                                        ? null
-                                                        : Border.all(color: Colors.grey),
-                                                  ),
-                                                  child: Center(
-                                                    child: Text(
-                                                      '${subjects.questions.indexOf(question) + 1}',
-                                                      style: question
-                                                          .selectedOptions
-                                                          .isNotEmpty
-                                                          ? const TextStyle(
-                                                        fontWeight: FontWeight.w600,
-                                                        color: Colors.white,
-                                                      )
-                                                          : const TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Colors.grey,
+                                      InkWell(
+                                          onTap: () {
+                                            controller.state.menuDialogPage
+                                                .value = MenuDialogPage.none;
+                                          },
+                                          child: const Icon(
+                                              Icons.arrow_back_ios_outlined)),
+                                      const Expanded(
+                                          child: Center(
+                                              child: Text(
+                                        'Калькулятор',
+                                        style: title3,
+                                      ))),
+                                    ],
+                                  ),
+                                ),
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.mendeleev)
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
+                                  child: Row(
+                                    children: [
+                                      InkWell(
+                                          onTap: () {
+                                            controller.state.menuDialogPage
+                                                .value = MenuDialogPage.none;
+                                          },
+                                          child: const Icon(
+                                              Icons.arrow_back_ios_outlined)),
+                                      const Expanded(
+                                          child: Center(
+                                              child: Text(
+                                        'Менделеев кестесі',
+                                        style: title3,
+                                      ))),
+                                    ],
+                                  ),
+                                ),
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.solubility)
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
+                                  child: Row(
+                                    children: [
+                                      InkWell(
+                                          onTap: () {
+                                            controller.state.menuDialogPage
+                                                .value = MenuDialogPage.none;
+                                          },
+                                          child: const Icon(
+                                              Icons.arrow_back_ios_outlined)),
+                                      const Expanded(
+                                          child: Center(
+                                              child: Text(
+                                        'Ерігіштік кестесі',
+                                        style: title3,
+                                      ))),
+                                    ],
+                                  ),
+                                ),
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.foundAnError)
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
+                                  child: Row(
+                                    children: [
+                                      InkWell(
+                                          onTap: () {
+                                            controller.state.menuDialogPage
+                                                .value = MenuDialogPage.none;
+                                          },
+                                          child: const Icon(
+                                              Icons.arrow_back_ios_outlined)),
+                                      const Expanded(
+                                          child: Center(
+                                              child: Text(
+                                        'Қате таптыңыз ба?',
+                                        style: title3,
+                                      ))),
+                                    ],
+                                  ),
+                                ),
+                              const SizedBox(height: 10),
+                              const Divider(
+                                thickness: 2,
+                              ),
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.none) ...[
+                                SizedBox(
+                                  height: 210,
+                                  child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    padding: const EdgeInsets.only(left: 20),
+                                    children: controller.state.subjects
+                                        .map((subjects) => Row(
+                                              children: [
+                                                SizedBox(
+                                                  width: 170,
+                                                  height: 209,
+                                                  child: Column(
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 40,
+                                                        child: Center(
+                                                            child: Text(
+                                                          subjects.name,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                        )),
                                                       ),
-                                                    ),
+                                                      Wrap(
+                                                        spacing: 5,
+                                                        runSpacing: 5,
+                                                        children:
+                                                            subjects.questions
+                                                                .map(
+                                                                  (question) =>
+                                                                      InkWell(
+                                                                    onTap: () {
+                                                                      controller.goQuestionFromMenu(
+                                                                          subjects,
+                                                                          question);
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          24,
+                                                                      width: 24,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5),
+                                                                        color: question.selectedOptions.isNotEmpty
+                                                                            ? Colors.green
+                                                                            : Colors.transparent,
+                                                                        border: question.selectedOptions.isNotEmpty
+                                                                            ? null
+                                                                            : Border.all(color: Colors.grey),
+                                                                      ),
+                                                                      child:
+                                                                          Center(
+                                                                        child:
+                                                                            Text(
+                                                                          '${subjects.questions.indexOf(question) + 1}',
+                                                                          style: question.selectedOptions.isNotEmpty
+                                                                              ? const TextStyle(
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                  color: Colors.white,
+                                                                                )
+                                                                              : const TextStyle(
+                                                                                  fontSize: 10,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  color: Colors.grey,
+                                                                                ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                                .toList(),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                              ),).toList(),
-                                            ),
-                                          ],
-                                        ),
+                                                const SizedBox(width: 30),
+                                              ],
+                                            ))
+                                        .toList(),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: InkWell(
+                                    onTap: () {
+                                      controller.state.menuDialogPage.value =
+                                          MenuDialogPage.calculator;
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: const Color.fromARGB(
+                                            255, 243, 243, 245),
                                       ),
-                                      const SizedBox(width: 30),
-                                    ],
-                                  )).toList(),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                                child: Container(
-                                  height: 50,
-                                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: const Color.fromARGB(255, 243, 243, 245),
-                                  ),
-                                  child: Row(
-                                    children: const [
-                                      Icon(Icons.calculate_outlined,color: Colors.blue,size: 30,),
-                                      SizedBox(width: 20),
-                                      Expanded(child: Text('Калькулятор',style: TextStyle(
-                                        color: Colors.black54,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16
-                                      ),)),
-                                      Icon(Icons.arrow_forward_ios_outlined,color: Colors.black54,size: 17,),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                                child: Container(
-                                  height: 50,
-                                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: const Color.fromARGB(255, 243, 243, 245),
-                                  ),
-                                  child: Row(
-                                    children: const [
-                                      Icon(Icons.view_column_outlined,color: Colors.blue,size: 30,),
-                                      SizedBox(width: 20),
-                                      Expanded(child: Text('Менделеев кестесі',style: TextStyle(
-                                        color: Colors.black54,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16
-                                      ),)),
-                                      Icon(Icons.arrow_forward_ios_outlined,color: Colors.black54,size: 17,),
-                                    ],
+                                      child: Row(
+                                        children: const [
+                                          Icon(
+                                            Icons.calculate_outlined,
+                                            color: Colors.blue,
+                                            size: 30,
+                                          ),
+                                          SizedBox(width: 20),
+                                          Expanded(
+                                              child: Text(
+                                            'Калькулятор',
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 16),
+                                          )),
+                                          Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            color: Colors.black54,
+                                            size: 17,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                                child: Container(
-                                  height: 50,
-                                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: const Color.fromARGB(255, 243, 243, 245),
-                                  ),
-                                  child: Row(
-                                    children: const [
-                                      Icon(Icons.waves_sharp,color: Colors.blue,size: 30,),
-                                      SizedBox(width: 20),
-                                      Expanded(child: Text('Ерігіштік кестесі',style: TextStyle(
-                                          color: Colors.black54,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16
-                                      ),)),
-                                      Icon(Icons.arrow_forward_ios_outlined,color: Colors.black54,size: 17,),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                                child: Container(
-                                  height: 50,
-                                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: const Color.fromARGB(255, 243, 243, 245),
-                                  ),
-                                  child: Row(
-                                    children: const [
-                                      Icon(Icons.flag,color: Colors.blue,size: 30,),
-                                      SizedBox(width: 20),
-                                      Expanded(child: Text('Қате таптыңыз ба?',style: TextStyle(
-                                          color: Colors.black54,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16
-                                      ),)),
-                                      Icon(Icons.arrow_forward_ios_outlined,color: Colors.black54,size: 17,),
-                                    ],
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: InkWell(
+                                    onTap: () {
+                                      controller.state.menuDialogPage.value =
+                                          MenuDialogPage.mendeleev;
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: const Color.fromARGB(
+                                            255, 243, 243, 245),
+                                      ),
+                                      child: Row(
+                                        children: const [
+                                          Icon(
+                                            Icons.view_column_outlined,
+                                            color: Colors.blue,
+                                            size: 30,
+                                          ),
+                                          SizedBox(width: 20),
+                                          Expanded(
+                                              child: Text(
+                                            'Менделеев кестесі',
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 16),
+                                          )),
+                                          Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            color: Colors.black54,
+                                            size: 17,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: InkWell(
+                                    onTap: () {
+                                      controller.state.menuDialogPage.value =
+                                          MenuDialogPage.solubility;
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: const Color.fromARGB(
+                                            255, 243, 243, 245),
+                                      ),
+                                      child: Row(
+                                        children: const [
+                                          Icon(
+                                            Icons.waves_sharp,
+                                            color: Colors.blue,
+                                            size: 30,
+                                          ),
+                                          SizedBox(width: 20),
+                                          Expanded(
+                                              child: Text(
+                                            'Ерігіштік кестесі',
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 16),
+                                          )),
+                                          Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            color: Colors.black54,
+                                            size: 17,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: InkWell(
+                                    onTap: () {
+                                      controller.state.menuDialogPage.value =
+                                          MenuDialogPage.foundAnError;
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: const Color.fromARGB(
+                                            255, 243, 243, 245),
+                                      ),
+                                      child: Row(
+                                        children: const [
+                                          Icon(
+                                            Icons.flag,
+                                            color: Colors.blue,
+                                            size: 30,
+                                          ),
+                                          SizedBox(width: 20),
+                                          Expanded(
+                                              child: Text(
+                                            'Қате таптыңыз ба?',
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 16),
+                                          )),
+                                          Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            color: Colors.black54,
+                                            size: 17,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.calculator) ...[
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.60,
+                                  child: SimpleCalculator(
+                                    value:
+                                        controller.state.calcCurrentValue.value,
+                                    hideExpression: false,
+                                    hideSurroundingBorder: true,
+                                    autofocus: true,
+                                    onChanged: (key, value, expression) {
+                                      controller.state.calcCurrentValue.value =
+                                          value ?? 0;
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(height: 30),
+                              ],
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.mendeleev)
+                                ...[
+                                  Image.asset('assets/images/mendeleev.jpeg',fit: BoxFit.cover,),
+                                  const SizedBox(height: 30),
+                                ],
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.solubility)
+                                ...[
+                                  Image.asset('assets/images/solubility.jpg',fit: BoxFit.cover,),
+                                  const SizedBox(height: 30),
+                                ],
+                              if (controller.state.menuDialogPage.value ==
+                                  MenuDialogPage.foundAnError)
+                                ...[],
                             ],
                           ),
                         ),

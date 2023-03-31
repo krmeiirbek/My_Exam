@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/entities/entities.dart';
@@ -7,6 +8,7 @@ class TestPageController extends GetxController {
   TestPageController();
 
   final state = TestPageState();
+  final calcController = TextEditingController();
 
   @override
   void onInit() {
@@ -20,6 +22,12 @@ class TestPageController extends GetxController {
     ]);
     state.isLoading.value = false;
     super.onInit();
+  }
+
+  @override
+  void dispose() {
+    calcController.dispose();
+    super.dispose();
   }
 
   void nextQuestion() {
@@ -86,5 +94,9 @@ class TestPageController extends GetxController {
     state.menuDialog.value = false;
     changeSubject(state.subjects.indexOf(subject));
     changeQuestion(state.subjects[state.subjectId.value].questions.indexOf(question));
+  }
+
+  void calcButton(String code) {
+
   }
 }

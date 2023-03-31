@@ -5,10 +5,13 @@ class TestPageState {
   final isLoading = false.obs;
   final isComplete = true.obs;
   final menuDialog = false.obs;
+  final menuDialogPage = MenuDialogPage.none.obs;
   final List<SubjectQuiz> subjects = [];
   final time = RxnInt(4);
   final questionId = 0.obs;
   final subjectId = 0.obs;
+
+  final calcCurrentValue = 0.0.obs;
 
   final questions = [
     QuestionItem(
@@ -921,100 +924,8 @@ class TestPageState {
         Option(code: 'D', text: '∞≥30%', isCorrect: true),
       ],
     ),
-    QuestionItem(
-      text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
-    QuestionItem(
-      text:
-      'Берілген ерітінділері өзара әрекеттескенде тұнба түзеуін реакциялар\n1)CuSo',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
-    QuestionItem(
-      text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
-    QuestionItem(
-      text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
-    QuestionItem(
-      text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
   ];
   final questions3 = [
-    QuestionItem(
-      text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
-    QuestionItem(
-      text:
-      'Берілген ерітінділері өзара әрекеттескенде тұнба түзеуін реакциялар\n1)CuSo',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
-    QuestionItem(
-      text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
-    QuestionItem(
-      text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
-    QuestionItem(
-      text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
-      options: [
-        Option(code: 'A', text: '∞≥3%', isCorrect: false),
-        Option(code: 'B', text: '∞≤30%', isCorrect: false),
-        Option(code: 'C', text: '∞=3%', isCorrect: false),
-        Option(code: 'D', text: '∞≥30%', isCorrect: true),
-      ],
-    ),
     QuestionItem(
       text: 'Күшті электролиттердің диссоцнациялану дәрежесі',
       options: [
@@ -1340,4 +1251,12 @@ class TestPageState {
       ],
     ),
   ];
+}
+
+enum MenuDialogPage{
+  none,
+  calculator,
+  mendeleev,
+  solubility,
+  foundAnError,
 }

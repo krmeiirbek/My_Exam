@@ -10,12 +10,8 @@ class EmailVerifyPage extends GetView<EmailVerifyController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Электронды поштаны растау'),
-        automaticallyImplyLeading: false,
-      ),
-      body: const SafeArea(
+    return const Scaffold(
+      body: SafeArea(
         child: Responsive(
           smallMobile: NarrowScreen(),
           mobile: StandardScreen(),

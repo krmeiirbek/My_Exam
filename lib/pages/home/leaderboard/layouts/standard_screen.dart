@@ -5,6 +5,18 @@ class StandardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return const CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          title: Text(
+            'Турнир',
+            style: TextStyle(
+              color: Colors.black87,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

@@ -7,7 +7,7 @@ class TestPageState {
   final menuDialog = false.obs;
   final menuDialogPage = MenuDialogPage.none.obs;
   final List<SubjectQuiz> subjects = [];
-  final time = RxnInt(4);
+  final time = 0.obs;
   final questionId = 0.obs;
   final subjectId = 0.obs;
 

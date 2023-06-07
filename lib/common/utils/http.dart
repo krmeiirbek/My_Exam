@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
-import 'package:dio/adapter.dart';
+import 'package:dio/io.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:get/get.dart' hide FormData;
 
@@ -21,8 +21,8 @@ class HttpUtil {
   HttpUtil._internal() {
     BaseOptions options = BaseOptions(
       baseUrl: serverAPIUrl,
-      connectTimeout: 10000,
-      receiveTimeout: 5000,
+      connectTimeout: const Duration(seconds: 100),
+      receiveTimeout: const Duration(seconds: 50),
       headers: {},
       contentType: 'application/json; charset=utf-8',
       responseType: ResponseType.json,
@@ -30,7 +30,7 @@ class HttpUtil {
 
     dio = Dio(options);
 
-    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -81,13 +81,13 @@ class HttpUtil {
     switch (error.type) {
       case DioErrorType.cancel:
         return ErrorEntity(errorCode: -1, errors: "request to cancel");
-      case DioErrorType.connectTimeout:
+      case DioErrorType.connectionTimeout:
         return ErrorEntity(errorCode: -1, errors: "Connection timed out");
       case DioErrorType.sendTimeout:
         return ErrorEntity(errorCode: -1, errors: "Request timed out");
       case DioErrorType.receiveTimeout:
         return ErrorEntity(errorCode: -1, errors: "response timeout");
-      case DioErrorType.response:
+      case DioErrorType.unknown:
         {
           try {
             int errCode =
@@ -127,7 +127,7 @@ class HttpUtil {
         }
       default:
         {
-          return ErrorEntity(errorCode: -1, errors: error.message);
+          return ErrorEntity(errorCode: -1, errors: '${error.message}');
         }
     }
   }
@@ -140,10 +140,8 @@ class HttpUtil {
   Map<String, dynamic>? getAuthorizationHeader() {
     var headers = <String, dynamic>{};
     if (Get.isRegistered<UserStore>() && UserStore.to.hasToken) {
-      print("header if ");
       headers['Authorization'] = 'Bearer ${UserStore.to.token}';
     }
-    print("Authorization: ${headers['Authorization']}");
     return headers;
   }
 
@@ -170,7 +168,6 @@ class HttpUtil {
     Map<String, dynamic>? authorization = getAuthorizationHeader();
     if (authorization != null) {
       requestOptions.headers!.addAll(authorization);
-      print("added authorization header");
     }
 
     var response = await dio.get(
@@ -179,7 +176,6 @@ class HttpUtil {
       options: requestOptions,
       cancelToken: cancelToken,
     );
-    print("responce status code ${response.statusCode}");
     return response.data;
   }
 

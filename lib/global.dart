@@ -16,6 +16,11 @@ class Global {
 
     /// user controller for authorization
     Get.put<UserStore>(UserStore());
+
+    /// app language controller
+    Get.put<LanguageStore>(LanguageStore());
+
+    LanguageStore.to.setLanguage(const Locale('kz', 'KZ'));
   }
 
   static isSmallMobile() => Get.size.width < 385;

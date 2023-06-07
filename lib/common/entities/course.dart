@@ -10,22 +10,22 @@ class GetAllCoursesResponseEntity {
 }
 
 class CourseItem {
-  int? id;
-  String? name;
-  String? description;
-  String? image_url;
-  String? created_at;
-  String? updated_at;
-  String? owner;
+  int id;
+  String name;
+  String description;
+  String image_url;
+  String created_at;
+  String updated_at;
+  String owner;
 
   CourseItem({
-    this.id,
-    this.name,
-    this.description,
-    this.image_url,
-    this.created_at,
-    this.updated_at,
-    this.owner,
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.image_url,
+    required this.created_at,
+    required this.updated_at,
+    required this.owner,
   });
 
   factory CourseItem.fromJson(Map<String, dynamic> json) => CourseItem(

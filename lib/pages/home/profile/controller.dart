@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_exam/common/store/store.dart';
 
@@ -10,6 +11,10 @@ class ProfileController extends GetxController {
 
   void signOut() {
     UserStore.to.onLogout();
+  }
+
+  void changeAppLanguage(Locale locale) {
+    LanguageStore.to.setLanguage(locale);
   }
 
 }

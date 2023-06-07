@@ -10,10 +10,12 @@ class UserStore extends GetxController {
   static UserStore get to => Get.find();
 
   final _isLogin = false.obs;
+  final _isFirstLogin = true.obs;
   String token = '';
   final _profile = UserItem().obs;
 
   bool get isLogin => _isLogin.value;
+  bool get isFirstLogin => _isFirstLogin.value;
   UserItem get profile => _profile.value;
   bool get hasToken => token.isNotEmpty;
 
@@ -25,6 +27,7 @@ class UserStore extends GetxController {
     var profileOffline = StorageService.to.getString(storageUserProfileKey);
     if (profileOffline.isNotEmpty) {
       _isLogin.value = true;
+      _isFirstLogin.value = false;
       _profile(UserItem.fromJson(jsonDecode(profileOffline)));
     }
   }
@@ -46,6 +49,7 @@ class UserStore extends GetxController {
     await setToken(token);
     _profile(profile);
     _isLogin.value = true;
+    _isFirstLogin.value = false;
   }
 
   Future<void> onLogout() async {

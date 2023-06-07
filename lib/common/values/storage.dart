@@ -12,3 +12,5 @@ const String storageIndexNewsCacheKey = 'cache_index_news';
 
 /// multi-language
 const String storageLanguageCode = 'language_code';
+
+const String storageCountryCode = 'country_code';

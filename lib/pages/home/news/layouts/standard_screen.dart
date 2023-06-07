@@ -24,8 +24,8 @@ class StandardScreen extends GetView<NewsController> {
                 children: [
                   SizedBox(
                     height: 250,
-                    child: Image.network(
-                      'https://www.airht.info/wp/wp-content/uploads/2020/03/Marketplace-Lending-News.jpg',
+                    child: Image.asset(
+                      'assets/images/solubility.jpg',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -69,8 +69,8 @@ class StandardScreen extends GetView<NewsController> {
                 children: [
                   SizedBox(
                     height: 250,
-                    child: Image.network(
-                      'https://www.ubt.edu.sa/assets/clg/img/slider/rector2.jpg',
+                    child: Image.asset(
+                      'assets/images/mendeleev.jpeg',
                       fit: BoxFit.cover,
                     ),
                   ),

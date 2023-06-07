@@ -10,11 +10,8 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Құпия сөзді ұмыттыңыз ба?'),
-      ),
-      body: const SafeArea(
+    return const Scaffold(
+      body: SafeArea(
         child: Responsive(
           smallMobile: NarrowScreen(),
           mobile: StandardScreen(),

@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../common/entities/entities.dart';
+import '../../../common/apis/apis.dart';
 import '../../../common/routes/routes.dart';
 import 'state.dart';
 
@@ -10,27 +12,23 @@ class MainController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    await getCourses();
+    await getSubjects();
     super.onInit();
   }
 
-  getCourses() async {
+  getSubjects() async {
     state.isLoading.value = true;
-    // var res = await CourseAPI.getCourses();
-    // if (res.courses != null) {
-    //   state.courses.clear();
-    //   state.courses.addAll(res.courses!);
-    // }
+    var res = await SubjectAPI.getSubjects();
+    if (res.subjects != null) {
+      state.subjects.clear();
+      state.subjects.addAll(res.subjects as Iterable<Subject>);
+    }
     await Future.delayed(const Duration(milliseconds: 200));
     state.isLoading.value = false;
   }
 
-  goCourseDetails() {
-    Get.toNamed(AppRoutes.courseDetails);
+  goSubjectPage({required Subject subject}) {
+    Get.toNamed(AppRoutes.subjectPage,
+        parameters: subject.toJson());
   }
-
-  goSubjectPage() {
-    Get.toNamed(AppRoutes.subjectPage);
-  }
-
 }

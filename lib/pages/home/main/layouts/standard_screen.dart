@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/entities/entities.dart';
 import '../../../../common/values/values.dart';
 import '../index.dart';
 
@@ -70,7 +71,7 @@ class StandardScreen extends GetView<MainController> {
                                   textAlign: TextAlign.center,
                                   style: title3.copyWith(
                                     color: controller.state.isMainPage.value ==
-                                        MainSubjectPage.comboPage
+                                            MainSubjectPage.comboPage
                                         ? prColor()
                                         : Colors.black87,
                                   ),
@@ -80,10 +81,11 @@ class StandardScreen extends GetView<MainController> {
                                     "Ұсыныстар",
                                     textAlign: TextAlign.center,
                                     style: title3.copyWith(
-                                      color: controller.state.isMainPage.value ==
-                                              MainSubjectPage.comboPage
-                                          ? prColor()
-                                          : Colors.black87,
+                                      color:
+                                          controller.state.isMainPage.value ==
+                                                  MainSubjectPage.comboPage
+                                              ? prColor()
+                                              : Colors.black87,
                                     ),
                                   ),
                                 ),
@@ -146,69 +148,10 @@ class StandardScreen extends GetView<MainController> {
         const SliverToBoxAdapter(
           child: SizedBox(height: 20),
         ),
-        _buildSubjectItem(
-          subjectName: "Қазақстан тарихы",
-          subjectImageUrl: "assets/images/15.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Математикалық сауаттылық",
-          subjectImageUrl: "assets/images/7.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Оқу сауаттылық",
-          subjectImageUrl: "assets/images/11.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Математика",
-          subjectImageUrl: "assets/images/13.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Физика",
-          subjectImageUrl: "assets/images/9.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Биология",
-          subjectImageUrl: "assets/images/14.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Химия",
-          subjectImageUrl: "assets/images/8.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "География",
-          subjectImageUrl: "assets/images/2.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Ағылшын тілі",
-          subjectImageUrl: "assets/images/16.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Информатика",
-          subjectImageUrl: "assets/images/4.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Қазақ әдебиеті",
-          subjectImageUrl: "assets/images/6.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Қазақ тілі",
-          subjectImageUrl: "assets/images/5.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Орыс әдебиеті",
-          subjectImageUrl: "assets/images/12.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Орыс тілі",
-          subjectImageUrl: "assets/images/10.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Дүние жүзі тарихы",
-          subjectImageUrl: "assets/images/3.png",
-        ),
-        _buildSubjectItem(
-          subjectName: "Адам. Қоғам. Құқық",
-          subjectImageUrl: "assets/images/1.png",
+        ...controller.state.subjects.reversed.map(
+          (subject) => _buildSubjectItem(
+            subject: subject
+          ),
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 30)),
       ],
@@ -245,8 +188,7 @@ class StandardScreen extends GetView<MainController> {
                           borderRadius:
                               BorderRadius.vertical(top: Radius.circular(10)),
                           image: DecorationImage(
-                            image: NetworkImage(
-                                'https://myexam.kz/images/courses/16792277497040149c-f9be-4efb-bfb2-773524dde262files.png'),
+                            image: AssetImage('assets/images/solubility.jpg'),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -322,22 +264,21 @@ class StandardScreen extends GetView<MainController> {
   }
 
   Widget _buildSubjectItem({
-    required String subjectName,
-    required String subjectImageUrl,
+    required Subject subject,
   }) {
     return SliverToBoxAdapter(
       child: InkWell(
-        onTap: (){
-          controller.goSubjectPage();
+        onTap: () {
+          controller.goSubjectPage(subject: subject);
         },
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         child: Container(
           height: 60,
           padding: const EdgeInsets.all(10),
           margin: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white
-          ),
+              borderRadius: BorderRadius.circular(10), color: Colors.white),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -346,20 +287,19 @@ class StandardScreen extends GetView<MainController> {
                 height: 40,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(subjectImageUrl),
+                    image: NetworkImage(subject.image_url),
                   ),
                 ),
               ),
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  subjectName,
+                  subject.name,
                   textAlign: TextAlign.start,
                   style: title2.copyWith(
                       color: Colors.black87,
                       fontSize: 20,
-                      fontWeight: FontWeight.w400
-                  ),
+                      fontWeight: FontWeight.w400),
                 ),
               ),
             ],

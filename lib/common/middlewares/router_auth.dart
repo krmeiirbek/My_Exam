@@ -15,8 +15,10 @@ class RouteAuthMiddleware extends GetMiddleware {
         route == AppRoutes.initial) {
       return null;
     } else {
-      Future.delayed(const Duration(seconds: 2),
-          () => Get.snackbar("Tips", "Login expired, please login again!"));
+      if (!UserStore.to.isFirstLogin) {
+        Future.delayed(const Duration(seconds: 2),
+            () => Get.snackbar("Tips", "Login expired, please login again!"));
+      }
       return const RouteSettings(name: AppRoutes.initial);
     }
   }

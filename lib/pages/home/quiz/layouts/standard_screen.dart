@@ -106,7 +106,7 @@ class StandardScreen extends GetView<QuizController> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: AssetImage('${controller.state.subjects[index].imageUrl}'),
+                      image: AssetImage('${controller.state.subjects[index].image_url}'),
                       fit: BoxFit.cover,
                       alignment: Alignment.center,
                     ),
@@ -328,7 +328,7 @@ class StandardScreen extends GetView<QuizController> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         image: DecorationImage(
-                                          image: AssetImage('${subject.imageUrl}'),
+                                          image: AssetImage('${subject.image_url}'),
                                           fit: BoxFit.cover,
                                           alignment: Alignment.center,
                                         ),
@@ -406,7 +406,7 @@ class StandardScreen extends GetView<QuizController> {
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
                                           image: DecorationImage(
-                                            image: AssetImage('${subject.imageUrl}'),
+                                            image: AssetImage('${subject.image_url}'),
                                             fit: BoxFit.cover,
                                             alignment: Alignment.center,
                                           ),

@@ -5,236 +5,93 @@ import '../../../common/entities/entities.dart';
 class QuizState {
   final testPage = EnumTestPage.private.obs;
   final isSelectedSubjects = false.obs;
-  final subjects = [
-    Subject(
-      name: "Қазақстан тарихы",
-      imageUrl: "assets/images/Қазақстан тарихы.png",
-    ),
-    Subject(
-      name: "Оқу сауаттылық",
-      imageUrl: "assets/images/Оқу сауаттылық.png",
-    ),
-    Subject(
-      name: "Математикалық сауаттылық",
-      imageUrl: "assets/images/Математикалық сауаттылық.png",
-    ),
-    Subject(
-      name: "Математика",
-      imageUrl: "assets/images/Математика.png",
-    ),
-    Subject(
-      name: "Физика",
-      imageUrl: "assets/images/Физика.png",
-    ),
-    Subject(
-      name: "Информатика",
-      imageUrl: "assets/images/Информатика.png",
-    ),
-    Subject(
-      name: "География",
-      imageUrl: "assets/images/География.png",
-    ),
-    Subject(
-      name: "Биология",
-      imageUrl: "assets/images/Биология.png",
-    ),
-    Subject(
-      name: "Химия",
-      imageUrl: "assets/images/Химия.png",
-    ),
-    Subject(
-      name: "Дүниежүзі тарихы",
-      imageUrl: "assets/images/Дүниежүзі тарихы.png",
-    ),
-    Subject(
-      name: "Адам. Қоғам. Құқық",
-      imageUrl: "assets/images/Адам. Қоғам. Құқық.png",
-    ),
-    Subject(
-      name: "Ағылшын тілі",
-      imageUrl: "assets/images/Ағылшын тілі.png",
-    ),
-    Subject(
-      name: "Қазақ әдебиеті",
-      imageUrl: "assets/images/Қазақ әдебиеті.png",
-    ),
-    Subject(
-      name: "Қазақ тілі",
-      imageUrl: "assets/images/Қазақ тілі.png",
-    ),
-    Subject(
-      name: "Орыс әдебиеті",
-      imageUrl: "assets/images/Орыс әдебиеті.png",
-    ),
-    Subject(
-      name: "Орыс тілі",
-      imageUrl: "assets/images/Орыс тілі.png",
-    ),
+  static final kazTar = Subject(id: 1, name: "Қазақстан тарихы", image_url: "assets/images/Қазақстан тарихы.png");
+  static final matSau = Subject(id: 2, name: "Математикалық сауаттылық", image_url: "assets/images/Математикалық сауаттылық.png");
+  static final okuSau = Subject(id: 3, name: "Оқу сауаттылық", image_url: "assets/images/Оқу сауаттылық.png");
+  static final mat = Subject(id: 4, name: "Математика", image_url: "assets/images/Математика.png");
+  static final fiz = Subject(id: 5, name: "Физика", image_url: "assets/images/Физика.png");
+  static final inf = Subject(id: 6, name: "Информатика", image_url: "assets/images/Информатика.png");
+  static final geo = Subject(id: 7, name: "География", image_url: "assets/images/География.png");
+  static final bio = Subject(id: 8, name: "Биология", image_url: "assets/images/Биология.png");
+  static final him = Subject(id: 9, name: "Химия", image_url: "assets/images/Химия.png");
+  static final dzt = Subject(id: 10, name: "Дүниежүзі тарихы", image_url: "assets/images/Дүниежүзі тарихы.png");
+  static final akk = Subject(id: 11, name: "Адам. Қоғам. Құқық", image_url: "assets/images/Адам. Қоғам. Құқық.png");
+  static final eng = Subject(id: 12, name: "Ағылшын тілі", image_url: "assets/images/Ағылшын тілі.png");
+  static final kazAde = Subject(id: 13, name: "Қазақ әдебиеті", image_url: "assets/images/Қазақ әдебиеті.png");
+  static final kazTil = Subject(id: 14, name: "Қазақ тілі", image_url: "assets/images/Қазақ тілі.png");
+  static final rusAde = Subject(id: 15, name: "Орыс әдебиеті", image_url: "assets/images/Орыс әдебиеті.png");
+  static final rusTil = Subject(id: 16, name: "Орыс тілі", image_url: "assets/images/Орыс тілі.png");
+  final subjects = <Subject>[
+    kazTar,
+    matSau,
+    okuSau,
+    mat,
+    fiz,
+    inf,
+    geo,
+    bio,
+    him,
+    dzt,
+    akk,
+    eng,
+    kazAde,
+    kazTil,
+    rusAde,
+    rusTil,
   ];
 
   final subject1 = Rxn<Subject>();
   final subject2 = Rxn<Subject>();
   final subjectsComplete = <Subject, List<Subject>>{
-    Subject(
-      name: "Математика",
-      imageUrl: "assets/images/Математика.png",
-    ): [
-      Subject(
-        name: "География",
-        imageUrl: "assets/images/География.png",
-      ),
-      Subject(
-        name: "Физика",
-        imageUrl: "assets/images/Физика.png",
-      ),
-      Subject(
-        name: "Информатика",
-        imageUrl: "assets/images/Информатика.png",
-      ),
+    mat: [
+      geo,
+      fiz,
+      inf,
     ],
-    Subject(
-      name: "Физика",
-      imageUrl: "assets/images/Физика.png",
-    ): [
-      Subject(
-        name: "Химия",
-        imageUrl: "assets/images/Химия.png",
-      ),
-      Subject(
-        name: "Математика",
-        imageUrl: "assets/images/Математика.png",
-      ),
+    fiz: [
+      him,
+      mat,
     ],
-    Subject(
-      name: "География",
-      imageUrl: "assets/images/География.png",
-    ): [
-      Subject(
-        name: "Дүниежүзі тарихы",
-        imageUrl: "assets/images/Дүниежүзі тарихы.png",
-      ),
-      Subject(
-        name: "Ағылшын тілі",
-        imageUrl: "assets/images/Ағылшын тілі.png",
-      ),
-      Subject(
-        name: "Математика",
-        imageUrl: "assets/images/Математика.png",
-      ),
-      Subject(
-        name: "Биология",
-        imageUrl: "assets/images/Биология.png",
-      ),
+    geo: [
+      dzt,
+      eng,
+      mat,
+      bio,
     ],
-    Subject(
-      name: "Биология",
-      imageUrl: "assets/images/Биология.png",
-    ): [
-      Subject(
-        name: "География",
-        imageUrl: "assets/images/География.png",
-      ),
-      Subject(
-        name: "Химия",
-        imageUrl: "assets/images/Химия.png",
-      ),
+    bio: [
+      geo,
+      him,
     ],
-    Subject(
-      name: "Химия",
-      imageUrl: "assets/images/Химия.png",
-    ): [
-      Subject(
-        name: "Физика",
-        imageUrl: "assets/images/Физика.png",
-      ),
-      Subject(
-        name: "Биология",
-        imageUrl: "assets/images/Биология.png",
-      ),
+    him: [
+      fiz,
+      bio,
     ],
-    Subject(
-      name: "Информатика",
-      imageUrl: "assets/images/Информатика.png",
-    ): [
-      Subject(
-        name: "Математика",
-        imageUrl: "assets/images/Математика.png",
-      ),
+    inf: [
+      mat,
     ],
-    Subject(
-      name: "Дүниежүзі тарихы",
-      imageUrl: "assets/images/Дүниежүзі тарихы.png",
-    ): [
-      Subject(
-        name: "Адам. Қоғам. Құқық",
-        imageUrl: "assets/images/Адам. Қоғам. Құқық.png",
-      ),
-      Subject(
-        name: "Ағылшын тілі",
-        imageUrl: "assets/images/Ағылшын тілі.png",
-      ),
-      Subject(
-        name: "География",
-        imageUrl: "assets/images/География.png",
-      ),
+    dzt: [
+      akk,
+      eng,
+      geo,
     ],
-    Subject(
-      name: "Адам. Қоғам. Құқық",
-      imageUrl: "assets/images/Адам. Қоғам. Құқық.png",
-    ): [
-      Subject(
-        name: "Дүниежүзі тарихы",
-        imageUrl: "assets/images/Дүниежүзі тарихы.png",
-      ),
+    akk: [
+      dzt,
     ],
-    Subject(
-      name: "Қазақ тілі",
-      imageUrl: "assets/images/Қазақ тілі.png",
-    ): [
-      Subject(
-        name: "Қазақ әдебиеті",
-        imageUrl: "assets/images/Қазақ әдебиеті.png",
-      ),
+    kazTil: [
+      kazAde,
     ],
-    Subject(
-      name: "Қазақ әдебиеті",
-      imageUrl: "assets/images/Қазақ әдебиеті.png",
-    ): [
-      Subject(
-        name: "Қазақ тілі",
-        imageUrl: "assets/images/Қазақ тілі.png",
-      ),
+    kazAde: [
+      kazTil,
     ],
-    Subject(
-      name: "Орыс тілі",
-      imageUrl: "assets/images/Орыс тілі.png",
-    ): [
-      Subject(
-        name: "Орыс әдебиеті",
-        imageUrl: "assets/images/Орыс әдебиеті.png",
-      ),
+    rusTil: [
+      rusAde,
     ],
-    Subject(
-      name: "Орыс әдебиеті",
-      imageUrl: "assets/images/Орыс әдебиеті.png",
-    ): [
-      Subject(
-        name: "Орыс тілі",
-        imageUrl: "assets/images/Орыс тілі.png",
-      ),
+    rusAde: [
+      rusTil,
     ],
-    Subject(
-      name: "Ағылшын тілі",
-      imageUrl: "assets/images/Ағылшын тілі.png",
-    ): [
-      Subject(
-        name: "Дүниежүзі тарихы",
-        imageUrl: "assets/images/Дүниежүзі тарихы.png",
-      ),
-      Subject(
-        name: "География",
-        imageUrl: "assets/images/География.png",
-      ),
+    eng: [
+      dzt,
+      geo,
     ],
   };
 }

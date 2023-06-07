@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       translations: TranslationService(),
-      locale: const Locale('kz', 'KZ'),
-      fallbackLocale: const Locale('ru', 'RU'),
+      locale: TranslationService.locale,
+      fallbackLocale: TranslationService.fallbackLocale,
       debugShowCheckedModeBanner: false,
       theme: Get.find<ThemeStore>().lightTheme,
       darkTheme: Get.find<ThemeStore>().darkTheme,

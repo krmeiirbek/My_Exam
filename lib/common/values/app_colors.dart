@@ -2,31 +2,19 @@ import 'package:flutter/material.dart';
 
 import '../style/style.dart';
 
-Color prColor() => UIParameters.isDarkMode() ? primaryDark : primaryLight;
-
-Color secondaryColor() =>
-    UIParameters.isDarkMode() ? secondaryDark : secondaryLight;
-
-Color tertiaryColor() =>
-    UIParameters.isDarkMode() ? tertiaryDark : tertiaryLight;
-
-Color alternateColor() =>
-    UIParameters.isDarkMode() ? alternateDark : alternateLight;
-
-Color prBackground() =>
-    UIParameters.isDarkMode() ? primaryBGDark : primaryBGLight;
-
-Color secondaryBackground() =>
-    UIParameters.isDarkMode() ? secondaryBGDark : secondaryBGLight;
-
-Color prTextColor() =>
-    UIParameters.isDarkMode() ? primaryTextDark : primaryTextLight;
-
-Color unselectedIconColor() =>
-    UIParameters.isDarkMode() ? primaryTextDark : secondaryTextLight;
-
-Color secondaryTextColor() =>
-    UIParameters.isDarkMode() ? secondaryTextDark : secondaryTextLight;
-
-Gradient appBarGradient() =>
-    UIParameters.isDarkMode() ? appBarDarkGradient : appBarLightGradient;
+Color primaryColor() => UIParameters.isDarkMode() ? primaryDark : primary;
+Color secondaryColor() => UIParameters.isDarkMode() ? secondaryDark : secondary;
+Color tertiaryColor() => UIParameters.isDarkMode() ? tertiaryDark : tertiary;
+Color alternateColor() => UIParameters.isDarkMode() ? alternateDark : alternate;
+Color primaryTextColor() => UIParameters.isDarkMode() ? primaryTextDark : primaryText;
+Color secondaryTextColor() => UIParameters.isDarkMode() ? secondaryTextDark : secondaryText;
+Color primaryBGColor() => UIParameters.isDarkMode() ? primaryBGDark : primaryBG;
+Color secondaryBGColor() => UIParameters.isDarkMode() ? secondaryBGDark : secondaryBG;
+Color accent1Color() => UIParameters.isDarkMode() ? accent1Dark : accent1;
+Color accent2Color() => UIParameters.isDarkMode() ? accent2Dark : accent2;
+Color accent3Color() => UIParameters.isDarkMode() ? accent3Dark : accent3;
+Color accent4Color() => UIParameters.isDarkMode() ? accent4Dark : accent4;
+Color successColor() => UIParameters.isDarkMode() ? successDark : success;
+Color errorColor() => UIParameters.isDarkMode() ? errorDark : error;
+Color warningColor() => UIParameters.isDarkMode() ? warningDark : warning;
+Color infoColor() => UIParameters.isDarkMode() ? infoDark : info;

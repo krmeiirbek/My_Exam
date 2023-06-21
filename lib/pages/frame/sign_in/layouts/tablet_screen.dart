@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -17,10 +18,8 @@ class TabletScreen extends GetView<SignInController> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final obscure = true.obs;
     return Padding(
-      padding: EdgeInsets.all(UIParameters.mobileScreenPadding * 2),
+      padding: EdgeInsets.all(UIParameters.mobileScreenPadding.w * 2),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -30,9 +29,15 @@ class TabletScreen extends GetView<SignInController> {
                 Expanded(
                   child: Column(
                     children: [
-                      SvgPicture.asset(
-                        'assets/icons/splash.svg',
-                        width: size.width / 4,
+                      Hero(
+                        tag: 'tag-1',
+                        child: Container(
+                          color: Theme.of(context).colorScheme.background,
+                          child: SvgPicture.asset(
+                            'assets/icons/splash.svg',
+                            width: 200.w,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -46,78 +51,84 @@ class TabletScreen extends GetView<SignInController> {
                       children: [
                         Text(
                           welcomeBack.tr,
-                          style: title1.copyWith(fontSize: 40),
+                          style: displayMedium.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        const SizedBox(height: 3),
+                        SizedBox(height: 3.h),
                         Text(
                           signInToContinue.tr,
-                          style:
-                              subtitle2.copyWith(color: secondaryTextColor()),
+                          style: titleMedium.copyWith(
+                            color: Theme.of(context).unselectedWidgetColor,
+                          ),
                         ),
-                        const SizedBox(height: 35),
+                        SizedBox(height: 35.h),
                         TextFormField(
                           controller: controller.emailController,
-                          style: title2,
+                          style: titleLarge,
                           keyboardType: TextInputType.emailAddress,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (email) =>
                               email != null && !duIsEmail(email)
-                                  ? 'Қате email'
+                                  ? wrongEmail.tr
                                   : null,
-                          decoration: const InputDecoration(
-                            labelText: 'Email',
-                            labelStyle: TextStyle(
-                              fontSize: 21,
-                              color: Color(0xffC3C3C3),
+                          decoration: InputDecoration(
+                            labelText: email1.tr,
+                            labelStyle: titleLarge.copyWith(
+                              color: const Color(0xffC3C3C3),
                             ),
                           ),
                         ),
                         Obx(() => TextFormField(
                               controller: controller.passwordController,
-                              obscureText: obscure.value,
-                              style: title2,
+                              obscureText: controller.state.obscure.value,
+                              style: titleLarge,
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: (password) =>
                                   password != null && password.length < 6
-                                      ? 'Кемінде 6 символ болуы керек'
+                                      ? wrongPassword.tr
                                       : null,
                               decoration: InputDecoration(
-                                labelText: 'Құпия сөз',
-                                labelStyle: const TextStyle(
-                                  fontSize: 21,
-                                  color: Color(0xffC3C3C3),
+                                labelText: password1.tr,
+                                labelStyle: titleLarge.copyWith(
+                                  color: const Color(0xffC3C3C3),
                                 ),
                                 suffixIcon: eyeSuffixIcon(
                                   onTap: () {
-                                    obscure(!obscure.value);
+                                    controller.state.obscure(
+                                        !controller.state.obscure.value);
                                   },
-                                  color: obscure.value
-                                      ? secondaryTextColor()
-                                      : tertiaryColor(),
+                                  color: controller.state.obscure.value
+                                      ? Theme.of(context).unselectedWidgetColor
+                                      : Theme.of(context).colorScheme.primary,
                                 ),
                               ),
                             )),
-                        const SizedBox(height: 40),
+                        SizedBox(height: 40.h),
                         Center(
                           child: Obx(() {
                             if (controller.state.isLoading.value) {
                               return SpinKitCircle(
-                                color: secondaryColor(),
-                                size: 60,
+                                color: Theme.of(context).colorScheme.primary,
+                                size: 60.h,
                               );
                             } else {
                               return AppButton(
                                 text: signIn.tr,
-                                size: const Size(400, 60),
-                                style: title2.copyWith(
+                                size: Size(400.w, 60.h),
+                                style: headlineSmall.copyWith(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
-                                background: prColor(),
+                                background:
+                                    Theme.of(context).colorScheme.primary,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: secondaryColor().withOpacity(0.4),
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .primary
+                                        .withOpacity(0.4),
                                     offset: const Offset(0, 5),
                                     blurRadius: 15,
                                   ),
@@ -129,20 +140,20 @@ class TabletScreen extends GetView<SignInController> {
                             }
                           }),
                         ),
-                        const SizedBox(height: 15),
+                        SizedBox(height: 20.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(right: 0, top: 6),
+                              padding: EdgeInsets.only(right: 0, top: 6.h),
                               child: InkWell(
                                 onTap: () {
                                   Get.toNamed(AppRoutes.forgotPassword);
                                 },
                                 child: Text(
                                   forgotPassword.tr,
-                                  style: subtitle1.copyWith(
-                                      color: secondaryTextColor()),
+                                  style: titleMedium.copyWith(
+                                      color: Theme.of(context).unselectedWidgetColor),
                                 ),
                               ),
                             ),
@@ -154,22 +165,23 @@ class TabletScreen extends GetView<SignInController> {
                 ),
               ],
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
             Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     dontHaveAnAccount.tr,
-                    style: subtitle1.copyWith(color: secondaryTextColor()),
+                    style: titleMedium.copyWith(color: Theme.of(context).unselectedWidgetColor),
                   ),
+                  SizedBox(width: 10.w),
                   InkWell(
                     onTap: () {
-                      Get.offNamed(AppRoutes.signUp);
+                      Get.toNamed(AppRoutes.signUp);
                     },
                     child: Text(
                       createNow.tr,
-                      style: subtitle1.copyWith(color: secondaryColor()),
+                      style: titleMedium.copyWith(color: Theme.of(context).colorScheme.primary),
                     ),
                   ),
                 ],

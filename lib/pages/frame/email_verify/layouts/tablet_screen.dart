@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/langs/langs.dart';
 import '../../../../common/style/style.dart';
 import '../../../../common/values/values.dart';
 import '../../../../common/widgets/widgets.dart';
@@ -13,7 +16,7 @@ class TabletScreen extends GetView<EmailVerifyController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Электронды поштаны растау'),
+        title: Text(emailVerify1.tr),
         automaticallyImplyLeading: false,
       ),
       body: Center(
@@ -22,37 +25,135 @@ class TabletScreen extends GetView<EmailVerifyController> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.all(UIParameters.mobileScreenPadding * 2),
-              child: const Text(
-                'Электрондық поштаңызға растау хаты жіберілді',
-                style: title2,
+              padding: EdgeInsets.all(UIParameters.mobileScreenPadding.w * 2),
+              child: Text(
+                sendMessage3.tr,
+                style: headlineSmall,
                 textAlign: TextAlign.center,
               ),
             ),
-            AppButton(
-              text: 'Электрондық поштаға қайта жіберу',
-              style: subtitle1.copyWith(color: Colors.white),
-              size: const Size(400, 60),
-              background: prColor(),
-              boxShadow: [
-                BoxShadow(
-                  color: secondaryColor().withOpacity(0.4),
-                  offset: const Offset(0, 5),
-                  blurRadius: 15,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: UIParameters.mobileScreenPadding.w,
+              ),
+              child: Form(
+                key: controller.state.formKey,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 68.h,
+                      width: 64.w,
+                      child: TextFormField(
+                        style: titleLarge,
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(1),
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        onChanged: (v) {
+                          if (v.length == 1) {
+                            controller.state.pin1.value = v;
+                            FocusScope.of(context).nextFocus();
+                          }
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 20.w),
+                    SizedBox(
+                      height: 68.h,
+                      width: 64.w,
+                      child: TextFormField(
+                        style: titleLarge,
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(1),
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        onChanged: (v) {
+                          if (v.length == 1) {
+                            controller.state.pin2.value = v;
+                            FocusScope.of(context).nextFocus();
+                          }
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 20.w),
+                    SizedBox(
+                      height: 68.h,
+                      width: 64.w,
+                      child: TextFormField(
+                        style: titleLarge,
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(1),
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        onChanged: (v) {
+                          if (v.length == 1) {
+                            controller.state.pin3.value = v;
+                            FocusScope.of(context).nextFocus();
+                          }
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 20.w),
+                    SizedBox(
+                      height: 68.h,
+                      width: 64.w,
+                      child: TextFormField(
+                        style: titleLarge,
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(1),
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        onChanged: (v) {
+                          if (v.length == 1) {
+                            controller.state.pin4.value = v;
+                            FocusScope.of(context).unfocus();
+                            controller.checkEmailVerified();
+                          }
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-              onTap: controller.state.canResendEmail.value
-                  ? () {
-                      controller.sendVerificationEmail();
-                    }
-                  : null,
+              ),
             ),
-            const SizedBox(height: 20),
+            Obx(
+              () => AppButton(
+                text: controller.state.canResendEmail.value
+                    ? sendMessage4.tr
+                    : '${controller.state.timeMin}:${controller.state.timeSec}',
+                style: titleMedium.copyWith(color: Colors.white),
+                size: Size(400.w, 60.h),
+                background: Theme.of(context).colorScheme.primary,
+                boxShadow: [
+                  BoxShadow(
+                    color:
+                        Theme.of(context).colorScheme.primary.withOpacity(0.4),
+                    offset: const Offset(0, 5),
+                    blurRadius: 15,
+                  ),
+                ],
+                onTap: controller.state.canResendEmail.value
+                    ? () {
+                        controller.sendVerificationEmail();
+                      }
+                    : null,
+              ),
+            ),
+            SizedBox(height: 20.h),
             AppButton(
-              text: 'Бас тарту',
-              style: subtitle1.copyWith(color: prColor()),
-              size: const Size(400, 60),
-              background: alternateColor(),
+              text: cancel1.tr,
+              style: titleMedium.copyWith(color: Colors.white),
+              size: Size(400.w, 60.h),
+              background: Theme.of(context).colorScheme.tertiary,
               onTap: () => controller.signOut(),
             ),
           ],

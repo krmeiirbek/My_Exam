@@ -13,9 +13,9 @@ class SignInPage extends GetView<SignInController> {
     return const Scaffold(
       body: SafeArea(
         child: Responsive(
-          smallMobile: NarrowScreen(),
-          mobile: StandardScreen(),
+          mobile: MobileScreen(),
           tablet: TabletScreen(),
+          web: WebScreen(),
         ),
       ),
     );

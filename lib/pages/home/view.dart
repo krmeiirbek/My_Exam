@@ -11,9 +11,9 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return const Responsive(
-      smallMobile: NarrowScreen(),
-      mobile: StandardScreen(),
+      mobile: MobileScreen(),
       tablet: TabletScreen(),
+      web: WebScreen(),
     );
   }
 }

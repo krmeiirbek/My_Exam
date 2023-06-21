@@ -57,6 +57,6 @@ class UserStore extends GetxController {
      await StorageService.to.remove(storageUserProfileKey);
      token = '';
      _isLogin.value = false;
-    Get.offAllNamed(AppRoutes.signIn);
+    Get.offAllNamed(AppRoutes.initial);
   }
 }

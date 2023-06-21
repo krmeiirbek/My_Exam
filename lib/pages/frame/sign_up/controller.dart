@@ -28,7 +28,7 @@ class SignUpController extends GetxController {
   }
 
   Future<void> signUp() async {
-    final isValid = state.formKey.currentState?.validate() ?? false;
+    final isValid = state.formKeySignUp.currentState?.validate() ?? false;
     if (!isValid) return;
     String first_name = nameController.text.trim();
     String last_name = surnameController.text.trim();
@@ -66,19 +66,4 @@ class SignUpController extends GetxController {
     }
     state.isLoading(false);
   }
-
-  // asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
-  //   var result = await UserAPI.login(params: loginRequestEntity);
-  //   if (result.code == 0) {
-  //     UserStore.to.saveProfile(result.data!);
-  //   } else {
-  //     Get.snackbar(
-  //       'Internet error',
-  //       'Internet error',
-  //       snackPosition: SnackPosition.TOP,
-  //       duration: const Duration(seconds: 3),
-  //     );
-  //   }
-  //   Get.toNamed(AppRoutes.emailVerify);
-  // }
 }

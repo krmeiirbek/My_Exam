@@ -1,4 +1,4 @@
 library main_layouts;
-export './narrow_screen.dart';
-export './standard_screen.dart';
+export './web_screen.dart';
+export './mobile_screen.dart';
 export './tablet_screen.dart';

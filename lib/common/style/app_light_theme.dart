@@ -3,66 +3,68 @@ import 'package:my_exam/common/values/custom_text_styles.dart';
 
 import 'sub_theme_data_mixin.dart';
 
-const Color primaryLight = Color(0xff4785EB);
-const Color onPrimaryLight = Color(0xff3D3D74);
-const Color secondaryLight = Color(0xff3C8DEF);
-const Color tertiaryLight = Color(0xff599BF0);
-const Color alternateLight = Color(0xffE3F0FF);
-const Color errorLight = Color(0xffE24C4B);
-const Color onErrorLight = Color(0xffE24C4B);
-const Color primaryBGLight = Color(0xffF6F7FC);
-const Color secondaryBGLight = Color(0xffFFFFFF);
-const Color primaryTextLight = Color(0xff3D3D74);
-const Color secondaryTextLight = Color(0xff999999);
-const Color primaryBtnLight = Color(0xffFFFFFF);
-const Color surfaceLight = Color(0xffFFFFFF);
-const Color onSurfaceLight = Color(0xffC3C3C3);
-
-const Gradient appBarLightGradient = LinearGradient(
-  colors: [
-    tertiaryLight,
-    secondaryLight,
-  ],
-);
+const Color primary = Color(0xff007AFF);
+const Color secondary = Color(0xffFFFFFF);
+const Color tertiary = Color(0xffFF3B30);
+const Color alternate = Color(0xff34C759);
+const Color primaryText = Color(0xff1C1C1E);
+const Color secondaryText = Color(0xff8E8E93);
+const Color primaryBG = Color(0xffFFFFFF);
+const Color secondaryBG = Color(0xffF2F2F7);
+const Color accent1 = Color(0xff5AC8FA);
+const Color accent2 = Color(0xffFF9500);
+const Color accent3 = Color(0xffFF2D55);
+const Color accent4 = Color(0xffC69C6D);
+const Color success = Color(0xff34C759);
+const Color error = Color(0xffFF3B30);
+const Color warning = Color(0xffFFCC00);
+const Color info = Color(0xff007AFF);
 
 class LightTheme with SubThemeData {
   buildLightTheme() {
     final ThemeData systemLightTheme = ThemeData.light();
     return systemLightTheme.copyWith(
       brightness: Brightness.light,
-      scaffoldBackgroundColor: primaryBGLight,
+      scaffoldBackgroundColor: primaryBG,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: secondaryBGLight,
-        unselectedItemColor: secondaryTextLight,
+        backgroundColor: primaryBG,
+        unselectedItemColor: secondaryText,
       ),
+      unselectedWidgetColor: secondaryText,
       navigationBarTheme: const NavigationBarThemeData(
-        backgroundColor: secondaryBGLight,
+        backgroundColor: secondaryBG,
       ),
       textTheme: getTextThemes().apply(
-        bodyColor: primaryTextLight,
-        displayColor: primaryTextLight,
+        bodyColor: primaryText,
+        displayColor: primaryText,
       ),
       buttonTheme: const ButtonThemeData(
-        buttonColor: primaryLight,
+        buttonColor: tertiary,
+        hoverColor: primary,
+        textTheme: ButtonTextTheme.accent,
+      ),
+      buttonBarTheme: const ButtonBarThemeData(
+        buttonTextTheme: ButtonTextTheme.accent,
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: primaryBGLight,
-        titleTextStyle: title2.copyWith(color: primaryTextLight),
-        actionsIconTheme: const IconThemeData(color: primaryTextLight),
+        backgroundColor: primaryBG,
+        titleTextStyle: title2.copyWith(color: primaryText),
+        actionsIconTheme: const IconThemeData(color: primaryText),
       ),
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
-        primary: primaryLight,
-        onPrimary: onPrimaryLight,
-        secondary: secondaryLight,
-        onSecondary: tertiaryLight,
-        background: primaryBGLight,
-        onBackground: secondaryBGLight,
-        error: errorLight,
-        onError: onErrorLight,
-        surface: surfaceLight,
-        onSurface: onSurfaceLight,
+        primary: primary,
+        onPrimary: primary,
+        secondary: secondary,
+        onSecondary: primaryText,
+        background: primaryBG,
+        onBackground: secondaryBG,
+        error: error,
+        onError: warning,
+        surface: success,
+        onSurface: info,
+        tertiary: tertiary,
       ),
     );
   }

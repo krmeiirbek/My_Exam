@@ -40,6 +40,7 @@ dependencies:
 
   flutter_simple_calculator: ^2.2.3
   api_cache_manager: ^1.0.2
+  flutter_screenutil: ^5.8.4
 
 
 dev_dependencies:

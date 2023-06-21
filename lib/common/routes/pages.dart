@@ -8,11 +8,10 @@ import '../../pages/frame/email_verify/index.dart';
 import '../../pages/home/index.dart';
 import '../../pages/home/main/course_details/index.dart';
 import '../../pages/home/main/index.dart';
-import '../../pages/home/leaderboard/index.dart';
 import '../../pages/home/main/subject_page/index.dart';
 import '../../pages/home/main/lesson_page/index.dart';
 import '../../pages/home/quiz/index.dart';
-import '../../pages/home/news/index.dart';
+import '../../pages/home/my_courses/index.dart';
 import '../../pages/home/profile/index.dart';
 import '../../pages/home/quiz/rules_page/index.dart';
 import '../../pages/home/quiz/test_page/index.dart';
@@ -53,9 +52,8 @@ class AppPages {
       binding: HomeBinding(),
       bindings: [
         MainBinding(),
-        LeaderboardBinding(),
         QuizBinding(),
-        NewsBinding(),
+        MyCoursesBinding(),
         ProfileBinding(),
       ],
       middlewares: [

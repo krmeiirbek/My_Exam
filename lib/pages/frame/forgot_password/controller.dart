@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_exam/common/langs/langs.dart';
 
-import '../../../common/store/store.dart';
-import '../../../common/utils/utils.dart';
 import 'state.dart';
 
 class ForgotPasswordController extends GetxController {
@@ -11,8 +10,6 @@ class ForgotPasswordController extends GetxController {
   final state = ForgotPasswordState();
 
   final emailController = TextEditingController();
-
-  // final _auth = UserStore.to.auth;
 
   @override
   void dispose() {
@@ -26,19 +23,18 @@ class ForgotPasswordController extends GetxController {
     try {
       // await _auth.sendPasswordResetEmail(email: email);
       Get.snackbar(
-        'Сізге хат жіберілді',
-        'Құпия сөзді қалпына келтіру үшін электрондық хаттығы сілтемеге өтіңіз',
+        sendMessage1.tr,
+        sendMessage2.tr,
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),
       );
     }  catch (e) {
       Get.snackbar(
-        'Пайдаланушы жойылған болуы мүмкін.',
-        'Бұл идентификаторға сәйкес пайдаланушы жазбасы жоқ',
+        userCanDeleted.tr,
+        noUser.tr,
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),
       );
-      // AppLogger.e(e);
     }
     state.isLoading(false);
   }

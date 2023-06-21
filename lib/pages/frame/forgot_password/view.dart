@@ -13,9 +13,9 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
     return const Scaffold(
       body: SafeArea(
         child: Responsive(
-          smallMobile: NarrowScreen(),
-          mobile: StandardScreen(),
+          mobile: MobileScreen(),
           tablet: TabletScreen(),
+          web: WebScreen(),
         ),
       ),
     );

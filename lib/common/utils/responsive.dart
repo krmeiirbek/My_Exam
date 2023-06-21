@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../../global.dart';
 
 class Responsive extends StatelessWidget {
-  final Widget smallMobile;
+  final Widget web;
   final Widget mobile;
   final Widget tablet;
 
   const Responsive({
     Key? key,
-    required this.smallMobile,
+    required this.web,
     required this.mobile,
     required this.tablet,
   }) : super(key: key);
@@ -21,7 +21,7 @@ class Responsive extends StatelessWidget {
     } else if (Global.isMobile()) {
       return mobile;
     } else {
-      return smallMobile;
+      return web;
     }
   }
 }

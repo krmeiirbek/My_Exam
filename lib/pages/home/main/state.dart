@@ -11,5 +11,4 @@ class MainState {
 enum MainSubjectPage{
   subjectPage,
   comboPage,
-  myLessonsPage,
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/langs/langs.dart';
 import '../../../../common/style/style.dart';
 import '../../../../common/utils/utils.dart';
 import '../../../../common/values/values.dart';
@@ -14,13 +16,12 @@ class TabletScreen extends GetView<ForgotPasswordController> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Құпия сөзді ұмыттыңыз ба?'),
+        title: Text(forgotPassword2.tr),
       ),
       body: Padding(
-        padding: EdgeInsets.all(UIParameters.mobileScreenPadding * 2),
+        padding: EdgeInsets.all(UIParameters.mobileScreenPadding.w * 2),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -30,9 +31,16 @@ class TabletScreen extends GetView<ForgotPasswordController> {
                   Expanded(
                     child: Column(
                       children: [
-                        SvgPicture.asset(
-                          'assets/icons/splash.svg',
-                          width: size.width / 4,
+                        Hero(
+                          tag: 'tag-1',
+                          transitionOnUserGestures: true,
+                          child: Container(
+                            color: Theme.of(context).colorScheme.background,
+                            child: SvgPicture.asset(
+                              'assets/icons/splash.svg',
+                              width: 200.w,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -44,49 +52,48 @@ class TabletScreen extends GetView<ForgotPasswordController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'Құпия сөзді қалпына келтіру үшін электрондық хат алыңыз',
-                            style: title2,
+                          Text(
+                            forgotPassword3.tr,
+                            style: headlineSmall,
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 35),
+                          SizedBox(height: 35.h),
                           TextFormField(
                             controller: controller.emailController,
-                            style: title2,
+                            style: headlineSmall,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             validator: (email) =>
                                 email != null && !duIsEmail(email)
-                                    ? 'Қате email'
+                                    ? wrongEmail.tr
                                     : null,
-                            decoration: const InputDecoration(
-                              labelText: 'Email',
-                              labelStyle: TextStyle(
-                                fontSize: 21,
+                            decoration: InputDecoration(
+                              labelText: email1.tr,
+                              labelStyle: const TextStyle(
                                 color: Color(0xffC3C3C3),
                               ),
                             ),
                           ),
-                          const SizedBox(height: 40),
+                          SizedBox(height: 40.h),
                           Center(
                             child: Obx(() {
                               if (controller.state.isLoading.value) {
                                 return SpinKitCircle(
-                                  color: secondaryColor(),
-                                  size: 60,
+                                  color: Theme.of(context).colorScheme.primary,
+                                  size: 60.h,
                                 );
                               } else {
                                 return AppButton(
-                                  text: 'Құпия сөзді қалпына келтіру',
-                                  size: const Size(400, 60),
-                                  style: title3.copyWith(
+                                  text: forgotPassword4.tr,
+                                  size: Size(400.w, 60.h),
+                                  style: titleLarge.copyWith(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
-                                  background: prColor(),
+                                  background: Theme.of(context).colorScheme.primary,
                                   boxShadow: [
                                     BoxShadow(
-                                      color: secondaryColor().withOpacity(0.4),
+                                      color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
                                       offset: const Offset(0, 5),
                                       blurRadius: 15,
                                     ),

@@ -12,9 +12,9 @@ class SubjectPage extends GetView<SubjectPageController> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Responsive(
-        smallMobile: NarrowScreen(),
-        mobile: StandardScreen(),
+        mobile: MobileScreen(),
         tablet: TabletScreen(),
+        web: WebScreen(),
       ),
     );
   }

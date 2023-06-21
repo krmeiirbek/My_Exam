@@ -12,9 +12,9 @@ class MainPage extends GetView<MainController> {
   Widget build(BuildContext context) {
     return const Scaffold(
         body: Responsive(
-          smallMobile: NarrowScreen(),
-          mobile: StandardScreen(),
+          mobile: MobileScreen(),
           tablet: TabletScreen(),
+          web: WebScreen(),
         ),
     );
   }

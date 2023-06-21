@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'common/langs/langs.dart';
@@ -13,7 +14,6 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-
   runApp(const MyApp());
 }
 
@@ -22,16 +22,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      translations: TranslationService(),
-      locale: TranslationService.locale,
-      fallbackLocale: TranslationService.fallbackLocale,
-      debugShowCheckedModeBanner: false,
-      theme: Get.find<ThemeStore>().lightTheme,
-      darkTheme: Get.find<ThemeStore>().darkTheme,
-      themeMode: ThemeMode.light,
-      initialRoute: AppRoutes.home,
-      getPages: AppPages.routes(),
+    return ScreenUtilInit(
+      designSize: Global.defaultSize(),
+      minTextAdapt: true,
+      useInheritedMediaQuery: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          translations: TranslationService(),
+          locale: TranslationService.locale,
+          fallbackLocale: TranslationService.fallbackLocale,
+          debugShowCheckedModeBanner: false,
+          theme: Get.find<ThemeStore>().lightTheme,
+          darkTheme: Get.find<ThemeStore>().darkTheme,
+          themeMode: ThemeMode.system,
+          initialRoute: AppRoutes.home,
+          getPages: AppPages.routes(),
+        );
+      }
     );
   }
 }

@@ -12,9 +12,9 @@ class RulesPage extends GetView<RulesPageController> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Responsive(
-        smallMobile: NarrowScreen(),
-        mobile: StandardScreen(),
+        mobile: MobileScreen(),
         tablet: TabletScreen(),
+        web: WebScreen(),
       ),
     );
   }

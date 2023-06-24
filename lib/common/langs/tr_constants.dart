@@ -58,3 +58,10 @@ const String combo = 'Ұсыныстар';
 /// Profile Page
 const String exit1 = 'Шығу';
 const String settings1 = 'Баптаулар';
+const String changeProfile = 'Профилді өзгерту';
+const String ourSosApps = 'Біздің әлеуметтік желілер';
+const String news = 'Жаңалықтар';
+const String helper = 'Нұсқаулық';
+const String helper2 = 'Қолдау қызметі';
+const String changePass = 'Құпия сөзді өзгерту';
+const String changeLang = 'Интерфейс тілі';

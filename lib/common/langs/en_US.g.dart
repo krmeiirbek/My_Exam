@@ -57,4 +57,15 @@ const Map<String, String> enUS = {
   /// Main Page
   lessons: 'Lessons',
   combo: 'Recommendations',
+
+  /// Profile Page
+  exit1: 'Exit',
+  settings1: 'Menu',
+  changeProfile: 'Change profile',
+  ourSosApps: 'Our social networks',
+  news: 'News',
+  helper: 'Instruction',
+  helper2: 'Support service',
+  changePass: 'Change password',
+  changeLang: 'Interface language',
 };

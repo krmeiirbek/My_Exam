@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:my_exam/common/langs/langs.dart';
 
+import '../../../../common/datasources/network_to_local_file.dart';
 import '../../../../common/entities/entities.dart';
 import '../../../../common/values/values.dart';
 import '../index.dart';
@@ -262,13 +263,13 @@ class MobileScreen extends GetView<MainController> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 width: 40.w,
                 height: 40.h,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(subject.image_url),
-                  ),
+                child: NetworkToLocal(
+                  mediaURL:
+                  subject.image_url,
+                  mediaType: 'image',
                 ),
               ),
               SizedBox(width: 10.h),

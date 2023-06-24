@@ -18,12 +18,15 @@ class ProfileController extends GetxController {
 
   getMe() async {
     state.isLoading.value = true;
-    var res = await UserAPI.getMe();
-    if (res.user != null) {
-      state.me.value = res.user!;
-    }
-    await Future.delayed(const Duration(milliseconds: 200));
+    state.me.value = UserStore.to.profile;
     state.isLoading.value = false;
+  }
+
+  void changeLocale(String locale) async {
+    var code = locale.split('_');
+    Get.back();
+    Get.updateLocale(Locale(code[0], code[1]));
+    await LanguageStore.to.setLanguage(Locale(code[0], code[1]));
   }
 
   void signOut() {

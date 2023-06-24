@@ -18,6 +18,10 @@ class StorageService extends GetxService {
     return await _prefs.setBool(key, value);
   }
 
+  Future<bool> setInt(String key, int value) async {
+    return await _prefs.setInt(key, value);
+  }
+
   Future<bool> setList(String key, List<String> value) async {
     return await _prefs.setStringList(key, value);
   }
@@ -28,6 +32,10 @@ class StorageService extends GetxService {
 
   bool getBool(String key) {
     return _prefs.getBool(key) ?? false;
+  }
+
+  int getInt(String key) {
+    return _prefs.getInt(key) ?? 0;
   }
 
   List<String> getList(String key) {

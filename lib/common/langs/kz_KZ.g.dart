@@ -61,5 +61,11 @@ const Map<String, String> kzKZ = {
   /// Profile Page
   exit1: 'Шығу',
   settings1: 'Мәзір',
-
+  changeProfile: 'Профилді өзгерту',
+  ourSosApps: 'Біздің әлеуметтік желілер',
+  news: 'Жаңалықтар',
+  helper: 'Нұсқаулық',
+  helper2: 'Қолдау қызметі',
+  changePass: 'Құпия сөзді өзгерту',
+  changeLang: 'Интерфейс тілі',
 };

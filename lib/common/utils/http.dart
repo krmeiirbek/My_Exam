@@ -5,18 +5,18 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:get/get.dart' hide FormData;
+import 'package:path_provider/path_provider.dart';
 
 import '../store/store.dart';
 import '../values/values.dart';
 
-
 class HttpUtil {
   static final HttpUtil _instance = HttpUtil._internal();
+
   factory HttpUtil() => _instance;
 
   late Dio dio;
   CancelToken cancelToken = CancelToken();
-
 
   HttpUtil._internal() {
     BaseOptions options = BaseOptions(
@@ -94,23 +94,34 @@ class HttpUtil {
                 error.response != null ? error.response!.statusCode! : -1;
             switch (errCode) {
               case 400:
-                return ErrorEntity(errorCode: errCode, errors: "request syntax error");
+                return ErrorEntity(
+                    errorCode: errCode, errors: "request syntax error");
               case 401:
-                return ErrorEntity(errorCode: errCode, errors: "permission denied");
+                return ErrorEntity(
+                    errorCode: errCode, errors: "permission denied");
               case 403:
-                return ErrorEntity(errorCode: errCode, errors: "The server refuses to execute");
+                return ErrorEntity(
+                    errorCode: errCode,
+                    errors: "The server refuses to execute");
               case 404:
-                return ErrorEntity(errorCode: errCode, errors: "can not connect to the server");
+                return ErrorEntity(
+                    errorCode: errCode,
+                    errors: "can not connect to the server");
               case 405:
-                return ErrorEntity(errorCode: errCode, errors: "request method is forbidden");
+                return ErrorEntity(
+                    errorCode: errCode, errors: "request method is forbidden");
               case 500:
-                return ErrorEntity(errorCode: errCode, errors: "internal server error");
+                return ErrorEntity(
+                    errorCode: errCode, errors: "internal server error");
               case 502:
-                return ErrorEntity(errorCode: errCode, errors: "invalid request");
+                return ErrorEntity(
+                    errorCode: errCode, errors: "invalid request");
               case 503:
                 return ErrorEntity(errorCode: errCode, errors: "server down");
               case 505:
-                return ErrorEntity(errorCode: errCode, errors: "Does not support HTTP protocol requests");
+                return ErrorEntity(
+                    errorCode: errCode,
+                    errors: "Does not support HTTP protocol requests");
               default:
                 {
                   return ErrorEntity(
@@ -143,6 +154,48 @@ class HttpUtil {
       headers['Authorization'] = 'Bearer ${UserStore.to.token}';
     }
     return headers;
+  }
+
+  void downloadFileLocally(
+    String videoURL,
+    Function(int status) setStatus,
+    Function(String filePath, int status) setFilePath, {
+    required void Function(int total, int count) downloadProgress,
+  }) async {
+    String fileName = videoURL.split('/').last;
+    setStatus(1);
+    await getApplicationDocumentsDirectory().then((appDir) async {
+      if (!File('${appDir.path}/$fileName').existsSync()) {
+        print('Downloading video');
+        var filePath =
+            await File('${appDir.path}/$fileName').create(recursive: true);
+        await dio.download(
+          videoURL,
+          filePath.path,
+          onReceiveProgress: downloadProgress,
+        );
+        setFilePath(filePath.path, 2);
+      } else {
+        print('Already downloaded video');
+        setFilePath(File('${appDir.path}/$fileName').path, 2);
+      }
+    });
+  }
+
+  void deleteFileLocally(
+      String videoURL,
+      Function(int status) setStatus,
+      ) async {
+    String fileName = videoURL.split('/').last;
+    setStatus(0);
+    await getApplicationDocumentsDirectory().then((appDir) async {
+      if (File('${appDir.path}/$fileName').existsSync()) {
+        print('Deleting video');
+        await File('${appDir.path}/$fileName').delete(recursive: true);
+      } else {
+        print('Already deleted video');
+      }
+    });
   }
 
   Future get(
@@ -186,7 +239,6 @@ class HttpUtil {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) async {
-
     Options requestOptions = options ?? Options();
     requestOptions.headers = requestOptions.headers ?? {};
     Map<String, dynamic>? authorization = getAuthorizationHeader();
@@ -295,6 +347,7 @@ class HttpUtil {
     );
     return response.data;
   }
+
   /// restful post Stream streaming data
   Future postStream(
     String path, {
@@ -327,6 +380,7 @@ class HttpUtil {
 class ErrorEntity implements Exception {
   int errorCode = -1;
   String errors = "";
+
   ErrorEntity({required this.errorCode, required this.errors});
 
   @override

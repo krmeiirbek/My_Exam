@@ -22,7 +22,6 @@ class UserStore extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    /// offline user
     token = StorageService.to.getString(storageUserTokenKey);
     var profileOffline = StorageService.to.getString(storageUserProfileKey);
     if (profileOffline.isNotEmpty) {

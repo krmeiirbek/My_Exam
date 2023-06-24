@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:my_exam/common/datasources/network_to_local_file.dart';
 import 'package:my_exam/common/langs/langs.dart';
 
 import '../../../../common/values/values.dart';
@@ -24,7 +25,7 @@ class MobileScreen extends GetView<ProfileController> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 25.w, 0.0),
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     controller.signOut();
                   },
                   child: Icon(
@@ -48,14 +49,14 @@ class MobileScreen extends GetView<ProfileController> {
             child: Column(
               children: [
                 Obx(() {
-                  if(controller.state.isLoading.value){
+                  if (controller.state.isLoading.value) {
                     return SpinKitCircle(
                       color: Theme.of(context).colorScheme.primary,
                       size: 50.h,
                     );
-                  }else{
+                  } else {
                     return Container(
-                      margin: EdgeInsets.only(bottom: 15.h,top: 15.h),
+                      margin: EdgeInsets.only(bottom: 15.h, top: 15.h),
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.w),
@@ -77,8 +78,8 @@ class MobileScreen extends GetView<ProfileController> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                EdgeInsetsDirectional.fromSTEB(25.w, 0.0, 10.w, 0.0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    25.w, 0.0, 10.w, 0.0),
                                 child: Container(
                                   width: 60.w,
                                   height: 60.h,
@@ -86,9 +87,10 @@ class MobileScreen extends GetView<ProfileController> {
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Image.network(
-                                    'https://picsum.photos/seed/83/600',
-                                    fit: BoxFit.cover,
+                                  child: const NetworkToLocal(
+                                    mediaURL:
+                                        'https://picsum.photos/seed/83/600',
+                                    mediaType: 'image',
                                   ),
                                 ),
                               ),
@@ -106,25 +108,26 @@ class MobileScreen extends GetView<ProfileController> {
                                   Text(
                                     '${controller.state.me.value.email}',
                                     style: bodySmall.copyWith(
-                                      color: Theme.of(context).unselectedWidgetColor,
+                                      color: Theme.of(context)
+                                          .unselectedWidgetColor,
                                     ),
                                   ),
                                   Padding(
-                                    padding:
-                                    EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.h),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 10.h),
                                     child: Text(
                                       '+77475551101',
-                                      style: bodySmall
-                                          .copyWith(
-                                        color:
-                                        Theme.of(context).unselectedWidgetColor,
+                                      style: bodySmall.copyWith(
+                                        color: Theme.of(context)
+                                            .unselectedWidgetColor,
                                       ),
                                     ),
                                   ),
                                   Text(
-                                    'Профилді өзгерту',
+                                    changeProfile.tr,
                                     style: bodyMedium.copyWith(
-                                      color: Theme.of(context).colorScheme.primary,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
@@ -134,7 +137,8 @@ class MobileScreen extends GetView<ProfileController> {
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 25.w, 0.0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 25.w, 0.0),
                             child: Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Theme.of(context).unselectedWidgetColor,
@@ -170,7 +174,7 @@ class MobileScreen extends GetView<ProfileController> {
                       ),
                       SizedBox(width: 10.w),
                       Text(
-                        "Біздің әлеуметтік желілер",
+                        ourSosApps.tr,
                         style: titleSmall,
                       ),
                     ],
@@ -200,7 +204,7 @@ class MobileScreen extends GetView<ProfileController> {
                       ),
                       SizedBox(width: 10.w),
                       Text(
-                        "Жаңалықтар",
+                        news.tr,
                         style: titleSmall,
                       ),
                     ],
@@ -230,7 +234,7 @@ class MobileScreen extends GetView<ProfileController> {
                       ),
                       SizedBox(width: 10.w),
                       Text(
-                        "Нұсқаулық",
+                        helper.tr,
                         style: titleSmall,
                       ),
                     ],
@@ -260,7 +264,7 @@ class MobileScreen extends GetView<ProfileController> {
                       ),
                       SizedBox(width: 10.w),
                       Text(
-                        "Қолдау қызметі",
+                        helper2.tr,
                         style: titleSmall,
                       ),
                     ],
@@ -290,40 +294,92 @@ class MobileScreen extends GetView<ProfileController> {
                       ),
                       SizedBox(width: 10.w),
                       Text(
-                        "Құпия сөзді өзгерту",
+                        changePass.tr,
                         style: titleSmall,
                       ),
                     ],
                   ),
                 ),
-                Container(
-                  height: 60.h,
-                  margin: EdgeInsets.only(bottom: 15.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.w),
-                      color: Theme.of(context).colorScheme.background,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.1),
-                          blurRadius: 2,
-                          spreadRadius: 2,
-                          offset: const Offset(1, 2),
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (builder) {
+                          return AlertDialog(
+                            backgroundColor:
+                                Theme.of(context).colorScheme.onSurface,
+                            title: Text(
+                              choiceLang.tr,
+                              style: titleLarge.copyWith(color: Colors.white),
+                              textAlign: TextAlign.center,
+                            ),
+                            content: Container(
+                              padding: EdgeInsets.all(10.h),
+                              width: double.maxFinite,
+                              child: ListView.separated(
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      controller.changeLocale(
+                                          TranslationService()
+                                              .keys
+                                              .keys
+                                              .elementAt(index));
+                                    },
+                                    child: Text(
+                                      TranslationService()
+                                          .keys
+                                          .values
+                                          .elementAt(index)
+                                          .values
+                                          .first,
+                                      style: bodyLarge.copyWith(
+                                          color: Colors.white),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  );
+                                },
+                                separatorBuilder: (context, index) {
+                                  return Divider(
+                                    color: accent1Color(),
+                                  );
+                                },
+                                itemCount: TranslationService().keys.length,
+                              ),
+                            ),
+                          );
+                        });
+                  },
+                  child: Container(
+                    height: 60.h,
+                    margin: EdgeInsets.only(bottom: 15.h),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.w),
+                        color: Theme.of(context).colorScheme.background,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            blurRadius: 2,
+                            spreadRadius: 2,
+                            offset: const Offset(1, 2),
+                          ),
+                        ]),
+                    child: Row(
+                      children: [
+                        SizedBox(width: 15.w),
+                        Icon(
+                          Icons.language_outlined,
+                          color: Theme.of(context).colorScheme.primary,
+                          size: 30.w,
                         ),
-                      ]),
-                  child: Row(
-                    children: [
-                      SizedBox(width: 15.w),
-                      Icon(
-                        Icons.language_outlined,
-                        color: Theme.of(context).colorScheme.primary,
-                        size: 30.w,
-                      ),
-                      SizedBox(width: 10.w),
-                      Text(
-                        "Интерфейс тілі",
-                        style: titleSmall,
-                      ),
-                    ],
+                        SizedBox(width: 10.w),
+                        Text(
+                          changeLang.tr,
+                          style: titleSmall,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

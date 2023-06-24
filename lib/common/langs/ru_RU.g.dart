@@ -57,4 +57,15 @@ const Map<String, String> ruRU = {
   /// Main Page
   lessons: 'Уроки',
   combo: 'Рекомендации',
+
+  /// Profile Page
+  exit1: 'Выход',
+  settings1: 'Меню',
+  changeProfile: 'Изменить профиль',
+  ourSosApps: 'Наши социальные сети',
+  news: 'Новости',
+  helper: 'Инструкция',
+  helper2: 'Сервис поддержки',
+  changePass: 'Изменить пароль',
+  changeLang: 'Язык интерфейса',
 };
